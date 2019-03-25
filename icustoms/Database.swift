@@ -22,6 +22,20 @@ class Database {
         return Thread.isMainThread ? privateRealm : try! Realm()
     }
     
+    func add(_ object: Object) {
+        guard let realm = try? realmInstance() else { return }
+        try? realm.safeWrite {
+            realm.add(object)
+        }
+    }
+    
+    func deleteUser() {
+        guard let realm = try? realmInstance() else { return }
+        try? realm.safeWrite {
+            realm.delete(realm.objects(User.self))
+        }
+    }
+    
     func currentUser() -> User? {
         let realm = try? realmInstance()
         return realm?.objects(User.self).first
@@ -30,5 +44,5 @@ class Database {
 }
 
 class User: Object {
-    @objc dynamic var id = 0
+    @objc dynamic var token: String = ""
 }

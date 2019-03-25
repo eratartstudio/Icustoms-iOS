@@ -9,4 +9,5 @@ target 'icustoms' do
     pod 'PhoneNumberKit'
     pod 'RealmSwift'
     pod 'SVProgressHUD'
+    pod 'UICircularProgressRing'
 end

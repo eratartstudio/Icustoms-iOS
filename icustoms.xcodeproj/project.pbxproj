@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		382C6A03224513AF00ACF784 /* ConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382C6A02224513AF00ACF784 /* ConfirmCodeViewController.swift */; };
+		382C6A0C2248F26B00ACF784 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382C6A0B2248F26B00ACF784 /* Extensions.swift */; };
 		3848BD682243E4EE0047FBC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BD672243E4EE0047FBC9 /* AppDelegate.swift */; };
-		3848BD6A2243E4EE0047FBC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BD692243E4EE0047FBC9 /* ViewController.swift */; };
+		3848BD6A2243E4EE0047FBC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BD692243E4EE0047FBC9 /* MainViewController.swift */; };
 		3848BD6D2243E4EE0047FBC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3848BD6B2243E4EE0047FBC9 /* Main.storyboard */; };
 		3848BD6F2243E4EE0047FBC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3848BD6E2243E4EE0047FBC9 /* Assets.xcassets */; };
 		3848BD722243E4EE0047FBC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3848BD702243E4EE0047FBC9 /* LaunchScreen.storyboard */; };
@@ -54,9 +55,10 @@
 /* Begin PBXFileReference section */
 		01E82507E2BA9B11F4894854 /* Pods-icustoms.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icustoms.release.xcconfig"; path = "Pods/Target Support Files/Pods-icustoms/Pods-icustoms.release.xcconfig"; sourceTree = "<group>"; };
 		382C6A02224513AF00ACF784 /* ConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewController.swift; sourceTree = "<group>"; };
+		382C6A0B2248F26B00ACF784 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3848BD642243E4EE0047FBC9 /* icustoms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icustoms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3848BD672243E4EE0047FBC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3848BD692243E4EE0047FBC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3848BD692243E4EE0047FBC9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3848BD6C2243E4EE0047FBC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3848BD6E2243E4EE0047FBC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3848BD712243E4EE0047FBC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -120,10 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				3848BD672243E4EE0047FBC9 /* AppDelegate.swift */,
-				3848BD692243E4EE0047FBC9 /* ViewController.swift */,
+				3848BD692243E4EE0047FBC9 /* MainViewController.swift */,
 				3848BD792244CD7F0047FBC9 /* API.swift */,
 				38A38ED72245067F00505D36 /* Storyboard.swift */,
 				38A38EF322450E4500505D36 /* Button.swift */,
+				382C6A0B2248F26B00ACF784 /* Extensions.swift */,
 				38A38ED62245067000505D36 /* Authorization */,
 				3848BD6B2243E4EE0047FBC9 /* Main.storyboard */,
 				3848BD6E2243E4EE0047FBC9 /* Assets.xcassets */,
@@ -300,6 +303,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -310,6 +314,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -346,9 +351,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				38A38EF422450E4500505D36 /* Button.swift in Sources */,
+				382C6A0C2248F26B00ACF784 /* Extensions.swift in Sources */,
 				38A38EDA224509D500505D36 /* LoginViewController.swift in Sources */,
 				382C6A03224513AF00ACF784 /* ConfirmCodeViewController.swift in Sources */,
-				3848BD6A2243E4EE0047FBC9 /* ViewController.swift in Sources */,
+				3848BD6A2243E4EE0047FBC9 /* MainViewController.swift in Sources */,
 				38A38ED82245067F00505D36 /* Storyboard.swift in Sources */,
 				3848BD7A2244CD7F0047FBC9 /* API.swift in Sources */,
 				38A38ED3224505C700505D36 /* Database.swift in Sources */,

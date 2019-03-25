@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
     
     private var codes: [String] = []
     
+    var authorization: AuthorizationResponse!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,9 +56,14 @@ class LoginViewController: UIViewController {
     
     @IBAction func sendButtonDidTap() {
         SVProgressHUD.show()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        API.default.getSms(phone()) { (response) in
             SVProgressHUD.dismiss()
-            self.performSegue(withIdentifier: "ShowCodeView", sender: self)
+            if let response = response {
+                self.authorization = response
+                self.performSegue(withIdentifier: "ShowCodeView", sender: self)
+            } else {
+                self.showAlert("Ошибка", message: "Невозможно авторизоваться")
+            }
         }
     }
     
@@ -67,7 +74,7 @@ class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowCodeView" {
             let vc = segue.destination as! ConfirmCodeViewController
-            vc.phone = phone()
+            vc.authorization = authorization
         }
     }
     
@@ -94,30 +101,6 @@ extension LoginViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         codeLabel.text = codes[row]
-    }
-    
-}
-
-extension UITextField {
-    
-    func addDoneButtonOnKeyboard()
-    {
-        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-        doneToolbar.barStyle = .default
-        
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(doneButtonAction))
-        
-        let items = [flexSpace, done]
-        doneToolbar.items = items
-        doneToolbar.sizeToFit()
-        
-        inputAccessoryView = doneToolbar
-    }
-    
-    @objc private func doneButtonAction()
-    {
-        resignFirstResponder()
     }
     
 }
