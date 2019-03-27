@@ -15,6 +15,11 @@
 		3848BD6F2243E4EE0047FBC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3848BD6E2243E4EE0047FBC9 /* Assets.xcassets */; };
 		3848BD722243E4EE0047FBC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3848BD702243E4EE0047FBC9 /* LaunchScreen.storyboard */; };
 		3848BD7A2244CD7F0047FBC9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BD792244CD7F0047FBC9 /* API.swift */; };
+		3871C6FD22492001004D3829 /* RemainsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871C6FC22492001004D3829 /* RemainsViewController.swift */; };
+		3891F5F9224B74F0006AE04E /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891F5F8224B74F0006AE04E /* BalanceViewController.swift */; };
+		3891F5FB224B84B1006AE04E /* BalanceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891F5FA224B84B1006AE04E /* BalanceDetailViewController.swift */; };
+		3891F5FD224B9305006AE04E /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891F5FC224B9305006AE04E /* AboutAppViewController.swift */; };
+		3891F5FF224B9520006AE04E /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891F5FE224B9520006AE04E /* HelpViewController.swift */; };
 		38A38ED3224505C700505D36 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38ED2224505C700505D36 /* Database.swift */; };
 		38A38ED52245066B00505D36 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A38ED42245066B00505D36 /* Authorization.storyboard */; };
 		38A38ED82245067F00505D36 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38ED72245067F00505D36 /* Storyboard.swift */; };
@@ -64,6 +69,11 @@
 		3848BD712243E4EE0047FBC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3848BD732243E4EE0047FBC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3848BD792244CD7F0047FBC9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		3871C6FC22492001004D3829 /* RemainsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainsViewController.swift; sourceTree = "<group>"; };
+		3891F5F8224B74F0006AE04E /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
+		3891F5FA224B84B1006AE04E /* BalanceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDetailViewController.swift; sourceTree = "<group>"; };
+		3891F5FC224B9305006AE04E /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
+		3891F5FE224B9520006AE04E /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		38A38ED2224505C700505D36 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		38A38ED42245066B00505D36 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
 		38A38ED72245067F00505D36 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -123,6 +133,11 @@
 			children = (
 				3848BD672243E4EE0047FBC9 /* AppDelegate.swift */,
 				3848BD692243E4EE0047FBC9 /* MainViewController.swift */,
+				3871C6FC22492001004D3829 /* RemainsViewController.swift */,
+				3891F5F8224B74F0006AE04E /* BalanceViewController.swift */,
+				3891F5FA224B84B1006AE04E /* BalanceDetailViewController.swift */,
+				3891F5FC224B9305006AE04E /* AboutAppViewController.swift */,
+				3891F5FE224B9520006AE04E /* HelpViewController.swift */,
 				3848BD792244CD7F0047FBC9 /* API.swift */,
 				38A38ED72245067F00505D36 /* Storyboard.swift */,
 				38A38EF322450E4500505D36 /* Button.swift */,
@@ -351,13 +366,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				38A38EF422450E4500505D36 /* Button.swift in Sources */,
+				3891F5FD224B9305006AE04E /* AboutAppViewController.swift in Sources */,
 				382C6A0C2248F26B00ACF784 /* Extensions.swift in Sources */,
 				38A38EDA224509D500505D36 /* LoginViewController.swift in Sources */,
 				382C6A03224513AF00ACF784 /* ConfirmCodeViewController.swift in Sources */,
 				3848BD6A2243E4EE0047FBC9 /* MainViewController.swift in Sources */,
 				38A38ED82245067F00505D36 /* Storyboard.swift in Sources */,
+				3891F5FF224B9520006AE04E /* HelpViewController.swift in Sources */,
+				3871C6FD22492001004D3829 /* RemainsViewController.swift in Sources */,
 				3848BD7A2244CD7F0047FBC9 /* API.swift in Sources */,
+				3891F5FB224B84B1006AE04E /* BalanceDetailViewController.swift in Sources */,
 				38A38ED3224505C700505D36 /* Database.swift in Sources */,
+				3891F5F9224B74F0006AE04E /* BalanceViewController.swift in Sources */,
 				3848BD682243E4EE0047FBC9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
