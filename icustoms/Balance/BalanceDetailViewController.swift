@@ -23,15 +23,15 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
     
     private (set) var isPresented: Bool = false
     
-    var transaction: Transaction!
+    var transaction: BalanceTransaction!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         descriptionLabel.text = transaction.description
-        let price = transaction.price.presentable()
+        let price = transaction.amount.presentable()
         priceLastLabel.text = "." + price.last + " P"
-        if transaction.price < 0 {
+        if transaction.transactionType == .substract {
             priceFirstLabel.text = price.first
             priceFirstLabel.textColor = .black
             priceLastLabel.textColor = .lightGray
@@ -43,7 +43,7 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_GB")
         dateFormatter.dateFormat = "dd MMMM yyyy, HH:mm"
-        dateLabel.text = dateFormatter.string(from: Date())
+        dateLabel.text = dateFormatter.string(from: transaction.dateObject)
         view.layoutIfNeeded()
         topViewScrollConstraint.constant = scrollView.frame.height/2
         view.layoutIfNeeded()
@@ -70,21 +70,21 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         if scrollView.contentOffset == .zero {
-            dismiss()
+            dismissController()
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView.contentOffset == .zero {
-            dismiss()
+            dismissController()
         }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dismiss()
+        dismissController()
     }
     
-    func dismiss() {
+    func dismissController() {
         scrollView.isScrollEnabled = false
         if scrollView.contentOffset != .zero {
             scrollView.setContentOffset(.zero, animated: true)

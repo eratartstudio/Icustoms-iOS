@@ -332,6 +332,9 @@
                                         <color key="backgroundColor" red="0.93323498964309692" green="0.93339163064956665" blue="0.93321293592453003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="analyticsCircleView" destination="veR-f9-z82" id="DGW-Eh-3fV"/>
+                                            <outlet property="dateLabel" destination="foM-Nj-t9l" id="cxr-wb-Yc3"/>
+                                            <outlet property="orderIdLabel" destination="jrL-pt-m4M" id="1fT-af-gY9"/>
+                                            <outlet property="statusLabel" destination="aQP-zY-ZMi" id="Bq0-Pw-clq"/>
                                             <segue destination="HqV-NS-tIu" kind="show" id="ZGO-XY-g24"/>
                                         </connections>
                                     </tableViewCell>
@@ -1339,6 +1342,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="avansLabel" destination="YzU-WJ-eH0" id="V1R-Gf-Vn3"/>
+                                            <outlet property="dateLabel" destination="grF-Ii-xp2" id="d8i-iC-CX8"/>
+                                            <outlet property="titleLabel" destination="EM1-dZ-Nr4" id="vH0-CM-d2t"/>
+                                            <outlet property="tollLabel" destination="I4w-ca-mpo" id="fud-XF-04e"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1357,6 +1366,9 @@
                         <viewLayoutGuide key="safeArea" id="2QI-Ro-SQb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Остатки в ТО" id="y7s-kF-SnA"/>
+                    <connections>
+                        <outlet property="tableView" destination="77b-J9-ZQB" id="y11-MU-ZZS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMS-eX-7pv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1653,11 +1665,11 @@
                                         <rect key="frame" x="0.0" y="579" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="67j-Nf-5x7" id="cpC-ke-tnH">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="О приложении" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zUv-ec-d9V">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

@@ -39,7 +39,7 @@ class ConfirmCodeViewController: UIViewController {
             let action = UIAlertAction(title: account.company, style: .default) { [weak self] _ in
                 guard let phone = self?.authorization.phone, let code = self?.codeField.text else { return }
                 SVProgressHUD.show()
-                API.default.checkSms(phone, code: Int(code) ?? 0, accountId: account.id, { (response) in
+                API.default.checkSms(phone, code: Int(code) ?? 0, accountId: account.id, success: { [weak self] (response) in
                     SVProgressHUD.dismiss()
                     if let token = response?.token {
                         let user = User()
@@ -48,8 +48,11 @@ class ConfirmCodeViewController: UIViewController {
                         let mainController = Storyboard.Main.initialViewController!
                         self?.present(mainController, animated: true, completion: nil)
                     } else {
-                        self?.showAlert("Ошибка", message: "Невозможно авторизоваться")
+                         self?.showAlert("Ошибка", message: "Невозможно авторизоваться")
                     }
+                }, failure: { [weak self] (error, statusCode) in
+                    SVProgressHUD.dismiss()
+                    self?.showAlert("Ошибка", message: "Невозможно авторизоваться")
                 })
             }
             alertController.addAction(action)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 struct Transaction {
     let price: Double
@@ -15,9 +16,11 @@ struct Transaction {
 
 class BalanceViewController: UIViewController {
     
-    var data: [(timestamp: Int, transactions: [Transaction])] = []
+    var data: [(timestamp: Int, transactions: [BalanceTransaction])] = []
  
     var counts: [String: Double] = [:]
+    
+    var items: [BalanceTransaction] = []
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var countFirstLabel: UILabel!
@@ -33,16 +36,36 @@ class BalanceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        data.append((timestamp: 1549152000, transactions: [Transaction(price: -11580.29, description: "Услуга по счету 2"), Transaction(price: -3420.29, description: "Услуга по счету 2"), Transaction(price: -11580.29, description: "Услуга по счету 2"), Transaction(price: -3420.29, description: "Услуга по счету 2")]))
-        data.append((timestamp: 1549065600, transactions: [Transaction(price: 9500.30, description: "Оплата по договору 2"), Transaction(price: 8500.30, description: "Оплата по договору 1"), Transaction(price: 9500.30, description: "Оплата по договору 2"), Transaction(price: 8500.30, description: "Оплата по договору 1")]))
-        data.append((timestamp: 1548720000, transactions: [Transaction(price: 1000.00, description: "Оплата по договору"), Transaction(price: -11580.29, description: "Услуга"), Transaction(price: 1000.00, description: "Оплата по договору"), Transaction(price: -11580.29, description: "Услуга")]))
-        data.append((timestamp: 1548547200, transactions: [Transaction(price: 21020.12, description: "Оплата"), Transaction(price: 100.01, description: "Оплата"), Transaction(price: 21020.12, description: "Оплата"), Transaction(price: 100.01, description: "Оплата")]))
+        SVProgressHUD.show()
+        API.default.balance(success: { [weak self] (items) in
+            SVProgressHUD.dismiss()
+            self?.items = items
+            self?.updateData()
+            self?.tableView.reloadData()
+        }) { [weak self] (error, statusCode) in
+            SVProgressHUD.dismiss()
+            self?.showAlert("Ошибка", message: "Невозможно загрузить баланс")
+        }
         
+        updateCurrentValue()
+        
+//        data.append((timestamp: 1549152000, transactions: [Transaction(price: -11580.29, description: "Услуга по счету 2"), Transaction(price: -3420.29, description: "Услуга по счету 2"), Transaction(price: -11580.29, description: "Услуга по счету 2"), Transaction(price: -3420.29, description: "Услуга по счету 2")]))
+//        data.append((timestamp: 1549065600, transactions: [Transaction(price: 9500.30, description: "Оплата по договору 2"), Transaction(price: 8500.30, description: "Оплата по договору 1"), Transaction(price: 9500.30, description: "Оплата по договору 2"), Transaction(price: 8500.30, description: "Оплата по договору 1")]))
+//        data.append((timestamp: 1548720000, transactions: [Transaction(price: 1000.00, description: "Оплата по договору"), Transaction(price: -11580.29, description: "Услуга"), Transaction(price: 1000.00, description: "Оплата по договору"), Transaction(price: -11580.29, description: "Услуга")]))
+//        data.append((timestamp: 1548547200, transactions: [Transaction(price: 21020.12, description: "Оплата"), Transaction(price: 100.01, description: "Оплата"), Transaction(price: 21020.12, description: "Оплата"), Transaction(price: 100.01, description: "Оплата")]))
+        
+
+    }
+    
+    func updateData() {
+        data = items.group { $0.timestamp }.map { (timestamp: $0.key, transactions: $0.value) }.sorted { $0.timestamp > $1.timestamp }
+    
         for value in data {
             let time = TimeInterval(value.timestamp)
             let month = time.month()
             var count: Double = 0
-            value.transactions.forEach { count += $0.price }
+            
+            value.transactions.forEach { count += $0.amount }
             if let last = counts[month] {
                 counts[month] = last + count
             } else {
@@ -102,7 +125,12 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func updateCurrentValue() {
-        guard let indexPath = tableView.indexPathsForVisibleRows?.first else { return }
+        guard let indexPath = tableView.indexPathsForVisibleRows?.first else {
+            countFirstLabel.text = nil
+            countLastLabel.text = nil
+            monthLabel.text = nil
+            return
+        }
         let time = TimeInterval(data[indexPath.section].timestamp)
         let month = time.month()
         guard let count = counts[month] else { return }
@@ -128,7 +156,7 @@ class TransactionTableCell: UITableViewCell {
     @IBOutlet weak var priceLastLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var transaction: Transaction? {
+    var transaction: BalanceTransaction? {
         didSet {
             update()
         }
@@ -136,9 +164,9 @@ class TransactionTableCell: UITableViewCell {
     
     private func update() {
         guard let transaction = transaction else { return }
-        let price = transaction.price.presentable()
+        let price = transaction.amount.presentable()
         priceLastLabel.text = "." + price.last + " P"
-        if transaction.price < 0 {
+        if transaction.transactionType == .substract {
             priceFirstLabel.text = price.first
             priceFirstLabel.textColor = .black
             priceLastLabel.textColor = .lightGray

@@ -1,21 +1,23 @@
 PODS:
-  - Alamofire (4.8.0)
-  - PhoneNumberKit (2.5.0):
-    - PhoneNumberKit/PhoneNumberKitCore (= 2.5.0)
-    - PhoneNumberKit/UIKit (= 2.5.0)
-  - PhoneNumberKit/PhoneNumberKitCore (2.5.0)
-  - PhoneNumberKit/UIKit (2.5.0):
+  - Alamofire (4.8.2)
+  - DKExtensions (0.1.0):
+    - Alamofire
+  - PhoneNumberKit (2.6.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 2.6.0)
+    - PhoneNumberKit/UIKit (= 2.6.0)
+  - PhoneNumberKit/PhoneNumberKitCore (2.6.0)
+  - PhoneNumberKit/UIKit (2.6.0):
     - PhoneNumberKit/PhoneNumberKitCore
-  - Realm (3.13.1):
-    - Realm/Headers (= 3.13.1)
-  - Realm/Headers (3.13.1)
-  - RealmSwift (3.13.1):
-    - Realm (= 3.13.1)
+  - Realm (3.14.0):
+    - Realm/Headers (= 3.14.0)
+  - Realm/Headers (3.14.0)
+  - RealmSwift (3.14.0):
+    - Realm (= 3.14.0)
   - SVProgressHUD (2.2.5)
-  - UICircularProgressRing (4.1.0)
+  - UICircularProgressRing (6.1.0)
 
 DEPENDENCIES:
-  - Alamofire
+  - DKExtensions (from `https://github.com/kuzindmitry/DKExtensions.git`)
   - PhoneNumberKit
   - RealmSwift
   - SVProgressHUD
@@ -30,14 +32,24 @@ SPEC REPOS:
     - SVProgressHUD
     - UICircularProgressRing
 
-SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  PhoneNumberKit: 32a1cd1e0aa9e950feb01886a22fd7386b8cf903
-  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
-  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  UICircularProgressRing: 5a32c01f54474571b1e66e8fa050c0f83d6d981b
+EXTERNAL SOURCES:
+  DKExtensions:
+    :git: https://github.com/kuzindmitry/DKExtensions.git
 
-PODFILE CHECKSUM: 124ee059e012c95a0979cad4f388dd6c286be73b
+CHECKOUT OPTIONS:
+  DKExtensions:
+    :commit: e1b3f1a5cb62e112b1e0f944610c2cce527f1cc0
+    :git: https://github.com/kuzindmitry/DKExtensions.git
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  DKExtensions: d0e10328fee29d6c9ce1565525842ee74011a817
+  PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
+  Realm: 221b25919bb5a010a3c597d707f8df3492dcd93a
+  RealmSwift: 28f22dfa6a27b9a778cfb09471558b6afcf1022c
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  UICircularProgressRing: b3eba859a515e4d9d38503eec913f09c28450785
+
+PODFILE CHECKSUM: 6aef411c1b04399f91c979c11ba5ec65ca5b3c20
 
 COCOAPODS: 1.5.3

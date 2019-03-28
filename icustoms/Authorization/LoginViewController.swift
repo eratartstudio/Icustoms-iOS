@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func sendButtonDidTap() {
         SVProgressHUD.show()
-        API.default.getSms(phone()) { (response) in
+        API.default.getSms(phone(), success: { (response) in
             SVProgressHUD.dismiss()
             if let response = response {
                 self.authorization = response
@@ -64,6 +64,10 @@ class LoginViewController: UIViewController {
             } else {
                 self.showAlert("Ошибка", message: "Невозможно авторизоваться")
             }
+        }) { (error, statusCode) in
+            print(error)
+            SVProgressHUD.dismiss()
+            self.showAlert("Ошибка", message: "Невозможно авторизоваться")
         }
     }
     
