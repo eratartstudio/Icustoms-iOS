@@ -13,12 +13,12 @@ struct Order: Decodable {
     let id: Int
     let orderId: String
     let invoiceNumber: String
-    let currency: String
+    let currency: OrderCurrency?
     let checkNetarif: Bool
     let createdAt: String
     let countGoods: Int
     let deliveryCost: String
-    let deliveryCurrency: String
+    let deliveryCurrency: OrderCurrency?
     let bankComission: String
     let otherExpenses: String
     let invoiceWithoutExpenses: String
@@ -34,6 +34,11 @@ struct Order: Decodable {
     let countInWork: Int
     let countChecking: Int
     let countErrors: Int
+    let isPaid: Bool
+    
+    var isEnded: Bool {
+        return status?.id == 11
+    }
     
     enum CodingKeys: CodingKey {
         case bankComission
@@ -60,6 +65,7 @@ struct Order: Decodable {
         case status
         case toll
         case weightDO1
+        case isPaid
     }
 
     
@@ -68,12 +74,12 @@ struct Order: Decodable {
         id = try container.decode(Int.self, forKey: .id)
         orderId = try container.decode(String.self, forKey: .orderId)
         invoiceNumber = (try? container.decode(String.self, forKey: .invoiceNumber)) ?? ""
-        currency = (try? container.decode(String.self, forKey: .currency)) ?? ""
+        currency = try? container.decode(OrderCurrency.self, forKey: .currency)
         checkNetarif = (try? container.decode(Bool.self, forKey: .checkNetarif)) ?? false
         createdAt = (try? container.decode(String.self, forKey: .createdAt)) ?? ""
         countGoods = (try? container.decode(Int.self, forKey: .countGoods)) ?? 0
         deliveryCost = (try? container.decode(String.self, forKey: .deliveryCost)) ?? ""
-        deliveryCurrency = (try? container.decode(String.self, forKey: .deliveryCurrency)) ?? ""
+        deliveryCurrency = try? container.decode(OrderCurrency.self, forKey: .deliveryCurrency)
         bankComission = (try? container.decode(String.self, forKey: .bankComission)) ?? ""
         otherExpenses = (try? container.decode(String.self, forKey: .otherExpenses)) ?? ""
         invoiceWithoutExpenses = (try? container.decode(String.self, forKey: .invoiceWithoutExpenses)) ?? ""
@@ -89,10 +95,18 @@ struct Order: Decodable {
         countInWork = (try? container.decode(Int.self, forKey: .countInWork)) ?? 0
         countChecking = (try? container.decode(Int.self, forKey: .countChecking)) ?? 0
         countErrors = (try? container.decode(Int.self, forKey: .countErrors)) ?? 0
+        isPaid = (try? container.decode(Bool.self, forKey: .isPaid)) ?? false
     }
 }
 
 struct OrderStatus: Decodable {
     let id: Int
     let name: String
+}
+
+
+struct OrderCurrency: Decodable {
+    let code: String?
+    let name: String?
+    let rate: String?
 }

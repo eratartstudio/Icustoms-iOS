@@ -68,6 +68,12 @@ extension API {
         }, failure: failure)
     }
     
+    func files(_ orderId: Int, _ success: @escaping () -> Void, failure: Failure? = nil) {
+        self.get(host.mobile.orderFiles(orderId), headers: authorizationHeaders, success: { (data, statusCode) in
+            print(statusCode)
+        }, failure: failure)
+    }
+    
 }
 
 
@@ -81,6 +87,12 @@ extension API {
         }, failure: failure)
     }
     
+    func custom(_ id: Int, success: @escaping (Custom?) -> Void, failure: Failure? = nil) {
+        getModel(host.mobile.customs + "/\(id)", headers: authorizationHeaders, success: { (response: Custom?, statusCode: Int) in
+            success(response)
+        }, failure: failure)
+    }
+    
 }
 
 
@@ -91,6 +103,53 @@ extension API {
     func balance(success: @escaping ([BalanceTransaction]) -> Void, failure: Failure? = nil) {
         getModel(host.mobile.balance, headers: authorizationHeaders, success: { (response: [BalanceTransaction]?, statusCode: Int) in
             success(response ?? [])
+        }, failure: failure)
+    }
+    
+}
+
+
+//MARK: Settings
+
+extension API {
+    
+    func profile(success: @escaping (Profile?) -> Void, failure: Failure? = nil) {
+        getModel(host.mobile.client.profile, headers: authorizationHeaders, success: { (response: Profile?, statusCode: Int) in
+            success(response)
+        }, failure: failure)
+    }
+    
+    func emailSettings(success: @escaping (NotificationResponse?) -> Void, failure: Failure? = nil) {
+        getModel(host.mobile.client.settings.email, headers: authorizationHeaders, success: { (response: NotificationResponse?, statusCode: Int) in
+            success(response)
+        }, failure: failure)
+    }
+    
+    func updateEmailSettings(_ values: [Bool], _ success: ((Bool) -> Void)? = nil, failure: Failure? = nil) {
+        guard values.count >= 8 else { success?(false); return }
+        var params: [String : Bool] = [:]
+        for (index, value) in values.enumerated() {
+            params["\(index + 1)"] = value
+        }
+        patch(host.mobile.client.settings.email, params: params as [String : AnyObject], headers: authorizationHeaders, encoding: .json, success: { (data, statusCode) in
+            success?(statusCode >= 200 && statusCode < 300)
+        }, failure: failure)
+    }
+    
+    func smsSettings(success: @escaping (NotificationResponse?) -> Void, failure: Failure? = nil) {
+        getModel(host.mobile.client.settings.sms, headers: authorizationHeaders, success: { (response: NotificationResponse?, statusCode: Int) in
+            success(response)
+        }, failure: failure)
+    }
+    
+    func updateSmsSettings(_ values: [Bool], _ success: ((Bool) -> Void)? = nil, failure: Failure? = nil) {
+        guard values.count >= 8 else { success?(false); return }
+        var params: [String : Bool] = [:]
+        for (index, value) in values.enumerated() {
+            params["\(index + 1)"] = value
+        }
+        patch(host.mobile.client.settings.sms, params: params as [String : AnyObject], headers: authorizationHeaders, encoding: .json, success: { (data, statusCode) in
+            success?(statusCode >= 200 && statusCode < 300)
         }, failure: failure)
     }
     
@@ -127,6 +186,30 @@ extension String {
     
     var balance: String {
         return self + "/balance"
+    }
+    
+    var client: String {
+        return self + "/client"
+    }
+    
+    var profile: String {
+        return self + "/profile"
+    }
+    
+    var settings: String {
+        return self + "/settings"
+    }
+    
+    var email: String {
+        return self + "/email"
+    }
+    
+    var sms: String {
+        return self + "/sms"
+    }
+    
+    func orderFiles(_ orderId: Int) -> String {
+        return self + "/order_files/\(orderId)"
     }
     
 }

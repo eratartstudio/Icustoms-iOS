@@ -27,6 +27,12 @@ class RemainsViewController: UIViewController {
             SVProgressHUD.dismiss()
             self?.showAlert("Ошибка", message: "Невозможно загрузить остатки")
         }
+        
+        API.default.custom(1, success: { _ in
+            
+        }) { (error, statusCode) in
+            
+        }
     }
     
 }
