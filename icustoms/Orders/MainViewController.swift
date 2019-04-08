@@ -12,11 +12,28 @@ import SVProgressHUD
 class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var topFilterConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var filterView: FilterView!
+    
+    var searchController: UISearchController!
     
     var orders: [[Order]] = []
+    var filteredOrders: [[Order]] = []
+    
+    var filter: FilterOrder? = nil
+    
+    var searchTimer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        filterView.delegate = self
+        
+        createSearchController()
+        
+        topFilterConstraint.constant = -UIScreen.main.bounds.height
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(showFilterView))
         
         SVProgressHUD.show()
         API.default.orders(success: { [weak self] (orders) in
@@ -32,18 +49,85 @@ class MainViewController: UIViewController {
             self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
         }
     }
+    
+    func createSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.dimsBackgroundDuringPresentation = false
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
 
+    @IBAction func searchStartAction() {
+//        searchController.isActive = true
+        searchController.searchBar.becomeFirstResponder()
+    }
 
+    
+    @objc func showFilterView() {
+        topFilterConstraint.constant = 0
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Закрыть", style: .plain, target: self, action: #selector(hideFilterView))
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func hideFilterView() {
+        topFilterConstraint.constant = -UIScreen.main.bounds.height
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(showFilterView))
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+}
+
+extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        hideFilterView()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text, !text.isEmpty else {
+            filteredOrders = []
+            tableView.reloadData()
+            return
+        }
+        searchTimer.invalidate()
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] (timer) in
+            API.default.search(text, filter: self?.filter, success: { [weak self] (items) in
+                let items = items.filter { !$0.isEnded }.sorted { $0.id > $1.id }
+                let closed = items.filter { $0.isEnded }.sorted { $0.id > $1.id }
+                
+                self?.filteredOrders = [items, closed]
+                self?.tableView.reloadData()
+            }, failure: { (error, statusCode) in
+                self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+            })
+        })
+        
+    }
+    
 }
 
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return orders.count
+        return searchController.isActive || filter != nil ? filteredOrders.count : orders.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive || filter != nil {
+            return filteredOrders[section].count
+        }
         return orders[section].count
     }
     
@@ -64,7 +148,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let order = orders[indexPath.section][indexPath.row]
+        let order: Order
+        if searchController.isActive || filter != nil {
+            order = filteredOrders[indexPath.section][indexPath.row]
+        } else {
+            order = orders[indexPath.section][indexPath.row]
+        }
         if order.isEnded {
             let cell = tableView.dequeueReusableCell(EndedOrderTableCell.self, for: indexPath)
             cell.order = order
@@ -76,9 +165,37 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let order: Order
+        if searchController.isActive || filter != nil {
+            order = filteredOrders[indexPath.section][indexPath.row]
+        } else {
+            order = orders[indexPath.section][indexPath.row]
+        }
         let controller = OrderDetailViewController.controller()
-        controller.order = orders[indexPath.section][indexPath.row]
+        controller.order = order
         push(controller, animated: true)
+    }
+    
+}
+
+extension MainViewController: FilterViewDelegate {
+    
+    func filterView(_ view: FilterView, didSave filter: FilterOrder) {
+        hideFilterView()
+        SVProgressHUD.show()
+        API.default.search("", filter: filter, success: { [weak self] (items) in
+            SVProgressHUD.dismiss()
+            let items = items.filter { !$0.isEnded }.sorted { $0.id > $1.id }
+            let closed = items.filter { $0.isEnded }.sorted { $0.id > $1.id }
+            
+            self?.filteredOrders = [items, closed]
+            self?.tableView.reloadData()
+            self?.filter = filter
+            self?.tableView.reloadData()
+        }) { [weak self] (error, statusCode) in
+            SVProgressHUD.dismiss()
+            self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+        }
     }
     
 }

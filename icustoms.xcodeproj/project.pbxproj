@@ -12,6 +12,8 @@
 		383128CD225631CF0057C726 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383128CC225631CF0057C726 /* NotificationsViewController.swift */; };
 		383128CF2256322C0057C726 /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383128CE2256322C0057C726 /* NotificationResponse.swift */; };
 		383128D122563E930057C726 /* OrderFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383128D022563E930057C726 /* OrderFilesViewController.swift */; };
+		3831296A225B69D20057C726 /* CustomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38312969225B69D20057C726 /* CustomDetailViewController.swift */; };
+		3831296C225B7D470057C726 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3831296B225B7D470057C726 /* FilterView.swift */; };
 		3848BD682243E4EE0047FBC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BD672243E4EE0047FBC9 /* AppDelegate.swift */; };
 		3848BD6A2243E4EE0047FBC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BD692243E4EE0047FBC9 /* MainViewController.swift */; };
 		3848BD6D2243E4EE0047FBC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3848BD6B2243E4EE0047FBC9 /* Main.storyboard */; };
@@ -76,6 +78,8 @@
 		383128CC225631CF0057C726 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		383128CE2256322C0057C726 /* NotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
 		383128D022563E930057C726 /* OrderFilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFilesViewController.swift; sourceTree = "<group>"; };
+		38312969225B69D20057C726 /* CustomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailViewController.swift; sourceTree = "<group>"; };
+		3831296B225B7D470057C726 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3848BD642243E4EE0047FBC9 /* icustoms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icustoms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3848BD672243E4EE0047FBC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3848BD692243E4EE0047FBC9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +136,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3831296D225B7D4B0057C726 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3831296B225B7D470057C726 /* FilterView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3848BD5B2243E4EE0047FBC9 = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +170,7 @@
 				3848BD672243E4EE0047FBC9 /* AppDelegate.swift */,
 				38A38ED62245067000505D36 /* Authorization */,
 				3891F60B224CD4C9006AE04E /* Orders */,
-				3891F60C224CD4D8006AE04E /* Remains */,
+				3891F60C224CD4D8006AE04E /* Customs */,
 				3891F60D224CD4DF006AE04E /* Balance */,
 				3891F60E224CD4EB006AE04E /* Settings */,
 				3891F60A224CD4BA006AE04E /* API */,
@@ -186,16 +198,18 @@
 				3848BD692243E4EE0047FBC9 /* MainViewController.swift */,
 				386C4115224EBAC800FDFE15 /* OrderDetailViewController.swift */,
 				383128D022563E930057C726 /* OrderFilesViewController.swift */,
+				3831296D225B7D4B0057C726 /* Views */,
 			);
 			path = Orders;
 			sourceTree = "<group>";
 		};
-		3891F60C224CD4D8006AE04E /* Remains */ = {
+		3891F60C224CD4D8006AE04E /* Customs */ = {
 			isa = PBXGroup;
 			children = (
 				3871C6FC22492001004D3829 /* RemainsViewController.swift */,
+				38312969225B69D20057C726 /* CustomDetailViewController.swift */,
 			);
-			path = Remains;
+			path = Customs;
 			sourceTree = "<group>";
 		};
 		3891F60D224CD4DF006AE04E /* Balance */ = {
@@ -460,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3831296C225B7D470057C726 /* FilterView.swift in Sources */,
 				386C4116224EBAC800FDFE15 /* OrderDetailViewController.swift in Sources */,
 				38A38EF422450E4500505D36 /* Button.swift in Sources */,
 				3891F5FD224B9305006AE04E /* AboutAppViewController.swift in Sources */,
@@ -480,6 +495,7 @@
 				383128D122563E930057C726 /* OrderFilesViewController.swift in Sources */,
 				38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */,
 				3891F61C224CF3D2006AE04E /* Transaction.swift in Sources */,
+				3831296A225B69D20057C726 /* CustomDetailViewController.swift in Sources */,
 				3891F5FB224B84B1006AE04E /* BalanceDetailViewController.swift in Sources */,
 				3891F61A224CF036006AE04E /* Custom.swift in Sources */,
 				38A38ED3224505C700505D36 /* Database.swift in Sources */,

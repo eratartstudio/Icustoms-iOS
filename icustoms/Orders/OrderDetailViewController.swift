@@ -8,6 +8,7 @@
 
 import UIKit
 import UICircularProgressRing
+import SVProgressHUD
 
 class OrderDetailViewController: UIViewController {
     
@@ -79,6 +80,15 @@ class OrderDetailViewController: UIViewController {
         if segue.identifier == "ShowFiles" {
             let vc = segue.destination as! OrderFilesViewController
             vc.order = order
+        }
+    }
+    
+    @IBAction func saveInvoice() {
+//        SVProgressHUD.show()
+        API.default.invoiceFile(order.id, success: {
+            
+        }) { (error, statusCode) in
+            
         }
     }
     

@@ -27,12 +27,6 @@ class RemainsViewController: UIViewController {
             SVProgressHUD.dismiss()
             self?.showAlert("Ошибка", message: "Невозможно загрузить остатки")
         }
-        
-        API.default.custom(1, success: { _ in
-            
-        }) { (error, statusCode) in
-            
-        }
     }
     
 }
@@ -47,6 +41,12 @@ extension RemainsViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(RemainTableCell.self, for: indexPath)
         cell.custom = items[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = CustomDetailViewController.controller()
+        controller.custom = items[indexPath.row]
+        push(controller, animated: true)
     }
     
 }

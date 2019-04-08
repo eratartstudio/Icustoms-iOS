@@ -68,6 +68,18 @@ extension API {
         }, failure: failure)
     }
     
+    func search(_ text: String, filter: FilterOrder? = nil, success: @escaping ([Order]) -> Void, failure: Failure? = nil) {
+        postModel(host.mobile.orders.search, params: filter?.data as [String : AnyObject]?, headers: authorizationHeaders, encoding: .json, success: { (response: [Order]?, statusCode) in
+            success(response ?? [])
+        }, failure: failure)
+    }
+    
+    func invoiceFile(_ orderId: Int, success: @escaping () -> Void, failure: Failure? = nil) {
+        self.get(host.mobile.invoice(orderId).pdf, headers: authorizationHeaders, success: { (data, statusCode) in
+            
+        }, failure: failure)
+    }
+    
     func files(_ orderId: Int, _ success: @escaping () -> Void, failure: Failure? = nil) {
         self.get(host.mobile.orderFiles(orderId), headers: authorizationHeaders, success: { (data, statusCode) in
             print(statusCode)
@@ -209,7 +221,19 @@ extension String {
     }
     
     func orderFiles(_ orderId: Int) -> String {
-        return self + "/order_files/\(orderId)"
+        return self + "/files/\(orderId)"
+    }
+    
+    func invoice(_ orderId: Int) -> String {
+        return self + "/invoice/\(orderId)"
+    }
+    
+    var pdf: String {
+        return self + "/pdf"
+    }
+    
+    var search: String {
+        return self + "/search"
     }
     
 }

@@ -9,6 +9,36 @@
 import Foundation
 import DKExtensions
 
+struct FilterOrder {
+    var orderStatus: Int?
+    var dateFrom: Date?
+    var dateTo: Date?
+    var status: StatusOrder? {
+        didSet {
+            guard let status = status, StatusOrder.number(from: status) > 0 else {
+                orderStatus = nil
+                return
+            }
+            orderStatus = StatusOrder.number(from: status)
+        }
+    }
+    var paidType: PaidFilterType?
+    
+    var data: [String : String] {
+        var params = [String : String]()
+        if let status = orderStatus {
+            params["orderStatus"] = "\(status)"
+        }
+        if let dateFrom = dateFrom {
+            params["dateFrom"] = dateFrom.string(with: "yyyy-MM-dd")
+        }
+        if let dateTo = dateTo {
+            params["dateTo"] = dateTo.string(with: "yyyy-MM-dd")
+        }
+        return params
+    }
+}
+
 struct Order: Decodable {
     let id: Int
     let orderId: String
