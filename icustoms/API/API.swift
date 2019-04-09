@@ -10,19 +10,63 @@ import Foundation
 import Alamofire
 import DKExtensions
 
+struct File: Decodable {
+    let id: Int
+    let type: FileType
+    let name: String
+    let number: String
+    let date: String
+    let expired: String?
+    let fileSize: Int
+    let mimeType: String?
+    let createdAt: String?
+    
+    enum CodingKeys: CodingKey {
+        case id
+        case type
+        case name
+        case number
+        case date
+        case expired
+        case fileSize
+        case mimeType
+        case createdAt
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        type = try container.decode(FileType.self, forKey: .type)
+        name = try container.decode(String.self, forKey: .name)
+        number = try container.decode(String.self, forKey: .number)
+        date = try container.decode(String.self, forKey: .date)
+        expired = try? container.decode(String.self, forKey: .expired)
+        fileSize = (try? container.decode(Int.self, forKey: .fileSize)) ?? 0
+        mimeType = try? container.decode(String.self, forKey: .mimeType)
+        createdAt = try container.decode(String.self, forKey: .createdAt)
+    }
+ 
+}
+
+struct FileType: Decodable {
+    let name: String
+    let code: String
+}
+
+
 class API: HTTP {
     
     static let `default` = API()
     
     private override init() {
         super.init()
-        printLogs = true
+        printLogs = false
     }
     
     let host: String = "http://lk.intrise.ru/api"
     
     let isTest = true
-    //code: 4827
+    //code: 6455
     
     var authorizationHeaders: [String : String] {
         guard let token = Database.default.currentUser()?.token else { return [:] }
@@ -80,9 +124,16 @@ extension API {
         }, failure: failure)
     }
     
-    func files(_ orderId: Int, _ success: @escaping () -> Void, failure: Failure? = nil) {
-        self.get(host.mobile.orderFiles(orderId), headers: authorizationHeaders, success: { (data, statusCode) in
-            print(statusCode)
+    func downloadFiles(_ fileId: Int, _ success: @escaping (Data) -> Void, failure: Failure? = nil) {
+        print(authorizationHeaders)
+        self.get(host.mobile.files(fileId), headers: authorizationHeaders, success: { (data, statusCode) in
+            success(data)
+        }, failure: failure)
+    }
+    
+    func files(_ orderId: Int, _ success: @escaping ([File]) -> Void, failure: Failure? = nil) {
+        getModel(host.mobile.orderFiles(orderId), headers: authorizationHeaders, success: { (response: [File]?, statusCode: Int) in
+            success(response ?? [])
         }, failure: failure)
     }
     
@@ -221,7 +272,11 @@ extension String {
     }
     
     func orderFiles(_ orderId: Int) -> String {
-        return self + "/files/\(orderId)"
+        return self + "/order_files/\(orderId)"
+    }
+    
+    func files(_ fileId: Int) -> String {
+        return self + "/files/\(fileId)"
     }
     
     func invoice(_ orderId: Int) -> String {
