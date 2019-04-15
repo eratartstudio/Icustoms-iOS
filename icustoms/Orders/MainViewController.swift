@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     
     var filter: FilterOrder? = nil
     
-    var searchTimer: Timer!
+    var searchTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,13 +100,18 @@ extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegat
             tableView.reloadData()
             return
         }
-        searchTimer.invalidate()
+        searchTimer?.invalidate()
         searchTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] (timer) in
             API.default.search(text, filter: self?.filter, success: { [weak self] (items) in
-                let items = items.filter { !$0.isEnded }.sorted { $0.id > $1.id }
-                let closed = items.filter { $0.isEnded }.sorted { $0.id > $1.id }
+                var filtered = items.filter { !$0.isEnded }.sorted { $0.id > $1.id }
+                var closed = items.filter { $0.isEnded }.sorted { $0.id > $1.id }
                 
-                self?.filteredOrders = [items, closed]
+                if let paidType = self?.filter?.paidType, paidType != .all {
+                    filtered = filtered.filter { paidType == .paid ? $0.isPaid : !$0.isPaid }
+                    closed = closed.filter { paidType == .paid ? $0.isPaid : !$0.isPaid }
+                }
+                
+                self?.filteredOrders = [filtered, closed]
                 self?.tableView.reloadData()
             }, failure: { (error, statusCode) in
                 self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
@@ -185,10 +190,15 @@ extension MainViewController: FilterViewDelegate {
         SVProgressHUD.show()
         API.default.search("", filter: filter, success: { [weak self] (items) in
             SVProgressHUD.dismiss()
-            let items = items.filter { !$0.isEnded }.sorted { $0.id > $1.id }
-            let closed = items.filter { $0.isEnded }.sorted { $0.id > $1.id }
+            var filtered = items.filter { !$0.isEnded }.sorted { $0.id > $1.id }
+            var closed = items.filter { $0.isEnded }.sorted { $0.id > $1.id }
             
-            self?.filteredOrders = [items, closed]
+            if let paidType = self?.filter?.paidType, paidType != .all {
+                filtered = filtered.filter { paidType == .paid ? $0.isPaid : !$0.isPaid }
+                closed = closed.filter { paidType == .paid ? $0.isPaid : !$0.isPaid }
+            }
+            
+            self?.filteredOrders = [filtered, closed]
             self?.tableView.reloadData()
             self?.filter = filter
             self?.tableView.reloadData()

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uBD-bl-aMr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uBD-bl-aMr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -187,7 +187,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Код подтверждения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58k-El-OcG">
                                 <rect key="frame" x="40" y="161" width="295" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.49798417090000002" green="0.49807184929999998" blue="0.49797183280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQc-Ma-rj6">
@@ -214,6 +214,12 @@
                                     <action selector="confirmButtonDidTap" destination="cI4-nG-G05" eventType="touchUpInside" id="Y7F-pm-q0o"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDu-mb-bNg">
+                                <rect key="frame" x="40" y="250" width="295" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAN-nv-euR" customClass="Button" customModule="icustoms" customModuleProvider="target">
                                 <rect key="frame" x="40" y="250" width="295" height="50"/>
                                 <color key="backgroundColor" red="0.99295240640000004" green="0.40071651339999997" blue="0.0003625659447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -227,6 +233,9 @@
                                 <state key="disabled">
                                     <color key="titleColor" red="0.74893957379999998" green="0.74906700849999996" blue="0.748921752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="resentButton" destination="cI4-nG-G05" eventType="touchUpInside" id="7ds-b6-hRZ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WlR-6b-hJQ">
                                 <constraints>
@@ -274,6 +283,7 @@
                             <constraint firstItem="Ie8-i0-ZEu" firstAttribute="leading" secondItem="lDz-dx-9iZ" secondAttribute="leading" constant="40" id="NJW-gb-Yof"/>
                             <constraint firstItem="Ie8-i0-ZEu" firstAttribute="top" secondItem="NQc-Ma-rj6" secondAttribute="bottom" constant="20" id="NzF-pB-jPV"/>
                             <constraint firstItem="LhU-J7-auy" firstAttribute="leading" secondItem="CP1-hb-Y5a" secondAttribute="leading" id="QVO-ve-l4r"/>
+                            <constraint firstItem="rDu-mb-bNg" firstAttribute="centerX" secondItem="KAN-nv-euR" secondAttribute="centerX" id="Ql0-g5-M5I"/>
                             <constraint firstItem="KoN-0d-k2c" firstAttribute="leading" secondItem="lDz-dx-9iZ" secondAttribute="leading" constant="40" id="Vjy-Xk-xWe"/>
                             <constraint firstItem="lDz-dx-9iZ" firstAttribute="trailing" secondItem="Ie8-i0-ZEu" secondAttribute="trailing" constant="40" id="W76-wz-XQv"/>
                             <constraint firstItem="lDz-dx-9iZ" firstAttribute="trailing" secondItem="NQc-Ma-rj6" secondAttribute="trailing" constant="40" id="WpR-Oa-dGf"/>
@@ -285,8 +295,11 @@
                             <constraint firstItem="58k-El-OcG" firstAttribute="leading" secondItem="lDz-dx-9iZ" secondAttribute="leading" constant="40" id="heO-f9-8KW"/>
                             <constraint firstItem="WlR-6b-hJQ" firstAttribute="top" secondItem="lDz-dx-9iZ" secondAttribute="top" id="ilV-nz-Acy"/>
                             <constraint firstItem="NQc-Ma-rj6" firstAttribute="leading" secondItem="lDz-dx-9iZ" secondAttribute="leading" constant="40" id="inH-x9-82g"/>
+                            <constraint firstItem="rDu-mb-bNg" firstAttribute="height" secondItem="KAN-nv-euR" secondAttribute="height" id="kvY-ND-l9B"/>
                             <constraint firstItem="KoN-0d-k2c" firstAttribute="top" secondItem="58k-El-OcG" secondAttribute="bottom" constant="15" id="mdq-ER-cVj"/>
                             <constraint firstItem="LhU-J7-auy" firstAttribute="top" secondItem="lDz-dx-9iZ" secondAttribute="top" id="miG-zY-fxm"/>
+                            <constraint firstItem="rDu-mb-bNg" firstAttribute="width" secondItem="KAN-nv-euR" secondAttribute="width" id="nl7-Lu-M0y"/>
+                            <constraint firstItem="rDu-mb-bNg" firstAttribute="centerY" secondItem="KAN-nv-euR" secondAttribute="centerY" id="o22-dn-YnH"/>
                             <constraint firstItem="lDz-dx-9iZ" firstAttribute="trailing" secondItem="KoN-0d-k2c" secondAttribute="trailing" constant="40" id="so4-fm-N3v"/>
                             <constraint firstItem="lDz-dx-9iZ" firstAttribute="trailing" secondItem="58k-El-OcG" secondAttribute="trailing" constant="40" id="stW-Ko-bLj"/>
                             <constraint firstItem="w0A-Zr-X16" firstAttribute="centerX" secondItem="CP1-hb-Y5a" secondAttribute="centerX" id="wWl-pj-efr"/>
@@ -300,6 +313,7 @@
                         <outlet property="confirmButton" destination="Ie8-i0-ZEu" id="G0j-MX-Rb5"/>
                         <outlet property="descriptionLabel" destination="uC6-O6-Jn5" id="5CO-bu-ZRi"/>
                         <outlet property="resendButton" destination="KAN-nv-euR" id="kc6-Sp-NaE"/>
+                        <outlet property="resendLabel" destination="rDu-mb-bNg" id="kYQ-WC-794"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0W-45-YsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

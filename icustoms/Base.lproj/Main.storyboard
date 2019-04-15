@@ -1760,6 +1760,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldDidChange:" destination="qH7-Cj-uhs" eventType="editingChanged" id="zum-n9-kDN"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1G5-To-qMc">
                                         <rect key="frame" x="324.5" y="137" width="35.5" height="17"/>
@@ -1828,6 +1831,7 @@
                         <outlet property="countFirstLabel" destination="H1c-pZ-eqf" id="Ckl-fS-tmx"/>
                         <outlet property="countLastLabel" destination="1G5-To-qMc" id="heW-hl-THI"/>
                         <outlet property="monthLabel" destination="ZZd-gB-PpM" id="4rC-9L-RQF"/>
+                        <outlet property="searchField" destination="Nlp-1s-3SG" id="WaZ-cu-qB5"/>
                         <outlet property="tableView" destination="RFq-03-RCq" id="faB-yP-4RN"/>
                     </connections>
                 </viewController>
@@ -1904,6 +1908,9 @@
                                                                 <integer key="value" value="20"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="showInvoice" destination="4wF-an-ow9" eventType="touchUpInside" id="Jpo-yJ-1lF"/>
+                                                        </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="uZr-QK-oNS">
                                                         <rect key="frame" x="177.5" y="136" width="20" height="20"/>
@@ -1912,8 +1919,8 @@
                                                             <constraint firstAttribute="width" constant="20" id="KBX-Ea-dOv"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Отправить счёт на Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufa-MY-W7v">
-                                                        <rect key="frame" x="105.5" y="170" width="164" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Открыть счёт" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufa-MY-W7v">
+                                                        <rect key="frame" x="142" y="170" width="91.5" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="Odr-O6-1MM"/>
                                                         </constraints>
@@ -2376,6 +2383,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9TT-sv-xIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2656.8000000000002" y="40.929535232383813"/>
+        </scene>
+        <!--Invoice View Controller-->
+        <scene sceneID="qsO-df-E8R">
+            <objects>
+                <viewController storyboardIdentifier="InvoiceViewController" id="2fg-4e-q7r" customClass="InvoiceViewController" customModule="icustoms" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eOt-o0-Eml">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eU9-V4-fPB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kiI-bq-n4H" firstAttribute="trailing" secondItem="eU9-V4-fPB" secondAttribute="trailing" id="19p-Nz-bSi"/>
+                            <constraint firstItem="eU9-V4-fPB" firstAttribute="leading" secondItem="kiI-bq-n4H" secondAttribute="leading" id="Dh9-dJ-oG2"/>
+                            <constraint firstItem="eU9-V4-fPB" firstAttribute="top" secondItem="kiI-bq-n4H" secondAttribute="top" id="G9Q-Mu-qrl"/>
+                            <constraint firstItem="kiI-bq-n4H" firstAttribute="bottom" secondItem="eU9-V4-fPB" secondAttribute="bottom" id="uJu-jj-r53"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kiI-bq-n4H"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="08Y-vQ-b1I">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="ilT-Gl-Emc">
+                            <connections>
+                                <action selector="shareData" destination="2fg-4e-q7r" id="uyb-k4-Z2I"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="webView" destination="eU9-V4-fPB" id="0J2-gx-Jqj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v4K-ZO-yCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3410" y="38"/>
         </scene>
         <!--Остатки в ТО-->
         <scene sceneID="Ast-2b-iVK">

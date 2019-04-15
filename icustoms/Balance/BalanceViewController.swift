@@ -22,10 +22,17 @@ class BalanceViewController: UIViewController {
     
     var items: [BalanceTransaction] = []
     
+    var filteredItems: [BalanceTransaction] = []
+    
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var countFirstLabel: UILabel!
     @IBOutlet weak var countLastLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchField: UITextField!
+    
+    var isSearchActive: Bool {
+        return searchField.text?.isEmpty == false || searchField.isFirstResponder
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,19 +54,20 @@ class BalanceViewController: UIViewController {
             self?.showAlert("Ошибка", message: "Невозможно загрузить баланс")
         }
         
+        searchField.clearButtonMode = .whileEditing
+        searchField.delegate = self
+        
         updateCurrentValue()
-        
-//        data.append((timestamp: 1549152000, transactions: [Transaction(price: -11580.29, description: "Услуга по счету 2"), Transaction(price: -3420.29, description: "Услуга по счету 2"), Transaction(price: -11580.29, description: "Услуга по счету 2"), Transaction(price: -3420.29, description: "Услуга по счету 2")]))
-//        data.append((timestamp: 1549065600, transactions: [Transaction(price: 9500.30, description: "Оплата по договору 2"), Transaction(price: 8500.30, description: "Оплата по договору 1"), Transaction(price: 9500.30, description: "Оплата по договору 2"), Transaction(price: 8500.30, description: "Оплата по договору 1")]))
-//        data.append((timestamp: 1548720000, transactions: [Transaction(price: 1000.00, description: "Оплата по договору"), Transaction(price: -11580.29, description: "Услуга"), Transaction(price: 1000.00, description: "Оплата по договору"), Transaction(price: -11580.29, description: "Услуга")]))
-//        data.append((timestamp: 1548547200, transactions: [Transaction(price: 21020.12, description: "Оплата"), Transaction(price: 100.01, description: "Оплата"), Transaction(price: 21020.12, description: "Оплата"), Transaction(price: 100.01, description: "Оплата")]))
-        
-
     }
     
     func updateData() {
-        data = items.group { $0.timestamp }.map { (timestamp: $0.key, transactions: $0.value) }.sorted { $0.timestamp > $1.timestamp }
+        if isSearchActive {
+            data = filteredItems.group { $0.timestamp }.map { (timestamp: $0.key, transactions: $0.value) }.sorted { $0.timestamp > $1.timestamp }
+        } else {
+            data = items.group { $0.timestamp }.map { (timestamp: $0.key, transactions: $0.value) }.sorted { $0.timestamp > $1.timestamp }
+        }
     
+        counts = [:]
         for value in data {
             let time = TimeInterval(value.timestamp)
             let month = time.month()
@@ -74,6 +82,21 @@ class BalanceViewController: UIViewController {
         }
         tableView.reloadData()
         updateCurrentValue()
+    }
+    
+    func showInvoice(_ invoiceId: Int) {
+        SVProgressHUD.show()
+        API.default.invoiceFile(invoiceId, success: { [weak self] (data) in
+            print("SUCCESS")
+            let controller = InvoiceViewController.controller()
+            controller.data = data
+            self?.navigationController?.isNavigationBarHidden = false
+            self?.push(controller, animated: true)
+        }) { [weak self] (error, statusCode) in
+            print(error)
+            SVProgressHUD.dismiss()
+            self?.showAlert("Ошибка", message: "Невозможно загрузить файл")
+        }
     }
     
 }
@@ -146,6 +169,42 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateCurrentValue()
+        if searchField.isFirstResponder {
+            searchField.resignFirstResponder()
+        }
+    }
+    
+}
+
+extension BalanceViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        updateData()
+    }
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
+        search(textField.text)
+    }
+    
+    func search(_ text: String?) {
+        guard let text = text, !text.isEmpty else {
+            filteredItems = []
+            updateData()
+            return
+        }
+        DispatchQueue.global().async {
+            self.filteredItems = self.items.filter { $0.description.lowercased().contains(text.lowercased()) }
+            DispatchQueue.main.async {
+                self.updateData()
+            }
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if searchField.text?.isEmpty == true {
+            filteredItems = []
+        }
+        updateData()
     }
     
 }

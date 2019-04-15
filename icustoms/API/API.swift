@@ -65,7 +65,7 @@ class API: HTTP {
     
     let host: String = "http://lk.intrise.ru/api"
     
-    let isTest = true
+    let isTest = false
     //code: 6455
     
     var authorizationHeaders: [String : String] {
@@ -113,14 +113,19 @@ extension API {
     }
     
     func search(_ text: String, filter: FilterOrder? = nil, success: @escaping ([Order]) -> Void, failure: Failure? = nil) {
-        postModel(host.mobile.orders.search, params: filter?.data as [String : AnyObject]?, headers: authorizationHeaders, encoding: .json, success: { (response: [Order]?, statusCode) in
+        var params = filter?.data ?? [:]
+        params["keyword"] = text
+        postModel(host.mobile.orders.search, params: params as [String : AnyObject], headers: authorizationHeaders, encoding: .json, success: { (response: [Order]?, statusCode) in
             success(response ?? [])
         }, failure: failure)
     }
     
-    func invoiceFile(_ orderId: Int, success: @escaping () -> Void, failure: Failure? = nil) {
-        self.get(host.mobile.invoice(orderId).pdf, headers: authorizationHeaders, success: { (data, statusCode) in
-            
+    func invoiceFile(_ orderId: Int, success: @escaping (Data) -> Void, failure: Failure? = nil) {
+        print(host.mobile.invoices(orderId).pdf)
+        self.get(host.mobile.invoices(orderId).pdf, headers: authorizationHeaders, success: { (data, statusCode) in
+            print(statusCode)
+            print(data)
+            success(data)
         }, failure: failure)
     }
     
@@ -279,8 +284,8 @@ extension String {
         return self + "/files/\(fileId)"
     }
     
-    func invoice(_ orderId: Int) -> String {
-        return self + "/invoice/\(orderId)"
+    func invoices(_ orderId: Int) -> String {
+        return self + "/invoices/\(orderId)"
     }
     
     var pdf: String {

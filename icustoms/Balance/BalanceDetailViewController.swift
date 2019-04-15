@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
     
@@ -24,6 +25,8 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
     private (set) var isPresented: Bool = false
     
     var transaction: BalanceTransaction!
+    
+    weak var controller: BalanceViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +52,8 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
         view.layoutIfNeeded()
     }
     
-    func present(from controller: UIViewController) {
+    func present(from controller: BalanceViewController) {
+        self.controller = controller
         controller.present(self, animated: false) {
             self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.frame.height/2), animated: true)
             self.scrollView.isScrollEnabled = false
@@ -93,6 +97,11 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
             self.isPresented = false
             self.dismiss(animated: false, completion: nil)
         }
+    }
+    
+    @IBAction func showInvoice() {
+        dismissController()
+        controller?.showInvoice(transaction.invoiceId)
     }
     
 }

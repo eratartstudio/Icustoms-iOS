@@ -79,6 +79,7 @@ class LoginViewController: UIViewController {
         if segue.identifier == "ShowCodeView" {
             let vc = segue.destination as! ConfirmCodeViewController
             vc.authorization = authorization
+            vc.phone = phone()
         }
     }
     

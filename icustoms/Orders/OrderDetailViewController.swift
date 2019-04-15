@@ -9,6 +9,7 @@
 import UIKit
 import UICircularProgressRing
 import SVProgressHUD
+import WebKit
 
 class OrderDetailViewController: UIViewController {
     
@@ -84,11 +85,20 @@ class OrderDetailViewController: UIViewController {
     }
     
     @IBAction func saveInvoice() {
-//        SVProgressHUD.show()
-        API.default.invoiceFile(order.id, success: {
-            
-        }) { (error, statusCode) in
-            
+        guard let invoiceId = order.invoice?.id else {
+            self.showAlert("Ошибка", message: "Файла не существует")
+            return
+        }
+        SVProgressHUD.show()
+        API.default.invoiceFile(invoiceId, success: { [weak self] (data) in
+            print("SUCCESS")
+            let controller = InvoiceViewController.controller()
+            controller.data = data
+            self?.push(controller, animated: true)
+        }) { [weak self] (error, statusCode) in
+            print(error)
+            SVProgressHUD.dismiss()
+            self?.showAlert("Ошибка", message: "Невозможно загрузить файл")
         }
     }
     
@@ -224,6 +234,43 @@ extension OrderDetailViewController {
         default:
             break
         }
+    }
+    
+}
+
+class InvoiceViewController: UIViewController {
+    
+    @IBOutlet weak var webView: UIWebView!
+    
+    var data: Data!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        DispatchQueue.global().async {
+            let timestamp = Date().timestamp
+            var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            url.appendPathComponent("\(timestamp)")
+            do {
+                try self.data.write(to: url)
+                print(url)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.webView.load(self.data, mimeType: "application/pdf", textEncodingName: "", baseURL: url)
+                }
+            } catch {
+                print(error)
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: false)
+                    SVProgressHUD.dismiss()
+                }
+            }
+        }
+    }
+    
+    @IBAction func shareData() {
+        let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
 }
