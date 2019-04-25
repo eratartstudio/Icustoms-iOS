@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Cosmos
 
 class MainViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class MainViewController: UIViewController {
     
     var searchController: UISearchController!
     
+    var reviewClicked: Bool = false
     var orders: [[Order]] = []
     var filteredOrders: [[Order]] = []
     
@@ -48,12 +50,17 @@ class MainViewController: UIViewController {
             SVProgressHUD.dismiss()
             self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
         }
+        
+        NotificationManager.default.registerPushNotifications()
     }
     
     func createSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Поиск"
+        searchController.searchBar.setValue("Отмена", forKey: "_cancelButtonText")
         searchController.dimsBackgroundDuringPresentation = false
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -86,12 +93,27 @@ class MainViewController: UIViewController {
         }
     }
     
+    func updateOrder(_ order: Order, section: Int) {
+        guard section < orders.count else { return }
+        var items = orders[section]
+        guard let index = items.firstIndex(where: { $0.id == order.id }) else { return }
+        items[index] = order
+        orders[section] = items
+        print(order)
+        tableView.reloadData()
+    }
+    
 }
 
-extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
     
     func willPresentSearchController(_ searchController: UISearchController) {
         hideFilterView()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredOrders = []
+        tableView.reloadData()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -142,6 +164,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section == 1 else { return nil }
+        var count = orders[section].count
+        if searchController.isActive || filter != nil {
+            count = filteredOrders[section].count
+        }
+        
+        guard count > 0 else { return nil }
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         view.backgroundColor = .clear
         let label = UILabel(frame: CGRect(x: 10, y: 15, width: UIScreen.main.bounds.width - 20, height: 30))
@@ -162,6 +190,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if order.isEnded {
             let cell = tableView.dequeueReusableCell(EndedOrderTableCell.self, for: indexPath)
             cell.order = order
+            cell.controller = self
             return cell
         }
         let cell = tableView.dequeueReusableCell(ActiveOrderTableCell.self, for: indexPath)
@@ -170,6 +199,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if reviewClicked {
+            reviewClicked = false
+            return
+        }
         let order: Order
         if searchController.isActive || filter != nil {
             order = filteredOrders[indexPath.section][indexPath.row]
@@ -202,6 +235,7 @@ extension MainViewController: FilterViewDelegate {
             self?.tableView.reloadData()
             self?.filter = filter
             self?.tableView.reloadData()
+            self?.tableView.setContentOffset(.zero, animated: true)
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
             self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
@@ -223,6 +257,8 @@ class ActiveOrderTableCell: UITableViewCell {
     
     @IBOutlet weak var releaseCircleContainerView: UIView!
     @IBOutlet weak var releaseCircleView: UICircularProgressRing!
+    
+    @IBOutlet weak var declarationCircleWhiteView: UIView!
     
     @IBOutlet weak var analyticsCompleted: UIImageView!
     @IBOutlet weak var declarationCompleted: UIImageView!
@@ -254,7 +290,11 @@ class ActiveOrderTableCell: UITableViewCell {
         orderIdLabel.text = order.orderId
         statusLabel.text = order.status?.name
         paidLabel.isHidden = order.isPaid
-        dateLabel.text = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd MMMM yyyy").uppercased()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+        dateLabel.text = dateFormatter.string(from: date).uppercased()
         prepareStatus(order.status?.id ?? 0)
     }
     
@@ -281,6 +321,8 @@ class ActiveOrderTableCell: UITableViewCell {
             
             firstProgressView.isHidden = true
             secondProgressView.isHidden = true
+            
+            declarationCircleWhiteView.isHidden = true
         case 2:
             analyticsCircleContainerView.isHidden = false
             releaseCircleContainerView.isHidden = true
@@ -305,6 +347,8 @@ class ActiveOrderTableCell: UITableViewCell {
             
             firstProgressView.isHidden = true
             secondProgressView.isHidden = true
+            
+            declarationCircleWhiteView.isHidden = true
         case 3:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = true
@@ -325,6 +369,8 @@ class ActiveOrderTableCell: UITableViewCell {
             
             firstProgressView.isHidden = false
             secondProgressView.isHidden = true
+            
+            declarationCircleWhiteView.isHidden = false
         case 4, 5, 6, 7:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -346,6 +392,8 @@ class ActiveOrderTableCell: UITableViewCell {
             
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
+            
+            declarationCircleWhiteView.isHidden = true
         case 8:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -364,6 +412,8 @@ class ActiveOrderTableCell: UITableViewCell {
             
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
+            
+            declarationCircleWhiteView.isHidden = true
         default:
             break
         }
@@ -390,6 +440,28 @@ class EndedOrderTableCell: UITableViewCell {
     
     @IBOutlet weak var orderIdLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var cosmosView: CosmosView!
+    @IBOutlet weak var reviewContainerView: UIView!
+    @IBOutlet weak var reviewTitleLabel: UILabel!
+    
+    private var reviewInputCosmosView: CosmosView!
+    
+    weak var controller: MainViewController?
+    
+    let reviewCompleteBackgroundColor: UIColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+    let reviewBorderColor: UIColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        reviewContainerView.layer.cornerRadius = 4
+        reviewContainerView.layer.borderWidth = 1
+        reviewContainerView.layer.borderColor = reviewBorderColor.cgColor
+        
+        reviewInputCosmosView = CosmosView(frame: CGRect(x: 0, y: 140, width: 145, height: 25))
+        reviewInputCosmosView.settings.starSize = 30
+        reviewInputCosmosView.rating = 0
+    }
     
     var order: Order? {
         didSet {
@@ -401,7 +473,53 @@ class EndedOrderTableCell: UITableViewCell {
         guard let order = order else { return }
         
         orderIdLabel.text = order.orderId
-        dateLabel.text = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd MMMM yyyy").uppercased()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+        dateLabel.text = dateFormatter.string(from: date).uppercased()
+        
+        cosmosView.rating = order.reviewIsExist ? Double(order.review!.score) : 0
+        reviewContainerView.backgroundColor = order.reviewIsExist ? reviewCompleteBackgroundColor : .white
+        reviewTitleLabel.text = order.reviewIsExist ? "Оценка поставлена" : "Оцените заказ"
+    }
+    
+    @IBAction func reviewClicked() {
+        guard let order = order else { return }
+        guard !order.reviewIsExist else { return }
+        controller?.reviewClicked = true
+        
+        let alertController = UIAlertController(title: "Оцените заказ\n\(order.orderId)", message: "Пожалуйста оцените работу\nменеджера при выполнении заказа.\nПомогите нам стать лучше!\n\n\n", preferredStyle: .alert)
+        
+        reviewInputCosmosView.frame = CGRect(x: 0, y: 130, width: 180, height: 30)
+        reviewInputCosmosView.center = CGPoint(x: alertController.view.center.x - 50, y: 145)
+        print(reviewInputCosmosView.settings.starMargin)
+        alertController.view.addSubview(reviewInputCosmosView)
+        
+        alertController.addTextField { (textField) in
+            textField.frame = CGRect(x: 15, y: 170, width: UIScreen.main.bounds.width - 135, height: 30)
+            textField.placeholder = "Оставьте отзыв"
+        }
+        
+        let sendAction = UIAlertAction(title: "Отправить", style: .default) { _ in
+            SVProgressHUD.show()
+            let text = alertController.textFields?.first?.text ?? ""
+            let score = Int(self.reviewInputCosmosView.rating)
+            API.default.setReview(order.id, score: score, text: text, success: { (success) in
+                SVProgressHUD.dismiss()
+                var item = order
+                item.review = OrderReview(text: text, score: score)
+                item.reviewIsExist = true
+                self.controller?.updateOrder(item, section: 1)
+            }, failure: { (error, statusCode) in
+                SVProgressHUD.dismiss()
+                self.controller?.showAlert("Ошибка", message: "Невозможно отправить отзыв")
+            })
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+        alertController.addAction(sendAction)
+        alertController.addAction(cancelAction)
+        controller?.present(alertController, animated: true, completion: nil)
     }
     
 }

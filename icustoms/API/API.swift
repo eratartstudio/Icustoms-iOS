@@ -60,7 +60,7 @@ class API: HTTP {
     
     private override init() {
         super.init()
-        printLogs = false
+        printLogs = true
     }
     
     let host: String = "http://lk.intrise.ru/api"
@@ -112,6 +112,12 @@ extension API {
         }, failure: failure)
     }
     
+    func setReview(_ orderId: Int, score: Int, text: String, success: @escaping (Bool) -> Void, failure: Failure? = nil) {
+        post(host.mobile.orders(orderId).review, params: ["text": text, "score": score] as [String : AnyObject], headers: authorizationHeaders, encoding: .json, success: { (data, statusCode) in
+            success(statusCode >= 200 && statusCode < 300)
+        }, failure: failure)
+    }
+    
     func search(_ text: String, filter: FilterOrder? = nil, success: @escaping ([Order]) -> Void, failure: Failure? = nil) {
         var params = filter?.data ?? [:]
         params["keyword"] = text
@@ -122,11 +128,15 @@ extension API {
     
     func invoiceFile(_ orderId: Int, success: @escaping (Data) -> Void, failure: Failure? = nil) {
         print(host.mobile.invoices(orderId).pdf)
-        self.get(host.mobile.invoices(orderId).pdf, headers: authorizationHeaders, success: { (data, statusCode) in
+        self.get(invoiceFileLink(orderId), headers: authorizationHeaders, success: { (data, statusCode) in
             print(statusCode)
             print(data)
             success(data)
         }, failure: failure)
+    }
+    
+    func invoiceFileLink(_ orderId: Int) -> String {
+        return host.mobile.invoices(orderId).pdf
     }
     
     func downloadFiles(_ fileId: Int, _ success: @escaping (Data) -> Void, failure: Failure? = nil) {
@@ -177,6 +187,25 @@ extension API {
 }
 
 
+//MARK: Pushes
+
+extension API {
+    
+    func setDeviceToken(_ token: String, success: ((Bool) -> Void)? = nil, failure: Failure? = nil) {
+        post(host.mobile.client.settings.firebaseToken, params: ["firebaseToken": token as AnyObject], headers: authorizationHeaders, encoding: .json, success: { (data, statusCode) in
+            success?(statusCode >= 200 && statusCode < 300)
+        }, failure: failure)
+    }
+    
+    func deleteDeviceToken(_ token: String, success: ((Bool) -> Void)? = nil, failure: Failure? = nil) {
+        delete(host.mobile.client.settings.firebaseToken, params: ["firebaseToken": token as AnyObject], headers: authorizationHeaders, encoding: .json, success: { (data, statusCode) in
+            success?(statusCode >= 200 && statusCode < 300)
+        }, failure: failure)
+    }
+    
+}
+
+
 //MARK: Settings
 
 extension API {
@@ -184,6 +213,21 @@ extension API {
     func profile(success: @escaping (Profile?) -> Void, failure: Failure? = nil) {
         getModel(host.mobile.client.profile, headers: authorizationHeaders, success: { (response: Profile?, statusCode: Int) in
             success(response)
+        }, failure: failure)
+    }
+    
+    func profileSettings(success: @escaping (ProfileSettings?) -> Void, failure: Failure? = nil) {
+        getModel(host.mobile.client.settings.profile, headers: authorizationHeaders, success: { (response: ProfileSettings?, statusCode: Int) in
+            success(response)
+        }, failure: failure)
+    }
+    
+    func updateProfileSettings(_ settings: ProfileSettings, success: ((Bool) -> Void)? = nil, failure: Failure? = nil) {
+        var params = [String : AnyObject]()
+        let pushSettings = settings.pushNotification.pushNotification
+        params["pushNotification"] = ["status": pushSettings.status, "balance": pushSettings.balance, "other": pushSettings.other] as AnyObject
+        patch(host.mobile.client.settings.profile, params: params, headers: authorizationHeaders, encoding: .json, success: { (data, statusCode) in
+            success?(statusCode >= 200 && statusCode < 300)
         }, failure: failure)
     }
     
@@ -248,6 +292,10 @@ extension String {
         return self + "/orders"
     }
     
+    func orders(_ id: Int) -> String {
+        return self + "/orders/\(id)"
+    }
+    
     var customs: String {
         return self + "/customs"
     }
@@ -294,6 +342,14 @@ extension String {
     
     var search: String {
         return self + "/search"
+    }
+    
+    var firebaseToken: String {
+        return self + "/firebase_token"
+    }
+    
+    var review: String {
+        return self + "/review"
     }
     
 }

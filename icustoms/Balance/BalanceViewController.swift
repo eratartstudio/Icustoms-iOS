@@ -30,6 +30,11 @@ class BalanceViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchField: UITextField!
     
+    @IBOutlet weak var searchRightConstraint: NSLayoutConstraint!
+    
+    let initialRightConstraint: CGFloat = 15
+    let activeRightConstraint: CGFloat = 85
+    
     var isSearchActive: Bool {
         return searchField.text?.isEmpty == false || searchField.isFirstResponder
     }
@@ -56,6 +61,8 @@ class BalanceViewController: UIViewController {
         
         searchField.clearButtonMode = .whileEditing
         searchField.delegate = self
+        
+        tableView.keyboardDismissMode = .interactive
         
         updateCurrentValue()
     }
@@ -118,6 +125,7 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
         
         let date = Date(timeIntervalSince1970: Double(data[section].timestamp))
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru")
         dateFormatter.dateFormat = "dd MMMM"
         label.text = dateFormatter.string(from: date)
         
@@ -178,8 +186,16 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension BalanceViewController: UITextFieldDelegate {
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        searchRightConstraint.constant = activeRightConstraint
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        return true
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        updateData()
+//        updateData()
     }
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
@@ -197,6 +213,17 @@ extension BalanceViewController: UITextFieldDelegate {
             DispatchQueue.main.async {
                 self.updateData()
             }
+        }
+    }
+    
+    @IBAction func cancelSearch() {
+        searchField.text = nil
+        searchField.resignFirstResponder()
+        filteredItems = []
+        updateData()
+        searchRightConstraint.constant = initialRightConstraint
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
     

@@ -66,6 +66,8 @@ struct Order: Decodable {
     let countErrors: Int
     let isPaid: Bool
     let invoice: OrderInvoice?
+    var review: OrderReview?
+    var reviewIsExist: Bool
     
     var isEnded: Bool {
         return status?.id == 11
@@ -98,6 +100,7 @@ struct Order: Decodable {
         case weightDO1
         case isPaid
         case invoice
+        case orderReview
     }
 
     
@@ -129,6 +132,8 @@ struct Order: Decodable {
         countErrors = (try? container.decode(Int.self, forKey: .countErrors)) ?? 0
         isPaid = (try? container.decode(Bool.self, forKey: .isPaid)) ?? false
         invoice = try? container.decode(OrderInvoice.self, forKey: .invoice)
+        review = try? container.decode(OrderReview.self, forKey: .orderReview)
+        reviewIsExist = review != nil
     }
 }
 
@@ -146,4 +151,9 @@ struct OrderCurrency: Decodable {
     let code: String?
     let name: String?
     let rate: String?
+}
+
+struct OrderReview: Decodable {
+    let text: String
+    let score: Int
 }

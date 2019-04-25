@@ -10,5 +10,9 @@ target 'icustoms' do
     pod 'RealmSwift'
     pod 'SVProgressHUD'
     pod 'UICircularProgressRing'
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'Toast-Swift', '~> 5.0.0'
+    pod 'Cosmos'
     
 end

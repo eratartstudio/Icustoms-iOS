@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "30858C89EA73883C2F5AE2ED8AF1A6D3"
+               BlueprintIdentifier = "8699BB4ED571E06C4FDE1E5A98C3C335"
+               BuildableName = "DKExtensions.framework"
                BlueprintName = "DKExtensions"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "DKExtensions.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

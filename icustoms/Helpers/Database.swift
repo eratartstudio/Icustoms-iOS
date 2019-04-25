@@ -34,11 +34,30 @@ class Database {
         try? realm.safeWrite {
             realm.delete(realm.objects(User.self))
         }
+        profileSettings = nil
     }
     
     func currentUser() -> User? {
         let realm = try? realmInstance()
         return realm?.objects(User.self).first
+    }
+    
+    var profileSettings: ProfileSettings? {
+        get {
+            guard let data = UserDefaults.standard.data(forKey: "profile_settings") else {
+                return nil
+            }
+            return try? JSONDecoder().decode(ProfileSettings.self, from: data)
+        }
+        set {
+            guard let settings = newValue else {
+                UserDefaults.standard.set(nil, forKey: "profile_settings")
+                return
+            }
+            API.default.updateProfileSettings(settings)
+            let data = try? JSONEncoder().encode(settings)
+            UserDefaults.standard.set(data, forKey: "profile_settings")
+        }
     }
     
 }

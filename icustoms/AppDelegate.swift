@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        FirebaseApp.configure()
+        
         if Database.default.currentUser() == nil {
             window?.rootViewController = Storyboard.Authorization.initialViewController
         }
@@ -23,5 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        Messaging.messaging().apnsToken = deviceToken
+//    }
+    
 }
 

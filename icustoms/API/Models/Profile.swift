@@ -18,3 +18,17 @@ struct Profile: Decodable {
     let phone: String
     let email: String
 }
+
+struct ProfileSettings: Codable {
+    let pushNotification: ProfilePushSettings
+}
+
+struct ProfilePushSettings: Codable {
+    let pushNotification: PushNotificationSettings
+}
+
+struct PushNotificationSettings: Codable {
+    let status: Bool
+    let balance: Bool
+    let other: Bool
+}

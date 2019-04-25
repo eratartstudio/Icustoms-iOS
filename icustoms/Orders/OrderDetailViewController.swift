@@ -10,6 +10,8 @@ import UIKit
 import UICircularProgressRing
 import SVProgressHUD
 import WebKit
+import SafariServices
+import Toast_Swift
 
 class OrderDetailViewController: UIViewController {
     
@@ -66,7 +68,12 @@ class OrderDetailViewController: UIViewController {
         
         orderNumberLabel.text = order.orderId
         paidLabel.isHidden = order.isPaid
-        dateLabel.text = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd MMMM yyyy").uppercased()
+        
+        let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        dateLabel.text = dateFormatter.string(from: date).uppercased()
         prepareStatus(order.status?.id ?? 0)
         
         invoiceNumberLabel.text = order.invoiceNumber
@@ -82,6 +89,24 @@ class OrderDetailViewController: UIViewController {
             let vc = segue.destination as! OrderFilesViewController
             vc.order = order
         }
+    }
+    
+    @IBAction func copyNameOrder() {
+        UIPasteboard.general.string = order.orderId
+        view.makeToast("Номер заказа скопирован!")
+    }
+    
+    @IBAction func openLinkInvoice() {
+        guard let invoiceId = order.invoice?.id else {
+            self.showAlert("Ошибка", message: "Файла не существует")
+            return
+        }
+        guard let url = URL(string: API.default.invoiceFileLink(invoiceId)) else {
+            self.showAlert("Ошибка", message: "Файла не существует")
+            return
+        }
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true, completion: nil)
     }
     
     @IBAction func saveInvoice() {
