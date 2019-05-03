@@ -35,6 +35,8 @@ class BalanceViewController: UIViewController {
     let initialRightConstraint: CGFloat = 15
     let activeRightConstraint: CGFloat = 85
     
+    var refreshControl: UIRefreshControl = UIRefreshControl()
+    
     var isSearchActive: Bool {
         return searchField.text?.isEmpty == false || searchField.isFirstResponder
     }
@@ -45,8 +47,23 @@ class BalanceViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    @objc func update() {
+        API.default.balance(success: { [weak self] (items) in
+            self?.items = items
+            self?.updateData()
+            self?.refreshControl.endRefreshing()
+            self?.tableView.reloadData()
+        }) { [weak self] (error, statusCode) in
+            self?.refreshControl.endRefreshing()
+            self?.showAlert("Ошибка", message: "Невозможно загрузить баланс")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         
         SVProgressHUD.show()
         API.default.balance(success: { [weak self] (items) in

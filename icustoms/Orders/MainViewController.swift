@@ -27,8 +27,13 @@ class MainViewController: UIViewController {
     
     var searchTimer: Timer?
     
+    var refreshControl: UIRefreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         
         filterView.delegate = self
         
@@ -52,6 +57,39 @@ class MainViewController: UIViewController {
         }
         
         NotificationManager.default.registerPushNotifications()
+    }
+    
+    @objc func update() {
+        if searchController.isActive || filter != nil {
+            API.default.search(searchController.searchBar.text ?? "", filter: self.filter, success: { [weak self] (items) in
+                var filtered = items.filter { !$0.isEnded }.sorted { $0.id > $1.id }
+                var closed = items.filter { $0.isEnded }.sorted { $0.id > $1.id }
+                
+                if let paidType = self?.filter?.paidType, paidType != .all {
+                    filtered = filtered.filter { paidType == .paid ? $0.isPaid : !$0.isPaid }
+                    closed = closed.filter { paidType == .paid ? $0.isPaid : !$0.isPaid }
+                }
+                
+                self?.filteredOrders = [filtered, closed]
+                self?.tableView.reloadData()
+                self?.refreshControl.endRefreshing()
+                }, failure: { [weak self] (error, statusCode) in
+                    self?.refreshControl.endRefreshing()
+                    self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+            })
+        } else {
+            API.default.orders(success: { [weak self] (orders) in
+                let items = orders.filter { !$0.isEnded }.sorted { $0.id > $1.id }
+                let closed = orders.filter { $0.isEnded }.sorted { $0.id > $1.id }
+                
+                self?.orders = [items, closed]
+                self?.tableView.reloadData()
+                self?.refreshControl.endRefreshing()
+            }) { [weak self] (error, statusCode) in
+                self?.refreshControl.endRefreshing()
+                self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+            }
+        }
     }
     
     func createSearchController() {

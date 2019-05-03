@@ -14,9 +14,13 @@ class RemainsViewController: UIViewController {
     var items: [Custom] = []
     
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         
         SVProgressHUD.show()
         API.default.customs(success: { [weak self] (customs) in
@@ -25,6 +29,17 @@ class RemainsViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
+            self?.showAlert("Ошибка", message: "Невозможно загрузить остатки")
+        }
+    }
+    
+    @objc func update() {
+        API.default.customs(success: { [weak self] (customs) in
+            self?.refreshControl.endRefreshing()
+            self?.items = customs
+            self?.tableView.reloadData()
+        }) { [weak self] (error, statusCode) in
+            self?.refreshControl.endRefreshing()
             self?.showAlert("Ошибка", message: "Невозможно загрузить остатки")
         }
     }
