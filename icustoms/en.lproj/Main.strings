@@ -1,0 +1,360 @@
+
+/* Class = "UIButton"; normalTitle = "Все"; ObjectID = "0OK-QR-npe"; */
+"0OK-QR-npe.normalTitle" = "All";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "0bp-Wp-1wr"; */
+"0bp-Wp-1wr.text" = "-";
+
+/* Class = "UILabel"; text = "130 755.22 Р"; ObjectID = "12J-35-cBO"; */
+"12J-35-cBO.text" = "130 755.22 Р";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1G5-To-qMc"; */
+"1G5-To-qMc.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1P1-cP-Xc4"; */
+"1P1-cP-Xc4.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1tE-L2-oOd"; */
+"1tE-L2-oOd.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Применить фильтр"; ObjectID = "2Cf-0L-gTf"; */
+"2Cf-0L-gTf.normalTitle" = "Apply filter";
+
+/* Class = "UITextField"; text = "Все"; ObjectID = "2IC-Zd-D2l"; */
+"2IC-Zd-D2l.text" = "All";
+
+/* Class = "UILabel"; text = "Аналитика"; ObjectID = "347-p5-Jfa"; */
+"347-p5-Jfa.text" = "Analytics";
+
+/* Class = "UILabel"; text = "67.45 Р"; ObjectID = "38w-IH-21w"; */
+"38w-IH-21w.text" = "67.45 Р";
+
+/* Class = "UILabel"; text = "СЛУЖБА ПОДДЕРЖКИ"; ObjectID = "3ZZ-pb-Yhw"; */
+"3ZZ-pb-Yhw.text" = "SUPPORT";
+
+/* Class = "UINavigationItem"; title = "Помощь"; ObjectID = "5Zf-wQ-asC"; */
+"5Zf-wQ-asC.title" = "Help";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "5bA-bP-L65"; */
+"5bA-bP-L65.text" = "Title";
+
+/* Class = "UILabel"; text = "Остатки актуальны на"; ObjectID = "5wf-nb-dVc"; */
+"5wf-nb-dVc.text" = "Remains relevant as of";
+
+/* Class = "UILabel"; text = "Оцените заказ"; ObjectID = "6NU-W7-Ut7"; */
+"6NU-W7-Ut7.text" = "Score the order";
+
+/* Class = "UILabel"; text = "ЗАВЕРШЁН"; ObjectID = "6f3-GZ-ZhN"; */
+"6f3-GZ-ZhN.text" = "COMPLETED";
+
+/* Class = "UILabel"; text = "КБК"; ObjectID = "6zR-ui-M8K"; */
+"6zR-ui-M8K.text" = "Budget Classification Code";
+
+/* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "85R-IX-GOF"; */
+"85R-IX-GOF.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8hY-Xw-vey"; */
+"8hY-Xw-vey.text" = "Label";
+
+/* Class = "UILabel"; text = "Аванс"; ObjectID = "991-2F-KNn"; */
+"991-2F-KNn.text" = "Advance payment";
+
+/* Class = "UIBarButtonItem"; title = "Файлы"; ObjectID = "9U0-Jd-w8e"; */
+"9U0-Jd-w8e.title" = "Files";
+
+/* Class = "UITextField"; text = "до -"; ObjectID = "9yx-Ye-mw7"; */
+"9yx-Ye-mw7.text" = "to -";
+
+/* Class = "UIButton"; normalTitle = "Оплаченные"; ObjectID = "A9c-pU-pxm"; */
+"A9c-pU-pxm.normalTitle" = "Paid";
+
+/* Class = "UILabel"; text = "Статус заказа"; ObjectID = "CWH-v2-YmP"; */
+"CWH-v2-YmP.text" = "Order status";
+
+/* Class = "UILabel"; text = "Изменение статуса заказа"; ObjectID = "DXm-3I-xvU"; */
+"DXm-3I-xvU.text" = "Change order status";
+
+/* Class = "UILabel"; text = "05 ДЕКАБРЯ 2018"; ObjectID = "E3k-HB-c2l"; */
+"E3k-HB-c2l.text" = "05 DECEMBER 2018";
+
+/* Class = "UILabel"; text = "Дата"; ObjectID = "EJT-TV-lDP"; */
+"EJT-TV-lDP.text" = "Date";
+
+/* Class = "UILabel"; text = "ПУЛКОВСКАЯ ТАМОЖНЯ"; ObjectID = "EM1-dZ-Nr4"; */
+"EM1-dZ-Nr4.text" = "PULKOVSKAYA CUSTOMS";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "F6b-vf-c0p"; */
+"F6b-vf-c0p.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "H1c-pZ-eqf"; */
+"H1c-pZ-eqf.text" = "Label";
+
+/* Class = "UILabel"; text = "PDF"; ObjectID = "H8P-ic-LwO"; */
+"H8P-ic-LwO.text" = "PDF";
+
+/* Class = "UILabel"; text = "Сумма авансов"; ObjectID = "HHw-uM-mbj"; */
+"HHw-uM-mbj.text" = "Amount of advances";
+
+/* Class = "UILabel"; text = "19 515.20 Р"; ObjectID = "I4w-ca-mpo"; */
+"I4w-ca-mpo.text" = "19 515.20 Р";
+
+/* Class = "UINavigationItem"; title = "Настройки"; ObjectID = "J0F-YX-koe"; */
+"J0F-YX-koe.title" = "Settings";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KnT-Ox-I4Y"; */
+"KnT-Ox-I4Y.text" = "Label";
+
+/* Class = "UILabel"; text = "Другие уведомления"; ObjectID = "LWe-1q-Rkh"; */
+"LWe-1q-Rkh.text" = "Other notifications";
+
+/* Class = "UILabel"; text = "ОСТАТОК"; ObjectID = "Lc7-5m-IVJ"; */
+"Lc7-5m-IVJ.text" = "REMAIN";
+
+/* Class = "UILabel"; text = "Аналитика"; ObjectID = "MMb-QF-UAL"; */
+"MMb-QF-UAL.text" = "Analytics";
+
+/* Class = "UILabel"; text = " Email и SMS напоминания"; ObjectID = "MpD-y6-kn2"; */
+"MpD-y6-kn2.text" = "Email and SMS reminders";
+
+/* Class = "UILabel"; text = "ПУЛКОВСКАЯ ТАМОЖНЯ"; ObjectID = "Ne1-LQ-HKi"; */
+"Ne1-LQ-HKi.text" = "PULKOVSKAYA CUSTOMS";
+
+/* Class = "UILabel"; text = "Выйти из аккаунта"; ObjectID = "NgP-g9-yxy"; */
+"NgP-g9-yxy.text" = "Sign out";
+
+/* Class = "UITextField"; placeholder = "Поиск"; ObjectID = "Nlp-1s-3SG"; */
+"Nlp-1s-3SG.placeholder" = "Search";
+
+/* Class = "UILabel"; text = "Сумма пошлин"; ObjectID = "Orj-l2-Cr4"; */
+"Orj-l2-Cr4.text" = "Duty amount";
+
+/* Class = "UITabBarItem"; title = "Остатки в ТО"; ObjectID = "OtN-la-AAf"; */
+"OtN-la-AAf.title" = "CA balance";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Oux-WF-2IN"; */
+"Oux-WF-2IN.text" = "Label";
+
+/* Class = "UILabel"; text = "+7 499 677 64 84"; ObjectID = "P3f-Th-LWn"; */
+"P3f-Th-LWn.text" = "+7 499 677 64 84";
+
+/* Class = "UITextField"; text = "с -"; ObjectID = "PMF-tD-Pb9"; */
+"PMF-tD-Pb9.text" = "с -";
+
+/* Class = "UILabel"; text = "19 515.20 Р"; ObjectID = "Qgk-Mj-uL7"; */
+"Qgk-Mj-uL7.text" = "19 515.20 Р";
+
+/* Class = "UILabel"; text = "Профиль"; ObjectID = "RbT-P9-Zmh"; */
+"RbT-P9-Zmh.text" = "Profile";
+
+/* Class = "UILabel"; text = "не оплачен"; ObjectID = "S2m-Sy-Z3j"; */
+"S2m-Sy-Z3j.text" = "not paid";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "TEx-sE-h7E"; */
+"TEx-sE-h7E.text" = "USD";
+
+/* Class = "UILabel"; text = "2 из 4"; ObjectID = "TnQ-hX-A0I"; */
+"TnQ-hX-A0I.text" = "2 из 4";
+
+/* Class = "UILabel"; text = "Баланс"; ObjectID = "Ukp-fU-dGk"; */
+"Ukp-fU-dGk.text" = "Balance";
+
+/* Class = "UINavigationItem"; title = "Баланс"; ObjectID = "X63-OP-Tar"; */
+"X63-OP-Tar.title" = "Balance";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Xeq-0Y-Ij5"; */
+"Xeq-0Y-Ij5.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Y9C-Uf-RZy"; */
+"Y9C-Uf-RZy.text" = "Label";
+
+/* Class = "UILabel"; text = "130 755.22 Р"; ObjectID = "YzU-WJ-eH0"; */
+"YzU-WJ-eH0.text" = "130 755.22 Р";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZZd-gB-PpM"; */
+"ZZd-gB-PpM.text" = "Label";
+
+/* Class = "UILabel"; text = "0 Р"; ObjectID = "ZjL-6p-YXq"; */
+"ZjL-6p-YXq.text" = "0 Р";
+
+/* Class = "UILabel"; text = "Помощь"; ObjectID = "ZlJ-mK-Ays"; */
+"ZlJ-mK-Ays.text" = "Help";
+
+/* Class = "UILabel"; text = "АНАЛИТИКА 30%"; ObjectID = "aQP-zY-ZMi"; */
+"aQP-zY-ZMi.text" = "ANALYTICS 30%";
+
+/* Class = "UILabel"; text = "Завершён"; ObjectID = "aXy-pp-aJb"; */
+"aXy-pp-aJb.text" = "Completed";
+
+/* Class = "UILabel"; text = "05 ДЕКАБРЯ 2018"; ObjectID = "b3m-kv-New"; */
+"b3m-kv-New.text" = "05 DECEMBER 2018";
+
+/* Class = "UINavigationItem"; title = "Ваш заказ"; ObjectID = "bAk-uO-gsu"; */
+"bAk-uO-gsu.title" = "Your order";
+
+/* Class = "UILabel"; text = "ECIOM-118405-Z4756"; ObjectID = "bKQ-In-XuW"; */
+"bKQ-In-XuW.text" = "ECIOM-118405-Z4756";
+
+/* Class = "UILabel"; text = "Изменение баланса"; ObjectID = "cH4-iO-oBv"; */
+"cH4-iO-oBv.text" = "Rebalancing";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cHc-6X-eV3"; */
+"cHc-6X-eV3.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cgT-k8-XfU"; */
+"cgT-k8-XfU.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Профиль"; ObjectID = "cup-ih-Lw0"; */
+"cup-ih-Lw0.title" = "Profile";
+
+/* Class = "UILabel"; text = "Декларирование"; ObjectID = "d8E-X6-a11"; */
+"d8E-X6-a11.text" = "Declaring";
+
+/* Class = "UITableViewSection"; headerTitle = "телефон"; ObjectID = "dSy-aj-e84"; */
+"dSy-aj-e84.headerTitle" = "phone";
+
+/* Class = "UITableViewSection"; headerTitle = "PUSH уведомления"; ObjectID = "f4W-K3-wdm"; */
+"f4W-K3-wdm.headerTitle" = "PUSH notification";
+
+/* Class = "UILabel"; text = "ECIOM-118405-Z4756"; ObjectID = "fJ5-rz-wgk"; */
+"fJ5-rz-wgk.text" = "ECIOM-118405-Z4756";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fVt-4x-Ntl"; */
+"fVt-4x-Ntl.text" = "Label";
+
+/* Class = "UILabel"; text = "05 ДЕКАБРЯ 2018"; ObjectID = "foM-Nj-t9l"; */
+"foM-Nj-t9l.text" = "05 DECEMBER 2018";
+
+/* Class = "UILabel"; text = "ТИП"; ObjectID = "gDS-FJ-Kzx"; */
+"gDS-FJ-Kzx.text" = "TYPE";
+
+/* Class = "UILabel"; text = "Накладная"; ObjectID = "gJB-9J-KKR"; */
+"gJB-9J-KKR.text" = "Waybill";
+
+/* Class = "UISegmentedControl"; gVh-zl-jxp.segmentTitles[0] = "SMS"; ObjectID = "gVh-zl-jxp"; */
+"gVh-zl-jxp.segmentTitles[0]" = "SMS";
+
+/* Class = "UISegmentedControl"; gVh-zl-jxp.segmentTitles[1] = "Email"; ObjectID = "gVh-zl-jxp"; */
+"gVh-zl-jxp.segmentTitles[1]" = "Email";
+
+/* Class = "UITabBarItem"; title = "Баланс"; ObjectID = "gZH-pv-694"; */
+"gZH-pv-694.title" = "Balance";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ghr-xW-lqn"; */
+"ghr-xW-lqn.text" = "Label";
+
+/* Class = "UILabel"; text = "10.08.2018 14:48"; ObjectID = "grF-Ii-xp2"; */
+"grF-Ii-xp2.text" = "10.08.2018 14:48";
+
+/* Class = "UILabel"; text = "176-03595010"; ObjectID = "h3Y-aC-qJ4"; */
+"h3Y-aC-qJ4.text" = "176-03595010";
+
+/* Class = "UILabel"; text = "PDF"; ObjectID = "hAf-Qg-5WO"; */
+"hAf-Qg-5WO.text" = "PDF";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hkv-kj-z7w"; */
+"hkv-kj-z7w.text" = "Label";
+
+/* Class = "UILabel"; text = "не оплачен"; ObjectID = "hla-Gh-b42"; */
+"hla-Gh-b42.text" = "not paid";
+
+/* Class = "UILabel"; text = "Пошлина"; ObjectID = "hoJ-3l-ohF"; */
+"hoJ-3l-ohF.text" = "Duty";
+
+/* Class = "UIButton"; normalTitle = "Готово"; ObjectID = "i55-vJ-CLz"; */
+"i55-vJ-CLz.normalTitle" = "Is done";
+
+/* Class = "UILabel"; text = "Валюта / курс"; ObjectID = "iDS-PL-RpX"; */
+"iDS-PL-RpX.text" = "Currency / rate";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jGU-xH-cdT"; */
+"jGU-xH-cdT.text" = "Label";
+
+/* Class = "UILabel"; text = "ECIOM-118405-Z4756"; ObjectID = "jrL-pt-m4M"; */
+"jrL-pt-m4M.text" = "ECIOM-118405-Z4756";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "n0R-6s-cHD"; */
+"n0R-6s-cHD.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Мои заказы"; ObjectID = "noI-XL-wFt"; */
+"noI-XL-wFt.title" = "My orders";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oWf-sd-neR"; */
+"oWf-sd-neR.text" = "Label";
+
+/* Class = "UILabel"; text = "5 985.52 Р"; ObjectID = "oa5-Vq-YHf"; */
+"oa5-Vq-YHf.text" = "5 985.52 Р";
+
+/* Class = "UINavigationItem"; title = "Мои заказы"; ObjectID = "pi2-59-riy"; */
+"pi2-59-riy.title" = "My orders";
+
+/* Class = "UITableViewSection"; headerTitle = "фио"; ObjectID = "pv1-6o-qm8"; */
+"pv1-6o-qm8.headerTitle" = "full name";
+
+/* Class = "UIButton"; normalTitle = "Не оплаченные"; ObjectID = "q2i-Oz-5jT"; */
+"q2i-Oz-5jT.normalTitle" = "Unpaid";
+
+/* Class = "UILabel"; text = "Выпуск ГТД"; ObjectID = "r20-RP-PpQ"; */
+"r20-RP-PpQ.text" = "Release of the CCD";
+
+/* Class = "UINavigationItem"; title = "Файлы"; ObjectID = "rXn-bv-aCb"; */
+"rXn-bv-aCb.title" = "Files";
+
+/* Class = "UILabel"; text = "DHL"; ObjectID = "rkb-nd-dXL"; */
+"rkb-nd-dXL.text" = "DHL";
+
+/* Class = "UILabel"; text = "Выпуск ГТД"; ObjectID = "sNb-kL-b2Q"; */
+"sNb-kL-b2Q.text" = "Issuing CCD";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sQP-eJ-Ud2"; */
+"sQP-eJ-Ud2.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "О приложении"; ObjectID = "tsh-LU-qhx"; */
+"tsh-LU-qhx.title" = "About the app";
+
+/* Class = "UIButton"; normalTitle = "Скачать"; ObjectID = "uNZ-NN-o6a"; */
+"uNZ-NN-o6a.normalTitle" = "Download";
+
+/* Class = "UILabel"; text = "Открыть счёт"; ObjectID = "ufa-MY-W7v"; */
+"ufa-MY-W7v.text" = "Open an account";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ujq-cC-bpA"; */
+"ujq-cC-bpA.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vCt-GP-RHt"; */
+"vCt-GP-RHt.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Остатки по ТО"; ObjectID = "vEM-2j-1l3"; */
+"vEM-2j-1l3.title" = "CA balance";
+
+/* Class = "UILabel"; text = "Сумма пошлин"; ObjectID = "vRM-hd-hqI"; */
+"vRM-hd-hqI.text" = "Fee amount";
+
+/* Class = "UILabel"; text = "Рекомендуемые платежи в ТО"; ObjectID = "wGh-FD-eBk"; */
+"wGh-FD-eBk.text" = "Recommended payments to CA (Customs Authorities)";
+
+/* Class = "UILabel"; text = "Декларирование"; ObjectID = "x96-Uc-abe"; */
+"x96-Uc-abe.text" = "Declaring";
+
+/* Class = "UITableViewSection"; headerTitle = "компания"; ObjectID = "xNl-BY-Yv6"; */
+"xNl-BY-Yv6.headerTitle" = "company";
+
+/* Class = "UINavigationItem"; title = "Остатки в ТО"; ObjectID = "y7s-kF-SnA"; */
+"y7s-kF-SnA.title" = "CA balance";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "yE7-Tj-5WC"; */
+"yE7-Tj-5WC.text" = "Title";
+
+/* Class = "UILabel"; text = "Завершён"; ObjectID = "yFo-4V-IIJ"; */
+"yFo-4V-IIJ.text" = "Completed";
+
+/* Class = "UITabBarItem"; title = "Настройки"; ObjectID = "yQI-kX-nFJ"; */
+"yQI-kX-nFJ.title" = "Settings";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zHJ-bR-8Kx"; */
+"zHJ-bR-8Kx.text" = "Label";
+
+/* Class = "UILabel"; text = "О приложении"; ObjectID = "zUv-ec-d9V"; */
+"zUv-ec-d9V.text" = "About the app";
+
+/* Class = "UILabel"; text = "Сумма авансов"; ObjectID = "zr4-1p-su3"; */
+"zr4-1p-su3.text" = "Amount of advances";

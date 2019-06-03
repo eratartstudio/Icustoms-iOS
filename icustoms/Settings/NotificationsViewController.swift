@@ -18,7 +18,16 @@ class NotificationsViewController: UIViewController {
     
     var isSms: Bool = true
     
-    let titles: [String] = ["Создан заказ", "ДТ зарегистрирована", "ДТ на проверке", "ДТ на досмотре", "ДТ на проверке, досмотр завершен", "ДТ выпуск", "ДТ осуществляется досмотр", "ДТ досмотр завершен, ДТ на проверке"]
+    let titles: [String] = [
+        "Создан заказ".localizedSafe,
+        "ДТ зарегистрирована".localizedSafe,
+        "ДТ на проверке".localizedSafe,
+        "ДТ на досмотре".localizedSafe,
+        "ДТ на проверке, досмотр завершен".localizedSafe,
+        "ДТ выпуск".localizedSafe,
+        "ДТ осуществляется досмотр".localizedSafe,
+        "ДТ досмотр завершен, ДТ на проверке".localizedSafe
+    ]
     var sms: [Bool] = []
     var email: [Bool] = []
     
@@ -29,24 +38,24 @@ class NotificationsViewController: UIViewController {
         
         API.default.emailSettings(success: { [weak self] (response) in
             guard let result = response?.array else {
-                self?.showAlert("Ошибка", message: "Невозможно отобразить данные")
+                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно отобразить данные".localizedSafe)
                 return
             }
             self?.email = result
             self?.updateContent()
         }) { [weak self] (error, status) in
-            self?.showAlert("Ошибка", message: "Невозможно загрузить данные")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить данные".localizedSafe)
         }
         
         API.default.smsSettings(success: { [weak self] (response) in
             guard let result = response?.array else {
-                self?.showAlert("Ошибка", message: "Невозможно отобразить данные")
+                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно отобразить данные".localizedSafe)
                 return
             }
             self?.sms = result
             self?.updateContent()
         }) { [weak self] (error, status) in
-            self?.showAlert("Ошибка", message: "Невозможно загрузить данные")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить данные".localizedSafe)
         }
     }
     

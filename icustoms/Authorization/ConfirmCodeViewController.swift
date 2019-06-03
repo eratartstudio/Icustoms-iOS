@@ -26,7 +26,7 @@ class ConfirmCodeViewController: UIViewController {
         super.viewDidLoad()
         
         confirmButton.isHidden = true
-        descriptionLabel.text = "Введите код из СМС отправленный на номер:\n\(authorization.phone)"
+        descriptionLabel.text = "Введите код из СМС отправленный на номер:\n".localizedSafe + "\(authorization.phone)"
         resendLabel.textAlignment = .center
         resentButton()
     }
@@ -40,7 +40,7 @@ class ConfirmCodeViewController: UIViewController {
     @IBAction func confirmButtonDidTap() {
         let accounts = authorization.accounts.filter { !$0.is_blocked }
         
-        let alertController = UIAlertController(title: "Выберите аккаунт для входа", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Выберите аккаунт для входа".localizedSafe, message: nil, preferredStyle: .alert)
         for account in accounts {
             guard !account.is_blocked else { return }
             let action = UIAlertAction(title: account.company, style: .default) { [weak self] _ in
@@ -55,17 +55,17 @@ class ConfirmCodeViewController: UIViewController {
                         let mainController = Storyboard.Main.initialViewController!
                         self?.present(mainController, animated: true, completion: nil)
                     } else {
-                         self?.showAlert("Ошибка", message: "Невозможно авторизоваться")
+                         self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
                     }
                 }, failure: { [weak self] (error, statusCode) in
                     SVProgressHUD.dismiss()
-                    self?.showAlert("Ошибка", message: "Невозможно авторизоваться")
+                    self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
                 })
             }
             alertController.addAction(action)
         }
         
-        alertController.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Отмена".localizedSafe, style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -88,7 +88,7 @@ class ConfirmCodeViewController: UIViewController {
         let endTime = startTime + 60
         resendButton.isHidden = true
         resendLabel.isHidden = false
-        self.resendLabel.text = "Повторно запросить код можно через 60 сек."
+        self.resendLabel.text = "Повторно запросить код можно через 60 сек.".localizedSafe
         isCanResend = false
         
         if !isFirst {
@@ -105,7 +105,7 @@ class ConfirmCodeViewController: UIViewController {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] (timer) in
             let currentTime = Int(Date().timeIntervalSince1970)
             if endTime > currentTime {
-                self.resendLabel.text = "Повторно запросить код можно через \(endTime - currentTime) сек."
+                self.resendLabel.text = "Повторно запросить код можно через ".localizedSafe + "\(endTime - currentTime)" + " сек.".localizedSafe
             } else {
                 timer.invalidate()
                 self.isCanResend = true

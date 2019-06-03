@@ -62,12 +62,12 @@ class LoginViewController: UIViewController {
                 self.authorization = response
                 self.performSegue(withIdentifier: "ShowCodeView", sender: self)
             } else {
-                self.showAlert("Ошибка", message: "Невозможно авторизоваться")
+                self.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
             }
         }) { (error, statusCode) in
             print(error)
             SVProgressHUD.dismiss()
-            self.showAlert("Ошибка", message: "Невозможно авторизоваться")
+            self.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
         }
     }
     

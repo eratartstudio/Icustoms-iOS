@@ -71,7 +71,7 @@ class OrderDetailViewController: UIViewController {
         
         let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM yyyy"
         dateLabel.text = dateFormatter.string(from: date).uppercased()
         prepareStatus(order.status?.id ?? 0)
@@ -93,16 +93,16 @@ class OrderDetailViewController: UIViewController {
     
     @IBAction func copyNameOrder() {
         UIPasteboard.general.string = order.orderId
-        view.makeToast("Номер заказа скопирован!")
+        view.makeToast("Номер заказа скопирован!".localizedSafe)
     }
     
     @IBAction func openLinkInvoice() {
         guard let invoiceId = order.invoice?.id else {
-            self.showAlert("Ошибка", message: "Файла не существует")
+            self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
             return
         }
         guard let url = URL(string: API.default.invoiceFileLink(invoiceId)) else {
-            self.showAlert("Ошибка", message: "Файла не существует")
+            self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
             return
         }
         let safariViewController = SFSafariViewController(url: url)
@@ -111,7 +111,7 @@ class OrderDetailViewController: UIViewController {
     
     @IBAction func saveInvoice() {
         guard let invoiceId = order.invoice?.id else {
-            self.showAlert("Ошибка", message: "Файла не существует")
+            self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
             return
         }
         SVProgressHUD.show()
@@ -123,7 +123,7 @@ class OrderDetailViewController: UIViewController {
         }) { [weak self] (error, statusCode) in
             print(error)
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить файл")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файл".localizedSafe)
         }
     }
     

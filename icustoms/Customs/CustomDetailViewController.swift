@@ -36,7 +36,7 @@ extension CustomDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard section == 1 else { return nil }
-        return "Остатки актуальны на " + Date.from(string: custom.actualDate, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm")
+        return "Остатки актуальны на ".localizedSafe + Date.from(string: custom.actualDate, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,7 +70,7 @@ class CustomPaymentTableCell: UITableViewCell {
     private func updateContent() {
         guard let payment = payment else { return }
         kbkLabel.text = payment.kbk
-        typeLabel.text = payment.type == 1 ? "Аванс" : "Пошлина"
+        typeLabel.text = payment.type == 1 ? "Аванс".localizedSafe : "Пошлина".localizedSafe
         sumLabel.text = payment.sum
     }
     

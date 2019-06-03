@@ -30,9 +30,9 @@ class AboutAppViewController: UIViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM yyyy"
-        let dateString = (formatter.string(from: compileDate) + " г.").lowercased()
+        let dateString = (formatter.string(from: compileDate) + " г.".localizedSafe).lowercased()
         
-        label.text = "Версия \(version)\nот \(dateString)\nСборка \(build)"
+        label.text = "Версия ".localizedSafe + "\(version)" + "\nот ".localizedSafe + "\(dateString)" + "\nСборка ".localizedSafe + "\(build)"
     }
     
 }

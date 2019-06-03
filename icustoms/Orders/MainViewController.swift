@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
         }
         
         NotificationManager.default.registerPushNotifications()
@@ -75,7 +75,7 @@ class MainViewController: UIViewController {
                 self?.refreshControl.endRefreshing()
                 }, failure: { [weak self] (error, statusCode) in
                     self?.refreshControl.endRefreshing()
-                    self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+                    self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
             })
         } else {
             API.default.orders(success: { [weak self] (orders) in
@@ -87,7 +87,7 @@ class MainViewController: UIViewController {
                 self?.refreshControl.endRefreshing()
             }) { [weak self] (error, statusCode) in
                 self?.refreshControl.endRefreshing()
-                self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
             }
         }
     }
@@ -97,8 +97,8 @@ class MainViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Поиск"
-        searchController.searchBar.setValue("Отмена", forKey: "_cancelButtonText")
+        searchController.searchBar.placeholder = "Поиск".localizedSafe
+        searchController.searchBar.setValue("Отмена".localizedSafe, forKey: "_cancelButtonText")
         searchController.dimsBackgroundDuringPresentation = false
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -117,7 +117,7 @@ class MainViewController: UIViewController {
     
     @objc func showFilterView() {
         topFilterConstraint.constant = 0
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Закрыть", style: .plain, target: self, action: #selector(hideFilterView))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Закрыть".localizedSafe, style: .plain, target: self, action: #selector(hideFilterView))
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
@@ -174,7 +174,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegat
                 self?.filteredOrders = [filtered, closed]
                 self?.tableView.reloadData()
             }, failure: { (error, statusCode) in
-                self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
             })
         })
         
@@ -212,7 +212,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         view.backgroundColor = .clear
         let label = UILabel(frame: CGRect(x: 10, y: 15, width: UIScreen.main.bounds.width - 20, height: 30))
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Завершенные заказы"
+        label.text = "Завершенные заказы".localizedSafe
         view.addSubview(label)
         
         return view
@@ -276,7 +276,7 @@ extension MainViewController: FilterViewDelegate {
             self?.tableView.setContentOffset(.zero, animated: true)
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
         }
     }
     
@@ -326,10 +326,10 @@ class ActiveOrderTableCell: UITableViewCell {
         guard let order = order else { return }
         
         orderIdLabel.text = order.orderId
-        statusLabel.text = order.status?.name
+        statusLabel.text = order.status?.name.localized
         paidLabel.isHidden = order.isPaid
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM yyyy"
         let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
         dateLabel.text = dateFormatter.string(from: date).uppercased()
@@ -512,14 +512,14 @@ class EndedOrderTableCell: UITableViewCell {
         
         orderIdLabel.text = order.orderId
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM yyyy"
         let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
         dateLabel.text = dateFormatter.string(from: date).uppercased()
         
         cosmosView.rating = order.reviewIsExist ? Double(order.review!.score) : 0
         reviewContainerView.backgroundColor = order.reviewIsExist ? reviewCompleteBackgroundColor : .white
-        reviewTitleLabel.text = order.reviewIsExist ? "Оценка поставлена" : "Оцените заказ"
+        reviewTitleLabel.text = order.reviewIsExist ? "Оценка поставлена".localizedSafe : "Оцените заказ".localizedSafe
     }
     
     @IBAction func reviewClicked() {
@@ -527,7 +527,7 @@ class EndedOrderTableCell: UITableViewCell {
         guard !order.reviewIsExist else { return }
         controller?.reviewClicked = true
         
-        let alertController = UIAlertController(title: "Оцените заказ\n\(order.orderId)", message: "Пожалуйста оцените работу\nменеджера при выполнении заказа.\nПомогите нам стать лучше!\n\n\n", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Оцените заказ\n".localizedSafe + "\(order.orderId)", message: "Пожалуйста оцените работу\nменеджера при выполнении заказа.\nПомогите нам стать лучше!\n\n\n".localizedSafe, preferredStyle: .alert)
         
         reviewInputCosmosView.frame = CGRect(x: 0, y: 130, width: 180, height: 30)
         reviewInputCosmosView.center = CGPoint(x: alertController.view.center.x - 50, y: 145)
@@ -536,10 +536,10 @@ class EndedOrderTableCell: UITableViewCell {
         
         alertController.addTextField { (textField) in
             textField.frame = CGRect(x: 15, y: 170, width: UIScreen.main.bounds.width - 135, height: 30)
-            textField.placeholder = "Оставьте отзыв"
+            textField.placeholder = "Оставьте отзыв".localizedSafe
         }
         
-        let sendAction = UIAlertAction(title: "Отправить", style: .default) { _ in
+        let sendAction = UIAlertAction(title: "Отправить".localizedSafe, style: .default) { _ in
             SVProgressHUD.show()
             let text = alertController.textFields?.first?.text ?? ""
             let score = Int(self.reviewInputCosmosView.rating)
@@ -551,10 +551,10 @@ class EndedOrderTableCell: UITableViewCell {
                 self.controller?.updateOrder(item, section: 1)
             }, failure: { (error, statusCode) in
                 SVProgressHUD.dismiss()
-                self.controller?.showAlert("Ошибка", message: "Невозможно отправить отзыв")
+                self.controller?.showAlert("Ошибка".localizedSafe, message: "Невозможно отправить отзыв".localizedSafe)
             })
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Отмена".localizedSafe, style: .default, handler: nil)
         alertController.addAction(sendAction)
         alertController.addAction(cancelAction)
         controller?.present(alertController, animated: true, completion: nil)

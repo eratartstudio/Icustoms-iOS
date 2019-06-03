@@ -29,7 +29,7 @@ class RemainsViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить остатки")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить остатки".localizedSafe)
         }
     }
     
@@ -40,7 +40,7 @@ class RemainsViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             self?.refreshControl.endRefreshing()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить остатки")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить остатки".localizedSafe)
         }
     }
     
