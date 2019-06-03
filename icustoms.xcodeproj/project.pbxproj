@@ -37,7 +37,6 @@
 		3891F61A224CF036006AE04E /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891F619224CF036006AE04E /* Custom.swift */; };
 		3891F61C224CF3D2006AE04E /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891F61B224CF3D2006AE04E /* Transaction.swift */; };
 		38A38ED3224505C700505D36 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38ED2224505C700505D36 /* Database.swift */; };
-		38A38ED52245066B00505D36 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A38ED42245066B00505D36 /* Authorization.storyboard */; };
 		38A38ED82245067F00505D36 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38ED72245067F00505D36 /* Storyboard.swift */; };
 		38A38EDA224509D500505D36 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38ED9224509D500505D36 /* LoginViewController.swift */; };
 		38A38EE422450D1D00505D36 /* country_flag.h in Headers */ = {isa = PBXBuildFile; fileRef = 38A38EE222450D1D00505D36 /* country_flag.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,6 +48,8 @@
 		38FF055C2253A4AE00FF72DF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF055B2253A4AE00FF72DF /* Profile.swift */; };
 		38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF055D2253A7B400FF72DF /* ProfileViewController.swift */; };
 		4E1BAD235E71789A206E829C /* Pods_icustoms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B5E5046286307C044824A /* Pods_icustoms.framework */; };
+		846DD68D22A57A25003E842F /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DD68B22A57A25003E842F /* Authorization.storyboard */; };
+		846DD69222A57A92003E842F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846DD69022A57A92003E842F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +110,6 @@
 		3891F619224CF036006AE04E /* Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
 		3891F61B224CF3D2006AE04E /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		38A38ED2224505C700505D36 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		38A38ED42245066B00505D36 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
 		38A38ED72245067F00505D36 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		38A38ED9224509D500505D36 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		38A38EE022450D1D00505D36 /* country_flag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = country_flag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +123,10 @@
 		38FF055D2253A7B400FF72DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3AF21E9150163A676BC28EBD /* Pods-icustoms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icustoms.debug.xcconfig"; path = "Pods/Target Support Files/Pods-icustoms/Pods-icustoms.debug.xcconfig"; sourceTree = "<group>"; };
 		823B5E5046286307C044824A /* Pods_icustoms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_icustoms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		846DD68C22A57A25003E842F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authorization.storyboard; sourceTree = "<group>"; };
+		846DD68E22A57A2A003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Authorization.strings; sourceTree = "<group>"; };
+		846DD68F22A57A4D003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		846DD69122A57A92003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,7 @@
 				3848BD6E2243E4EE0047FBC9 /* Assets.xcassets */,
 				3848BD702243E4EE0047FBC9 /* LaunchScreen.storyboard */,
 				3848BD732243E4EE0047FBC9 /* Info.plist */,
+				846DD69022A57A92003E842F /* Localizable.strings */,
 			);
 			path = icustoms;
 			sourceTree = "<group>";
@@ -275,7 +280,7 @@
 		38A38ED62245067000505D36 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				38A38ED42245066B00505D36 /* Authorization.storyboard */,
+				846DD68B22A57A25003E842F /* Authorization.storyboard */,
 				38A38ED9224509D500505D36 /* LoginViewController.swift */,
 				382C6A02224513AF00ACF784 /* ConfirmCodeViewController.swift */,
 			);
@@ -412,8 +417,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38A38ED52245066B00505D36 /* Authorization.storyboard in Resources */,
 				3848BD722243E4EE0047FBC9 /* LaunchScreen.storyboard in Resources */,
+				846DD69222A57A92003E842F /* Localizable.strings in Resources */,
+				846DD68D22A57A25003E842F /* Authorization.storyboard in Resources */,
 				380C3F912264DDD0007C1518 /* GoogleService-Info.plist in Resources */,
 				3848BD6F2243E4EE0047FBC9 /* Assets.xcassets in Resources */,
 				3848BD6D2243E4EE0047FBC9 /* Main.storyboard in Resources */,
@@ -561,6 +567,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3848BD6C2243E4EE0047FBC9 /* Base */,
+				846DD68F22A57A4D003E842F /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -571,6 +578,23 @@
 				3848BD712243E4EE0047FBC9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		846DD68B22A57A25003E842F /* Authorization.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				846DD68C22A57A25003E842F /* Base */,
+				846DD68E22A57A2A003E842F /* en */,
+			);
+			name = Authorization.storyboard;
+			sourceTree = "<group>";
+		};
+		846DD69022A57A92003E842F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				846DD69122A57A92003E842F /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
