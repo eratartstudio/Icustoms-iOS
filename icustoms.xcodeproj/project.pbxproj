@@ -50,6 +50,7 @@
 		4E1BAD235E71789A206E829C /* Pods_icustoms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B5E5046286307C044824A /* Pods_icustoms.framework */; };
 		846DD68D22A57A25003E842F /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DD68B22A57A25003E842F /* Authorization.storyboard */; };
 		846DD69222A57A92003E842F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846DD69022A57A92003E842F /* Localizable.strings */; };
+		846DD69422A57B61003E842F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD69322A57B61003E842F /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		846DD68E22A57A2A003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Authorization.strings; sourceTree = "<group>"; };
 		846DD68F22A57A4D003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		846DD69122A57A92003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		846DD69322A57B61003E842F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 				382C6A0B2248F26B00ACF784 /* Extensions.swift */,
 				38A38ED2224505C700505D36 /* Database.swift */,
 				3845ACAF226490A800D402F8 /* NotificationManager.swift */,
+				846DD69322A57B61003E842F /* String.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				38A38ED3224505C700505D36 /* Database.swift in Sources */,
 				38FF055C2253A4AE00FF72DF /* Profile.swift in Sources */,
 				3891F5F9224B74F0006AE04E /* BalanceViewController.swift in Sources */,
+				846DD69422A57B61003E842F /* String.swift in Sources */,
 				3848BD682243E4EE0047FBC9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,7 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = icustoms/icustoms.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8VZCJV2GJY;
 				INFOPLIST_FILE = icustoms/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -734,7 +738,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icustoms.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "iCUSTOMS Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -748,7 +752,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = icustoms/icustoms.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8VZCJV2GJY;
 				INFOPLIST_FILE = icustoms/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -758,7 +762,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icustoms.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "iCUSTOMS Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
