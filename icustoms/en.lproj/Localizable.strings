@@ -8,7 +8,7 @@
 
 "Ошибка" = "Error";
 "Невозможно авторизоваться" = "Unable to log in";
-"Введите код из СМС отправленный на номер:\n" = "";
+"Введите код из СМС отправленный на номер:\n" = "Enter the SMS code sent to number:\n";
 "Выберите аккаунт для входа" = "Select account for login";
 "Отмена" = "Cancel";
 "Повторно запросить код можно через 60 сек." = "You can request a code again in 60 s.";
@@ -51,8 +51,8 @@
 "Условный выпуск" = "Conditional release";
 "Завершен" = "Completed";
 
-"c " = "from";
-"до " = "to";
+"c " = "from ";
+"до " = "to ";
 " г." = " yr.";
 
 "Январь" = "January";
