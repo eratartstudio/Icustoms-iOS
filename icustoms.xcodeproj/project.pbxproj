@@ -51,6 +51,9 @@
 		846DD68D22A57A25003E842F /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DD68B22A57A25003E842F /* Authorization.storyboard */; };
 		846DD69222A57A92003E842F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846DD69022A57A92003E842F /* Localizable.strings */; };
 		846DD69422A57B61003E842F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD69322A57B61003E842F /* String.swift */; };
+		84A6D54922A7FF8700FA1829 /* RussianLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6D54822A7FF8700FA1829 /* RussianLanguageCell.swift */; };
+		84A6D54B22A8012900FA1829 /* EnglishLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6D54A22A8012900FA1829 /* EnglishLanguageCell.swift */; };
+		84A6D54D22A8015500FA1829 /* ChineseLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6D54C22A8015500FA1829 /* ChineseLanguageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +136,13 @@
 		8470F44922A585A40024427A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		8470F44A22A585A40024427A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8470F44B22A585A40024427A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		84A6D54222A7F3FB00FA1829 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Authorization.strings; sourceTree = "<group>"; };
+		84A6D54322A7F3FC00FA1829 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		84A6D54422A7F3FC00FA1829 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		84A6D54522A7F3FC00FA1829 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84A6D54822A7FF8700FA1829 /* RussianLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RussianLanguageCell.swift; sourceTree = "<group>"; };
+		84A6D54A22A8012900FA1829 /* EnglishLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishLanguageCell.swift; sourceTree = "<group>"; };
+		84A6D54C22A8015500FA1829 /* ChineseLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLanguageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +262,7 @@
 				38FF055D2253A7B400FF72DF /* ProfileViewController.swift */,
 				383128CC225631CF0057C726 /* NotificationsViewController.swift */,
 				3845ACAD2264851400D402F8 /* SettingsViewController.swift */,
+				84A6D54E22A8019C00FA1829 /* LanguageCell */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -312,6 +323,16 @@
 				01E82507E2BA9B11F4894854 /* Pods-icustoms.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		84A6D54E22A8019C00FA1829 /* LanguageCell */ = {
+			isa = PBXGroup;
+			children = (
+				84A6D54A22A8012900FA1829 /* EnglishLanguageCell.swift */,
+				84A6D54C22A8015500FA1829 /* ChineseLanguageCell.swift */,
+				84A6D54822A7FF8700FA1829 /* RussianLanguageCell.swift */,
+			);
+			path = LanguageCell;
 			sourceTree = "<group>";
 		};
 		FB6804EE94E87B6309A068AC /* Frameworks */ = {
@@ -408,6 +429,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				ru,
 			);
 			mainGroup = 3848BD5B2243E4EE0047FBC9;
 			productRefGroup = 3848BD652243E4EE0047FBC9 /* Products */;
@@ -519,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3831296F225CC08F0057C726 /* OrderFileDetailViewController.swift in Sources */,
+				84A6D54D22A8015500FA1829 /* ChineseLanguageCell.swift in Sources */,
 				3831296C225B7D470057C726 /* FilterView.swift in Sources */,
 				386C4116224EBAC800FDFE15 /* OrderDetailViewController.swift in Sources */,
 				38A38EF422450E4500505D36 /* Button.swift in Sources */,
@@ -540,7 +563,9 @@
 				383128D122563E930057C726 /* OrderFilesViewController.swift in Sources */,
 				38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */,
 				3891F61C224CF3D2006AE04E /* Transaction.swift in Sources */,
+				84A6D54B22A8012900FA1829 /* EnglishLanguageCell.swift in Sources */,
 				3845ACB0226490A800D402F8 /* NotificationManager.swift in Sources */,
+				84A6D54922A7FF8700FA1829 /* RussianLanguageCell.swift in Sources */,
 				3831296A225B69D20057C726 /* CustomDetailViewController.swift in Sources */,
 				3845ACAE2264851400D402F8 /* SettingsViewController.swift in Sources */,
 				3891F5FB224B84B1006AE04E /* BalanceDetailViewController.swift in Sources */,
@@ -578,6 +603,7 @@
 				3848BD6C2243E4EE0047FBC9 /* Base */,
 				846DD68F22A57A4D003E842F /* en */,
 				8470F44922A585A40024427A /* zh-Hans */,
+				84A6D54322A7F3FC00FA1829 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -587,6 +613,7 @@
 			children = (
 				3848BD712243E4EE0047FBC9 /* Base */,
 				8470F44A22A585A40024427A /* zh-Hans */,
+				84A6D54422A7F3FC00FA1829 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -597,6 +624,7 @@
 				846DD68C22A57A25003E842F /* Base */,
 				846DD68E22A57A2A003E842F /* en */,
 				8470F44822A585A40024427A /* zh-Hans */,
+				84A6D54222A7F3FB00FA1829 /* ru */,
 			);
 			name = Authorization.storyboard;
 			sourceTree = "<group>";
@@ -606,6 +634,7 @@
 			children = (
 				846DD69122A57A92003E842F /* en */,
 				8470F44B22A585A40024427A /* zh-Hans */,
+				84A6D54522A7F3FC00FA1829 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

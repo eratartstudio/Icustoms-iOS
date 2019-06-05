@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "Все"; ObjectID = "0OK-QR-npe"; */
-"0OK-QR-npe.normalTitle" = "所有";
+"0OK-QR-npe.normalTitle" = "Все";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "0bp-Wp-1wr"; */
 "0bp-Wp-1wr.text" = "-";
@@ -18,70 +18,73 @@
 "1tE-L2-oOd.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Применить фильтр"; ObjectID = "2Cf-0L-gTf"; */
-"2Cf-0L-gTf.normalTitle" = "应用过滤器";
+"2Cf-0L-gTf.normalTitle" = "Применить фильтр";
 
 /* Class = "UITextField"; text = "Все"; ObjectID = "2IC-Zd-D2l"; */
-"2IC-Zd-D2l.text" = "所有";
+"2IC-Zd-D2l.text" = "Все";
 
 /* Class = "UILabel"; text = "Аналитика"; ObjectID = "347-p5-Jfa"; */
-"347-p5-Jfa.text" = "分析";
+"347-p5-Jfa.text" = "Аналитика";
 
 /* Class = "UILabel"; text = "67.45 Р"; ObjectID = "38w-IH-21w"; */
 "38w-IH-21w.text" = "67.45 Р";
 
 /* Class = "UILabel"; text = "СЛУЖБА ПОДДЕРЖКИ"; ObjectID = "3ZZ-pb-Yhw"; */
-"3ZZ-pb-Yhw.text" = "支援服务";
+"3ZZ-pb-Yhw.text" = "СЛУЖБА ПОДДЕРЖКИ";
 
 /* Class = "UINavigationItem"; title = "Помощь"; ObjectID = "5Zf-wQ-asC"; */
-"5Zf-wQ-asC.title" = "援助";
+"5Zf-wQ-asC.title" = "Помощь";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "5bA-bP-L65"; */
 "5bA-bP-L65.text" = "Title";
 
 /* Class = "UILabel"; text = "Остатки актуальны на"; ObjectID = "5wf-nb-dVc"; */
-"5wf-nb-dVc.text" = "保持相关性于";
+"5wf-nb-dVc.text" = "Остатки актуальны на";
 
 /* Class = "UILabel"; text = "Оцените заказ"; ObjectID = "6NU-W7-Ut7"; */
-"6NU-W7-Ut7.text" = "评估的命令";
+"6NU-W7-Ut7.text" = "Оцените заказ";
 
 /* Class = "UILabel"; text = "ЗАВЕРШЁН"; ObjectID = "6f3-GZ-ZhN"; */
-"6f3-GZ-ZhN.text" = "完成";
+"6f3-GZ-ZhN.text" = "ЗАВЕРШЁН";
 
 /* Class = "UILabel"; text = "КБК"; ObjectID = "6zR-ui-M8K"; */
-"6zR-ui-M8K.text" = "余额海关当局";
+"6zR-ui-M8K.text" = "КБК";
 
 /* Class = "UIButton"; normalTitle = "Отмена"; ObjectID = "85R-IX-GOF"; */
-"85R-IX-GOF.normalTitle" = "取消";
+"85R-IX-GOF.normalTitle" = "Отмена";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "8hY-Xw-vey"; */
 "8hY-Xw-vey.text" = "Label";
 
 /* Class = "UILabel"; text = "Аванс"; ObjectID = "991-2F-KNn"; */
-"991-2F-KNn.text" = "预付款";
+"991-2F-KNn.text" = "Аванс";
 
 /* Class = "UIBarButtonItem"; title = "Файлы"; ObjectID = "9U0-Jd-w8e"; */
-"9U0-Jd-w8e.title" = "档";
+"9U0-Jd-w8e.title" = "Файлы";
 
 /* Class = "UITextField"; text = "до -"; ObjectID = "9yx-Ye-mw7"; */
-"9yx-Ye-mw7.text" = "最多 -";
+"9yx-Ye-mw7.text" = "до -";
 
 /* Class = "UIButton"; normalTitle = "Оплаченные"; ObjectID = "A9c-pU-pxm"; */
-"A9c-pU-pxm.normalTitle" = "预付货款";
+"A9c-pU-pxm.normalTitle" = "Оплаченные";
 
 /* Class = "UILabel"; text = "Статус заказа"; ObjectID = "CWH-v2-YmP"; */
-"CWH-v2-YmP.text" = "订单状态";
+"CWH-v2-YmP.text" = "Статус заказа";
 
 /* Class = "UILabel"; text = "Изменение статуса заказа"; ObjectID = "DXm-3I-xvU"; */
-"DXm-3I-xvU.text" = "订单状态的变化";
+"DXm-3I-xvU.text" = "Изменение статуса заказа";
+
+/* Class = "UILabel"; text = "English"; ObjectID = "DbS-E2-tol"; */
+"DbS-E2-tol.text" = "English";
 
 /* Class = "UILabel"; text = "05 ДЕКАБРЯ 2018"; ObjectID = "E3k-HB-c2l"; */
-"E3k-HB-c2l.text" = "2018年12月5日";
+"E3k-HB-c2l.text" = "05 ДЕКАБРЯ 2018";
 
 /* Class = "UILabel"; text = "Дата"; ObjectID = "EJT-TV-lDP"; */
-"EJT-TV-lDP.text" = "日期";
+"EJT-TV-lDP.text" = "Дата";
 
 /* Class = "UILabel"; text = "ПУЛКОВСКАЯ ТАМОЖНЯ"; ObjectID = "EM1-dZ-Nr4"; */
-"EM1-dZ-Nr4.text" = "PULKOVSKAYA海关";
+"EM1-dZ-Nr4.text" = "ПУЛКОВСКАЯ ТАМОЖНЯ";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "F6b-vf-c0p"; */
 "F6b-vf-c0p.text" = "Label";
@@ -93,43 +96,43 @@
 "H8P-ic-LwO.text" = "PDF";
 
 /* Class = "UILabel"; text = "Сумма авансов"; ObjectID = "HHw-uM-mbj"; */
-"HHw-uM-mbj.text" = "预付款";
+"HHw-uM-mbj.text" = "Сумма авансов";
 
 /* Class = "UILabel"; text = "19 515.20 Р"; ObjectID = "I4w-ca-mpo"; */
 "I4w-ca-mpo.text" = "19 515.20 Р";
 
 /* Class = "UINavigationItem"; title = "Настройки"; ObjectID = "J0F-YX-koe"; */
-"J0F-YX-koe.title" = "设置";
+"J0F-YX-koe.title" = "Настройки";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "KnT-Ox-I4Y"; */
 "KnT-Ox-I4Y.text" = "Label";
 
 /* Class = "UILabel"; text = "Другие уведомления"; ObjectID = "LWe-1q-Rkh"; */
-"LWe-1q-Rkh.text" = "其他通告";
+"LWe-1q-Rkh.text" = "Другие уведомления";
 
 /* Class = "UILabel"; text = "ОСТАТОК"; ObjectID = "Lc7-5m-IVJ"; */
-"Lc7-5m-IVJ.text" = "剩下的";
+"Lc7-5m-IVJ.text" = "ОСТАТОК";
 
 /* Class = "UILabel"; text = "Аналитика"; ObjectID = "MMb-QF-UAL"; */
-"MMb-QF-UAL.text" = "分析";
+"MMb-QF-UAL.text" = "Аналитика";
 
-/* Class = "UILabel"; text = " Email и SMS напоминания"; ObjectID = "MpD-y6-kn2"; */
-"MpD-y6-kn2.text" = "电子邮件和短信提醒";
+/* Class = "UILabel"; text = "Email и SMS напоминания"; ObjectID = "MpD-y6-kn2"; */
+"MpD-y6-kn2.text" = "Email и SMS напоминания";
 
 /* Class = "UILabel"; text = "ПУЛКОВСКАЯ ТАМОЖНЯ"; ObjectID = "Ne1-LQ-HKi"; */
-"Ne1-LQ-HKi.text" = "PULKOVSKAYA海关";
+"Ne1-LQ-HKi.text" = "ПУЛКОВСКАЯ ТАМОЖНЯ";
 
 /* Class = "UILabel"; text = "Выйти из аккаунта"; ObjectID = "NgP-g9-yxy"; */
-"NgP-g9-yxy.text" = "退出帐户";
+"NgP-g9-yxy.text" = "Выйти из аккаунта";
 
 /* Class = "UITextField"; placeholder = "Поиск"; ObjectID = "Nlp-1s-3SG"; */
-"Nlp-1s-3SG.placeholder" = "搜索";
+"Nlp-1s-3SG.placeholder" = "Поиск";
 
 /* Class = "UILabel"; text = "Сумма пошлин"; ObjectID = "Orj-l2-Cr4"; */
-"Orj-l2-Cr4.text" = "关税金额";
+"Orj-l2-Cr4.text" = "Сумма пошлин";
 
 /* Class = "UITabBarItem"; title = "Остатки в ТО"; ObjectID = "OtN-la-AAf"; */
-"OtN-la-AAf.title" = "余额海关当局";
+"OtN-la-AAf.title" = "Остатки в ТО";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Oux-WF-2IN"; */
 "Oux-WF-2IN.text" = "Label";
@@ -144,22 +147,22 @@
 "Qgk-Mj-uL7.text" = "19 515.20 Р";
 
 /* Class = "UILabel"; text = "Профиль"; ObjectID = "RbT-P9-Zmh"; */
-"RbT-P9-Zmh.text" = "配置文件";
+"RbT-P9-Zmh.text" = "Профиль";
 
 /* Class = "UILabel"; text = "не оплачен"; ObjectID = "S2m-Sy-Z3j"; */
-"S2m-Sy-Z3j.text" = "没有报酬";
+"S2m-Sy-Z3j.text" = "не оплачен";
 
 /* Class = "UILabel"; text = "USD"; ObjectID = "TEx-sE-h7E"; */
 "TEx-sE-h7E.text" = "USD";
 
 /* Class = "UILabel"; text = "2 из 4"; ObjectID = "TnQ-hX-A0I"; */
-"TnQ-hX-A0I.text" = "2/4";
+"TnQ-hX-A0I.text" = "2 из 4";
 
 /* Class = "UILabel"; text = "Баланс"; ObjectID = "Ukp-fU-dGk"; */
-"Ukp-fU-dGk.text" = "平衡";
+"Ukp-fU-dGk.text" = "Баланс";
 
 /* Class = "UINavigationItem"; title = "Баланс"; ObjectID = "X63-OP-Tar"; */
-"X63-OP-Tar.title" = "平衡";
+"X63-OP-Tar.title" = "Баланс";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Xeq-0Y-Ij5"; */
 "Xeq-0Y-Ij5.text" = "Label";
@@ -177,25 +180,25 @@
 "ZjL-6p-YXq.text" = "0 Р";
 
 /* Class = "UILabel"; text = "Помощь"; ObjectID = "ZlJ-mK-Ays"; */
-"ZlJ-mK-Ays.text" = "援助";
+"ZlJ-mK-Ays.text" = "Помощь";
 
 /* Class = "UILabel"; text = "АНАЛИТИКА 30%"; ObjectID = "aQP-zY-ZMi"; */
-"aQP-zY-ZMi.text" = "分析30%";
+"aQP-zY-ZMi.text" = "АНАЛИТИКА 30%";
 
 /* Class = "UILabel"; text = "Завершён"; ObjectID = "aXy-pp-aJb"; */
-"aXy-pp-aJb.text" = "完成";
+"aXy-pp-aJb.text" = "Завершён";
 
 /* Class = "UILabel"; text = "05 ДЕКАБРЯ 2018"; ObjectID = "b3m-kv-New"; */
-"b3m-kv-New.text" = "2018年12月5日";
+"b3m-kv-New.text" = "05 ДЕКАБРЯ 2018";
 
 /* Class = "UINavigationItem"; title = "Ваш заказ"; ObjectID = "bAk-uO-gsu"; */
-"bAk-uO-gsu.title" = "您的订单";
+"bAk-uO-gsu.title" = "Ваш заказ";
 
 /* Class = "UILabel"; text = "ECIOM-118405-Z4756"; ObjectID = "bKQ-In-XuW"; */
 "bKQ-In-XuW.text" = "ECIOM-118405-Z4756";
 
 /* Class = "UILabel"; text = "Изменение баланса"; ObjectID = "cH4-iO-oBv"; */
-"cH4-iO-oBv.text" = "再平衡";
+"cH4-iO-oBv.text" = "Изменение баланса";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "cHc-6X-eV3"; */
 "cHc-6X-eV3.text" = "Label";
@@ -204,16 +207,16 @@
 "cgT-k8-XfU.text" = "Label";
 
 /* Class = "UINavigationItem"; title = "Профиль"; ObjectID = "cup-ih-Lw0"; */
-"cup-ih-Lw0.title" = "配置文件";
+"cup-ih-Lw0.title" = "Профиль";
 
 /* Class = "UILabel"; text = "Декларирование"; ObjectID = "d8E-X6-a11"; */
-"d8E-X6-a11.text" = "申报";
+"d8E-X6-a11.text" = "Декларирование";
 
 /* Class = "UITableViewSection"; headerTitle = "телефон"; ObjectID = "dSy-aj-e84"; */
-"dSy-aj-e84.headerTitle" = "电话";
+"dSy-aj-e84.headerTitle" = "телефон";
 
 /* Class = "UITableViewSection"; headerTitle = "PUSH уведомления"; ObjectID = "f4W-K3-wdm"; */
-"f4W-K3-wdm.headerTitle" = "推送通知";
+"f4W-K3-wdm.headerTitle" = "PUSH уведомления";
 
 /* Class = "UILabel"; text = "ECIOM-118405-Z4756"; ObjectID = "fJ5-rz-wgk"; */
 "fJ5-rz-wgk.text" = "ECIOM-118405-Z4756";
@@ -222,22 +225,22 @@
 "fVt-4x-Ntl.text" = "Label";
 
 /* Class = "UILabel"; text = "05 ДЕКАБРЯ 2018"; ObjectID = "foM-Nj-t9l"; */
-"foM-Nj-t9l.text" = "2018年12月5日";
+"foM-Nj-t9l.text" = "05 ДЕКАБРЯ 2018";
 
 /* Class = "UILabel"; text = "ТИП"; ObjectID = "gDS-FJ-Kzx"; */
-"gDS-FJ-Kzx.text" = "类型";
+"gDS-FJ-Kzx.text" = "ТИП";
 
 /* Class = "UILabel"; text = "Накладная"; ObjectID = "gJB-9J-KKR"; */
-"gJB-9J-KKR.text" = "提单";
+"gJB-9J-KKR.text" = "Накладная";
 
 /* Class = "UISegmentedControl"; gVh-zl-jxp.segmentTitles[0] = "SMS"; ObjectID = "gVh-zl-jxp"; */
-"gVh-zl-jxp.segmentTitles[0]" = "短信";
+"gVh-zl-jxp.segmentTitles[0]" = "SMS";
 
 /* Class = "UISegmentedControl"; gVh-zl-jxp.segmentTitles[1] = "Email"; ObjectID = "gVh-zl-jxp"; */
-"gVh-zl-jxp.segmentTitles[1]" = "电子邮件";
+"gVh-zl-jxp.segmentTitles[1]" = "Email";
 
 /* Class = "UITabBarItem"; title = "Баланс"; ObjectID = "gZH-pv-694"; */
-"gZH-pv-694.title" = "平衡";
+"gZH-pv-694.title" = "Баланс";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "ghr-xW-lqn"; */
 "ghr-xW-lqn.text" = "Label";
@@ -251,23 +254,23 @@
 /* Class = "UILabel"; text = "PDF"; ObjectID = "hAf-Qg-5WO"; */
 "hAf-Qg-5WO.text" = "PDF";
 
+/* Class = "UITableViewSection"; headerTitle = "Выберите язык"; ObjectID = "hLX-Zz-b2s"; */
+"hLX-Zz-b2s.headerTitle" = "Выберите язык";
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "hkv-kj-z7w"; */
 "hkv-kj-z7w.text" = "Label";
 
-/* Class = "UITableViewSection"; headerTitle = "Выберите язык"; ObjectID = "hLX-Zz-b2s"; */
-"hLX-Zz-b2s.headerTitle" = "选择语言";
-
 /* Class = "UILabel"; text = "не оплачен"; ObjectID = "hla-Gh-b42"; */
-"hla-Gh-b42.text" = "没付";
+"hla-Gh-b42.text" = "не оплачен";
 
 /* Class = "UILabel"; text = "Пошлина"; ObjectID = "hoJ-3l-ohF"; */
-"hoJ-3l-ohF.text" = "关税";
+"hoJ-3l-ohF.text" = "Пошлина";
 
 /* Class = "UIButton"; normalTitle = "Готово"; ObjectID = "i55-vJ-CLz"; */
-"i55-vJ-CLz.normalTitle" = "完成了";
+"i55-vJ-CLz.normalTitle" = "Готово";
 
 /* Class = "UILabel"; text = "Валюта / курс"; ObjectID = "iDS-PL-RpX"; */
-"iDS-PL-RpX.text" = "货币/利率";
+"iDS-PL-RpX.text" = "Валюта / курс";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "jGU-xH-cdT"; */
 "jGU-xH-cdT.text" = "Label";
@@ -278,8 +281,11 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "n0R-6s-cHD"; */
 "n0R-6s-cHD.text" = "Label";
 
+/* Class = "UILabel"; text = "中文"; ObjectID = "nO7-yb-qPf"; */
+"nO7-yb-qPf.text" = "中文";
+
 /* Class = "UITabBarItem"; title = "Мои заказы"; ObjectID = "noI-XL-wFt"; */
-"noI-XL-wFt.title" = "我的命令";
+"noI-XL-wFt.title" = "Мои заказы";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "oWf-sd-neR"; */
 "oWf-sd-neR.text" = "Label";
@@ -288,37 +294,40 @@
 "oa5-Vq-YHf.text" = "5 985.52 Р";
 
 /* Class = "UINavigationItem"; title = "Мои заказы"; ObjectID = "pi2-59-riy"; */
-"pi2-59-riy.title" = "我的命令";
+"pi2-59-riy.title" = "Мои заказы";
 
 /* Class = "UITableViewSection"; headerTitle = "фио"; ObjectID = "pv1-6o-qm8"; */
-"pv1-6o-qm8.headerTitle" = "姓名";
+"pv1-6o-qm8.headerTitle" = "фио";
 
 /* Class = "UIButton"; normalTitle = "Не оплаченные"; ObjectID = "q2i-Oz-5jT"; */
-"q2i-Oz-5jT.normalTitle" = "但按";
+"q2i-Oz-5jT.normalTitle" = "Не оплаченные";
 
 /* Class = "UILabel"; text = "Выпуск ГТД"; ObjectID = "r20-RP-PpQ"; */
-"r20-RP-PpQ.text" = "货物报关版";
+"r20-RP-PpQ.text" = "Выпуск ГТД";
 
 /* Class = "UINavigationItem"; title = "Файлы"; ObjectID = "rXn-bv-aCb"; */
-"rXn-bv-aCb.title" = "档";
+"rXn-bv-aCb.title" = "Файлы";
 
 /* Class = "UILabel"; text = "DHL"; ObjectID = "rkb-nd-dXL"; */
 "rkb-nd-dXL.text" = "DHL";
 
 /* Class = "UILabel"; text = "Выпуск ГТД"; ObjectID = "sNb-kL-b2Q"; */
-"sNb-kL-b2Q.text" = "货物报关版";
+"sNb-kL-b2Q.text" = "Выпуск ГТД";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "sQP-eJ-Ud2"; */
 "sQP-eJ-Ud2.text" = "Label";
 
+/* Class = "UILabel"; text = "Русский"; ObjectID = "tK5-hb-SXh"; */
+"tK5-hb-SXh.text" = "Русский";
+
 /* Class = "UINavigationItem"; title = "О приложении"; ObjectID = "tsh-LU-qhx"; */
-"tsh-LU-qhx.title" = "关于应用程序";
+"tsh-LU-qhx.title" = "О приложении";
 
 /* Class = "UIButton"; normalTitle = "Скачать"; ObjectID = "uNZ-NN-o6a"; */
-"uNZ-NN-o6a.normalTitle" = "下载";
+"uNZ-NN-o6a.normalTitle" = "Скачать";
 
 /* Class = "UILabel"; text = "Открыть счёт"; ObjectID = "ufa-MY-W7v"; */
-"ufa-MY-W7v.text" = "开设一个账户";
+"ufa-MY-W7v.text" = "Открыть счёт";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "ujq-cC-bpA"; */
 "ujq-cC-bpA.text" = "Title";
@@ -327,37 +336,37 @@
 "vCt-GP-RHt.text" = "Label";
 
 /* Class = "UINavigationItem"; title = "Остатки по ТО"; ObjectID = "vEM-2j-1l3"; */
-"vEM-2j-1l3.title" = "余额海关当局";
+"vEM-2j-1l3.title" = "Остатки по ТО";
 
 /* Class = "UILabel"; text = "Сумма пошлин"; ObjectID = "vRM-hd-hqI"; */
-"vRM-hd-hqI.text" = "关税金额";
+"vRM-hd-hqI.text" = "Сумма пошлин";
 
 /* Class = "UILabel"; text = "Рекомендуемые платежи в ТО"; ObjectID = "wGh-FD-eBk"; */
-"wGh-FD-eBk.text" = "推荐的支付海关当局";
+"wGh-FD-eBk.text" = "Рекомендуемые платежи в ТО";
 
 /* Class = "UILabel"; text = "Декларирование"; ObjectID = "x96-Uc-abe"; */
-"x96-Uc-abe.text" = "申报";
+"x96-Uc-abe.text" = "Декларирование";
 
 /* Class = "UITableViewSection"; headerTitle = "компания"; ObjectID = "xNl-BY-Yv6"; */
-"xNl-BY-Yv6.headerTitle" = "公司";
+"xNl-BY-Yv6.headerTitle" = "компания";
 
 /* Class = "UINavigationItem"; title = "Остатки в ТО"; ObjectID = "y7s-kF-SnA"; */
-"y7s-kF-SnA.title" = "余额海关当局";
+"y7s-kF-SnA.title" = "Остатки в ТО";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "yE7-Tj-5WC"; */
 "yE7-Tj-5WC.text" = "Title";
 
 /* Class = "UILabel"; text = "Завершён"; ObjectID = "yFo-4V-IIJ"; */
-"yFo-4V-IIJ.text" = "完成";
+"yFo-4V-IIJ.text" = "Завершён";
 
 /* Class = "UITabBarItem"; title = "Настройки"; ObjectID = "yQI-kX-nFJ"; */
-"yQI-kX-nFJ.title" = "设置";
+"yQI-kX-nFJ.title" = "Настройки";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "zHJ-bR-8Kx"; */
 "zHJ-bR-8Kx.text" = "Label";
 
 /* Class = "UILabel"; text = "О приложении"; ObjectID = "zUv-ec-d9V"; */
-"zUv-ec-d9V.text" = "关于应用程序";
+"zUv-ec-d9V.text" = "О приложении";
 
 /* Class = "UILabel"; text = "Сумма авансов"; ObjectID = "zr4-1p-su3"; */
-"zr4-1p-su3.text" = "预付款";
+"zr4-1p-su3.text" = "Сумма авансов";

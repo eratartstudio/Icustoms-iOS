@@ -254,6 +254,9 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "hkv-kj-z7w"; */
 "hkv-kj-z7w.text" = "Label";
 
+/* Class = "UITableViewSection"; headerTitle = "Выберите язык"; ObjectID = "hLX-Zz-b2s"; */
+"hLX-Zz-b2s.headerTitle" = "Choose language";
+
 /* Class = "UILabel"; text = "не оплачен"; ObjectID = "hla-Gh-b42"; */
 "hla-Gh-b42.text" = "not paid";
 

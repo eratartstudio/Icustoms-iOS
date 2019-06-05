@@ -122,7 +122,6 @@ class BalanceViewController: UIViewController {
             self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файл".localizedSafe)
         }
     }
-    
 }
 
 extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
@@ -336,5 +335,4 @@ extension TimeInterval {
         let int = Calendar.current.component(.month, from: date)
         return months[int - 1]
     }
-    
 }

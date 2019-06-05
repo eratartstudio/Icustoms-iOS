@@ -43,7 +43,6 @@ class RemainsViewController: UIViewController {
             self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить остатки".localizedSafe)
         }
     }
-    
 }
 
 extension RemainsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -63,7 +62,6 @@ extension RemainsViewController: UITableViewDataSource, UITableViewDelegate {
         controller.custom = items[indexPath.row]
         push(controller, animated: true)
     }
-    
 }
 
 class RemainTableCell: UITableViewCell {
@@ -86,5 +84,4 @@ class RemainTableCell: UITableViewCell {
         tollLabel.text = String(format: "%.2f", custom.totalToll) + " Р"
         dateLabel.text = Date.from(string: custom.actualDate, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm")
     }
-    
 }

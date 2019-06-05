@@ -37,6 +37,9 @@
 "Невозможно отобразить данные" = "Failed to display data";
 "Невозможно загрузить данные" = "Failed to load data";
 "Готово" = "Done";
+"Выберите язык" = "Choose language";
+"Для смены языка, необходимо перезапустить приложение" = "For change language, you need to restart app";
+"Перезапустить" = "Reload";
 
 "Все" = "All";
 "Создан" = "Created";
