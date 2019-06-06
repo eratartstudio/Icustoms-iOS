@@ -79,7 +79,7 @@ class RemainTableCell: UITableViewCell {
     
     private func updateContent() {
         guard let custom = custom else { return }
-        titleLabel.text = custom.custom.name
+        titleLabel.text = custom.custom.name.localizedSafe
         avansLabel.text = String(format: "%.2f", custom.totalAvans) + " Р"
         tollLabel.text = String(format: "%.2f", custom.totalToll) + " Р"
         dateLabel.text = Date.from(string: custom.actualDate, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm")

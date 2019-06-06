@@ -73,26 +73,29 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.lastSelection != nil {
-            self.tableView.cellForRow(at: self.lastSelection)?.accessoryType = .none
+        if indexPath.section == 1 {
+            if self.lastSelection != nil {
+                self.tableView.cellForRow(at: self.lastSelection)?.accessoryType = .none
+            }
+            
+            switch (indexPath.row, indexPath.section) {
+            case (0, 1):
+                // Russian
+                changeAppLanguage("ru")
+            case (1, 1):
+                // English
+                changeAppLanguage("en")
+            case (2, 1):
+                // Chinese
+                changeAppLanguage("zh")
+            default:
+                UserDefaults.standard.set(["en"], forKey: "AppleLanguages")
+                UserDefaults.standard.synchronize()
+            }
+            
+            self.lastSelection = indexPath
+            self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
-        
-        switch indexPath.row {
-        case 0:
-            // Russian
-            changeAppLanguage("ru")
-        case 1:
-            // English
-            changeAppLanguage("en")
-        case 2:
-            // Chinese
-            changeAppLanguage("zh")
-        default:
-            break
-        }
-        
-        self.lastSelection = indexPath
-        self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }

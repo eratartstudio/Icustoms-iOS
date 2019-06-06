@@ -2420,7 +2420,7 @@
                                             <outlet property="typeLabel" destination="Y9C-Uf-RZy" id="Lga-8w-721"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomPaymentTitleTableCell" id="nfu-kQ-6Ed">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomPaymentTitleTableCell" id="nfu-kQ-6Ed">
                                         <rect key="frame" x="0.0" y="229.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nfu-kQ-6Ed" id="7Hb-SB-qcD">
@@ -2611,7 +2611,7 @@
                         <sections>
                             <tableViewSection id="Kst-dI-8hz">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="RbT-P9-Zmh" style="IBUITableViewCellStyleDefault" id="Lgr-fg-mlX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="RbT-P9-Zmh" style="IBUITableViewCellStyleDefault" id="Lgr-fg-mlX">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lgr-fg-mlX" id="9te-NA-pKS">

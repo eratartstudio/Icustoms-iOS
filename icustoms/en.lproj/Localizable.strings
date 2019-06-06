@@ -85,3 +85,11 @@
 "ДТ досмотр завершен, ДТ на проверке" = "CD inspection completed, CD under verification";
 
 "ru" = "en";
+
+"Пулковская таможня" = "Pulkovo Customs";
+"Санкт-Петербургская таможня" = "St. Petersburg Customs";
+"Московская областная таможня" = "Moscow Regional Customs";
+"Шереметьевская таможня" = "Sheremetyevo Customs";
+"Домодедовская таможня" = "Domodedovo Customs";
+"Внуковская таможня" = "Vnukovo Customs";
+"Единый лицевой счет" = "Single personal account";

@@ -21,7 +21,7 @@ class CustomDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = custom.custom.name
+        titleLabel.text = custom.custom.name.localizedSafe
         totalAvansLabel.text = String(format: "%.2f", custom.totalAvans) + " Р"
         totalTollLabel.text = String(format: "%.2f", custom.totalToll) + " Р"
     }
