@@ -76,7 +76,7 @@ class OrderDetailViewController: UIViewController {
             } else {
                 paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
             }
-            paidLabel.text = "оплачен \(Int(percentPaid))%"
+            paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
         } else {
             paidLabel.isHidden = order.isPaid
         }
@@ -110,7 +110,7 @@ class OrderDetailViewController: UIViewController {
     
     @IBAction func openLinkInvoice() {
         guard !order.invoiceNumber.isEmpty else {
-            self.showAlert("Ошибка", message: "Трек не указан")
+            self.showAlert("Ошибка".localizedSafe, message: "Трек не указан".localizedSafe)
             return
         }
         guard let invoiceId = order.invoice?.id else {

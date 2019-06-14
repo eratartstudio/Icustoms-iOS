@@ -40,6 +40,7 @@
 "Выберите язык" = "Choose language";
 "Для смены языка, необходимо перезапустить приложение" = "For change language, you need to restart app";
 "Перезапустить" = "Reload";
+"Трек не указан" = "Track not specified";
 
 "Все" = "All";
 "Создан" = "Created";
@@ -50,6 +51,8 @@
 "ДТ На проверке" = "CD Under verification";
 "ДТ Выпуск" = "CD Issue";
 "ДТ Осуществляется досмотр" = "CD Undergoes inspection";
+
+"оплачен" = "paid ";
 
 "Условный выпуск" = "Conditional release";
 "Завершен" = "Completed";
