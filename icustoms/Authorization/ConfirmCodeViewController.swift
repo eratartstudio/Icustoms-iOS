@@ -21,10 +21,12 @@ class ConfirmCodeViewController: UIViewController {
     @IBOutlet weak var confirmButton: Button!
  
     var isFirst: Bool = true
+    //var local: Localization!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //local = Localization.current()
         confirmButton.isHidden = true
         descriptionLabel.text = "Введите код из СМС отправленный на номер:\n".localizedSafe + "\(authorization.phone)"
         resendLabel.textAlignment = .center
@@ -39,6 +41,28 @@ class ConfirmCodeViewController: UIViewController {
     
     @IBAction func confirmButtonDidTap() {
         let accounts = authorization.accounts.filter { !$0.is_blocked }
+        
+        if let account = accounts.first, accounts.count == 1 {
+            let phone = authorization.phone
+            guard let code = codeField.text else { return }
+            SVProgressHUD.show()
+            API.default.checkSms(phone, code: Int(code) ?? 0, accountId: account.id, success: { [weak self] (response) in
+                SVProgressHUD.dismiss()
+                if let token = response?.token {
+                    let user = User()
+                    user.token = token
+                    Database.default.add(user)
+                    let mainController = Storyboard.Main.initialViewController!
+                    self?.present(mainController, animated: true, completion: nil)
+                } else {
+                    self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
+                }
+            }) { [weak self] (error, statusCode) in
+                SVProgressHUD.dismiss()
+                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
+            }
+            return
+        }
         
         let alertController = UIAlertController(title: "Выберите аккаунт для входа".localizedSafe, message: nil, preferredStyle: .alert)
         for account in accounts {

@@ -67,7 +67,19 @@ class OrderDetailViewController: UIViewController {
         releaseCircleView.style = .inside
         
         orderNumberLabel.text = order.orderId
-        paidLabel.isHidden = order.isPaid
+        
+//        paidLabel.isHidden = order.isPaid
+//        order.invoice
+        if let percentPaid = order.invoice?.percentPaid, percentPaid > 0 {
+            if percentPaid >= 100 {
+                paidLabel.backgroundColor = UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+            } else {
+                paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
+            }
+            paidLabel.text = "оплачен \(Int(percentPaid))%"
+        } else {
+            paidLabel.isHidden = order.isPaid
+        }
         
         let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
         let dateFormatter = DateFormatter()
@@ -76,12 +88,12 @@ class OrderDetailViewController: UIViewController {
         dateLabel.text = dateFormatter.string(from: date).uppercased()
         prepareStatus(order.status?.id ?? 0)
         
-        invoiceNumberLabel.text = order.invoiceNumber
+        invoiceNumberLabel.text = order.invoiceNumber.isEmpty ? "-" : order.invoiceNumber
         deliveryNameLabel.text = order.deliveryService
         currencyLabel.text = order.currency?.code
         currencyRateLabel.text = order.currency?.rate
-        avansLabel.text = order.prepaid
-        tollLabel.text = order.toll
+        avansLabel.text = order.prepaid.isEmpty ? "-" : order.prepaid
+        tollLabel.text = order.toll.isEmpty ? "-" : order.toll
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,6 +109,10 @@ class OrderDetailViewController: UIViewController {
     }
     
     @IBAction func openLinkInvoice() {
+        guard !order.invoiceNumber.isEmpty else {
+            self.showAlert("Ошибка", message: "Трек не указан")
+            return
+        }
         guard let invoiceId = order.invoice?.id else {
             self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
             return

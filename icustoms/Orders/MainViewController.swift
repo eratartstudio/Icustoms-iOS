@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import Cosmos
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController {//, Localizable 
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topFilterConstraint: NSLayoutConstraint!
@@ -29,8 +29,13 @@ class MainViewController: UIViewController {
     
     var refreshControl: UIRefreshControl = UIRefreshControl()
     
+    //var locale: Localization!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //locale = Localization.current()
+        //localize(locale)
         
         refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
         tableView.addSubview(refreshControl)
@@ -58,6 +63,12 @@ class MainViewController: UIViewController {
         
         NotificationManager.default.registerPushNotifications()
     }
+    
+//    func localize(_ locale: Localization) {
+//        self.locale = locale
+//        createSearchController()
+//        update()
+//    }
     
     @objc func update() {
         if searchController.isActive || filter != nil {
@@ -227,11 +238,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         if order.isEnded {
             let cell = tableView.dequeueReusableCell(EndedOrderTableCell.self, for: indexPath)
+            //cell.locale = locale
             cell.order = order
             cell.controller = self
             return cell
         }
         let cell = tableView.dequeueReusableCell(ActiveOrderTableCell.self, for: indexPath)
+        //cell.locale = locale
         cell.order = order
         return cell
     }
@@ -244,6 +257,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let order: Order
         if searchController.isActive || filter != nil {
             order = filteredOrders[indexPath.section][indexPath.row]
+            navigationController?.isNavigationBarHidden = false
         } else {
             order = orders[indexPath.section][indexPath.row]
         }
@@ -316,6 +330,8 @@ class ActiveOrderTableCell: UITableViewCell {
     let activeColor: UIColor = UIColor(red: 111/255, green: 184/255, blue: 98/255, alpha: 1)
     let inactiveColor: UIColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
     
+    //var locale: Localization!
+    
     var order: Order? {
         didSet {
             updateContent()
@@ -327,7 +343,18 @@ class ActiveOrderTableCell: UITableViewCell {
         
         orderIdLabel.text = order.orderId
         statusLabel.text = order.status?.name.localized
-        paidLabel.isHidden = order.isPaid
+        
+        if let percentPaid = order.invoice?.percentPaid, percentPaid > 0 {
+            if percentPaid >= 100 {
+                paidLabel.backgroundColor = UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+            } else {
+                paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
+            }
+            //paidLabel.text = String(format: locale.get(.paid_percent), Int(percentPaid))
+        } else {
+            paidLabel.isHidden = order.isPaid
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM yyyy"
@@ -500,7 +527,7 @@ class EndedOrderTableCell: UITableViewCell {
         reviewInputCosmosView.settings.starSize = 30
         reviewInputCosmosView.rating = 0
     }
-    
+    //var locale: Localization!
     var order: Order? {
         didSet {
             updateContent()

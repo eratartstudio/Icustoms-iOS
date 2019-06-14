@@ -140,6 +140,7 @@ struct Order: Decodable {
 struct OrderInvoice: Decodable {
     let id: Int
     let createdAt: String
+    let percentPaid: Double?
 }
 
 struct OrderStatus: Decodable {
