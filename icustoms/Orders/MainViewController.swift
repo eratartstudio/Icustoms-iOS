@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import Cosmos
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, Localizable {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topFilterConstraint: NSLayoutConstraint!
@@ -29,8 +29,13 @@ class MainViewController: UIViewController {
     
     var refreshControl: UIRefreshControl = UIRefreshControl()
     
+    var locale: Localization!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locale = Localization.current()
+        localize(locale)
         
         refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
         tableView.addSubview(refreshControl)
@@ -53,10 +58,16 @@ class MainViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+            self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
         }
         
         NotificationManager.default.registerPushNotifications()
+    }
+    
+    func localize(_ locale: Localization) {
+        self.locale = locale
+        createSearchController()
+        update()
     }
     
     @objc func update() {
@@ -75,7 +86,7 @@ class MainViewController: UIViewController {
                 self?.refreshControl.endRefreshing()
                 }, failure: { [weak self] (error, statusCode) in
                     self?.refreshControl.endRefreshing()
-                    self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+                    self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
             })
         } else {
             API.default.orders(success: { [weak self] (orders) in
@@ -87,7 +98,7 @@ class MainViewController: UIViewController {
                 self?.refreshControl.endRefreshing()
             }) { [weak self] (error, statusCode) in
                 self?.refreshControl.endRefreshing()
-                self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+                self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
             }
         }
     }
@@ -97,8 +108,8 @@ class MainViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Поиск"
-        searchController.searchBar.setValue("Отмена", forKey: "_cancelButtonText")
+        searchController.searchBar.placeholder = locale.get(.search)
+        searchController.searchBar.setValue(locale.get(.cancel), forKey: "_cancelButtonText")
         searchController.dimsBackgroundDuringPresentation = false
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -117,7 +128,7 @@ class MainViewController: UIViewController {
     
     @objc func showFilterView() {
         topFilterConstraint.constant = 0
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Закрыть", style: .plain, target: self, action: #selector(hideFilterView))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: locale.get(.close), style: .plain, target: self, action: #selector(hideFilterView))
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
@@ -174,7 +185,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegat
                 self?.filteredOrders = [filtered, closed]
                 self?.tableView.reloadData()
             }, failure: { (error, statusCode) in
-                self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+                self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
             })
         })
         
@@ -212,7 +223,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         view.backgroundColor = .clear
         let label = UILabel(frame: CGRect(x: 10, y: 15, width: UIScreen.main.bounds.width - 20, height: 30))
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Завершенные заказы"
+        label.text = locale.get(.completed_orders)
         view.addSubview(label)
         
         return view
@@ -227,11 +238,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         if order.isEnded {
             let cell = tableView.dequeueReusableCell(EndedOrderTableCell.self, for: indexPath)
+            cell.locale = locale
             cell.order = order
             cell.controller = self
             return cell
         }
         let cell = tableView.dequeueReusableCell(ActiveOrderTableCell.self, for: indexPath)
+        cell.locale = locale
         cell.order = order
         return cell
     }
@@ -244,6 +257,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let order: Order
         if searchController.isActive || filter != nil {
             order = filteredOrders[indexPath.section][indexPath.row]
+            navigationController?.isNavigationBarHidden = false
         } else {
             order = orders[indexPath.section][indexPath.row]
         }
@@ -276,7 +290,7 @@ extension MainViewController: FilterViewDelegate {
             self?.tableView.setContentOffset(.zero, animated: true)
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить заказы")
+            self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
         }
     }
     
@@ -316,6 +330,8 @@ class ActiveOrderTableCell: UITableViewCell {
     let activeColor: UIColor = UIColor(red: 111/255, green: 184/255, blue: 98/255, alpha: 1)
     let inactiveColor: UIColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
     
+    var locale: Localization!
+    
     var order: Order? {
         didSet {
             updateContent()
@@ -327,7 +343,18 @@ class ActiveOrderTableCell: UITableViewCell {
         
         orderIdLabel.text = order.orderId
         statusLabel.text = order.status?.name
-        paidLabel.isHidden = order.isPaid
+        
+        if let percentPaid = order.invoice?.percentPaid, percentPaid > 0 {
+            if percentPaid >= 100 {
+                paidLabel.backgroundColor = UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+            } else {
+                paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
+            }
+            paidLabel.text = String(format: locale.get(.paid_percent), Int(percentPaid))
+        } else {
+            paidLabel.isHidden = order.isPaid
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru")
         dateFormatter.dateFormat = "dd MMMM yyyy"
@@ -500,7 +527,7 @@ class EndedOrderTableCell: UITableViewCell {
         reviewInputCosmosView.settings.starSize = 30
         reviewInputCosmosView.rating = 0
     }
-    
+    var locale: Localization!
     var order: Order? {
         didSet {
             updateContent()
@@ -519,7 +546,7 @@ class EndedOrderTableCell: UITableViewCell {
         
         cosmosView.rating = order.reviewIsExist ? Double(order.review!.score) : 0
         reviewContainerView.backgroundColor = order.reviewIsExist ? reviewCompleteBackgroundColor : .white
-        reviewTitleLabel.text = order.reviewIsExist ? "Оценка поставлена" : "Оцените заказ"
+        reviewTitleLabel.text = order.reviewIsExist ? locale.get(.scored) : locale.get(.score_order)
     }
     
     @IBAction func reviewClicked() {
@@ -527,7 +554,7 @@ class EndedOrderTableCell: UITableViewCell {
         guard !order.reviewIsExist else { return }
         controller?.reviewClicked = true
         
-        let alertController = UIAlertController(title: "Оцените заказ\n\(order.orderId)", message: "Пожалуйста оцените работу\nменеджера при выполнении заказа.\nПомогите нам стать лучше!\n\n\n", preferredStyle: .alert)
+        let alertController = UIAlertController(title: locale.get(.score_order) + "\n\(order.orderId)", message: locale.get(.review_after_order), preferredStyle: .alert)
         
         reviewInputCosmosView.frame = CGRect(x: 0, y: 130, width: 180, height: 30)
         reviewInputCosmosView.center = CGPoint(x: alertController.view.center.x - 50, y: 145)
@@ -536,10 +563,10 @@ class EndedOrderTableCell: UITableViewCell {
         
         alertController.addTextField { (textField) in
             textField.frame = CGRect(x: 15, y: 170, width: UIScreen.main.bounds.width - 135, height: 30)
-            textField.placeholder = "Оставьте отзыв"
+            textField.placeholder = self.locale.get(.submit_feedback)
         }
         
-        let sendAction = UIAlertAction(title: "Отправить", style: .default) { _ in
+        let sendAction = UIAlertAction(title: locale.get(.submit), style: .default) { _ in
             SVProgressHUD.show()
             let text = alertController.textFields?.first?.text ?? ""
             let score = Int(self.reviewInputCosmosView.rating)
@@ -551,10 +578,10 @@ class EndedOrderTableCell: UITableViewCell {
                 self.controller?.updateOrder(item, section: 1)
             }, failure: { (error, statusCode) in
                 SVProgressHUD.dismiss()
-                self.controller?.showAlert("Ошибка", message: "Невозможно отправить отзыв")
+                self.controller?.showAlert(self.locale.get(.error), message: self.locale.get(.feedback_submission_failed))
             })
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: locale.get(.cancel), style: .default, handler: nil)
         alertController.addAction(sendAction)
         alertController.addAction(cancelAction)
         controller?.present(alertController, animated: true, completion: nil)

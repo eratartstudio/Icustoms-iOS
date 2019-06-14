@@ -46,6 +46,10 @@
 		38A38EF022450D3200505D36 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38EED22450D2F00505D36 /* Country.swift */; };
 		38A38EF122450D3200505D36 /* countryCodes.json in Resources */ = {isa = PBXBuildFile; fileRef = 38A38EEE22450D2F00505D36 /* countryCodes.json */; };
 		38A38EF422450E4500505D36 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38EF322450E4500505D36 /* Button.swift */; };
+		38F2A935229BD031001D90E4 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2A934229BD031001D90E4 /* Localization.swift */; };
+		38F2A937229BD3B8001D90E4 /* en_US in Resources */ = {isa = PBXBuildFile; fileRef = 38F2A936229BD3B8001D90E4 /* en_US */; };
+		38F2A939229BD3C8001D90E4 /* ru_RU in Resources */ = {isa = PBXBuildFile; fileRef = 38F2A938229BD3C8001D90E4 /* ru_RU */; };
+		38F2A93B229BD3D0001D90E4 /* zh_Hans_SG in Resources */ = {isa = PBXBuildFile; fileRef = 38F2A93A229BD3D0001D90E4 /* zh_Hans_SG */; };
 		38FF055C2253A4AE00FF72DF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF055B2253A4AE00FF72DF /* Profile.swift */; };
 		38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF055D2253A7B400FF72DF /* ProfileViewController.swift */; };
 		4E1BAD235E71789A206E829C /* Pods_icustoms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B5E5046286307C044824A /* Pods_icustoms.framework */; };
@@ -119,6 +123,10 @@
 		38A38EEE22450D2F00505D36 /* countryCodes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countryCodes.json; sourceTree = "<group>"; };
 		38A38EF322450E4500505D36 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		38C6FD0D2265C72300961921 /* icustoms.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = icustoms.entitlements; sourceTree = "<group>"; };
+		38F2A934229BD031001D90E4 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		38F2A936229BD3B8001D90E4 /* en_US */ = {isa = PBXFileReference; lastKnownFileType = text; path = en_US; sourceTree = "<group>"; };
+		38F2A938229BD3C8001D90E4 /* ru_RU */ = {isa = PBXFileReference; lastKnownFileType = text; path = ru_RU; sourceTree = "<group>"; };
+		38F2A93A229BD3D0001D90E4 /* zh_Hans_SG */ = {isa = PBXFileReference; lastKnownFileType = text; path = zh_Hans_SG; sourceTree = "<group>"; };
 		38FF055B2253A4AE00FF72DF /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		38FF055D2253A7B400FF72DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3AF21E9150163A676BC28EBD /* Pods-icustoms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icustoms.debug.xcconfig"; path = "Pods/Target Support Files/Pods-icustoms/Pods-icustoms.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +186,7 @@
 			children = (
 				38C6FD0D2265C72300961921 /* icustoms.entitlements */,
 				3848BD672243E4EE0047FBC9 /* AppDelegate.swift */,
+				38F2A934229BD031001D90E4 /* Localization.swift */,
 				380C3F902264DDD0007C1518 /* GoogleService-Info.plist */,
 				38A38ED62245067000505D36 /* Authorization */,
 				3891F60B224CD4C9006AE04E /* Orders */,
@@ -190,6 +199,9 @@
 				3848BD6E2243E4EE0047FBC9 /* Assets.xcassets */,
 				3848BD702243E4EE0047FBC9 /* LaunchScreen.storyboard */,
 				3848BD732243E4EE0047FBC9 /* Info.plist */,
+				38F2A936229BD3B8001D90E4 /* en_US */,
+				38F2A938229BD3C8001D90E4 /* ru_RU */,
+				38F2A93A229BD3D0001D90E4 /* zh_Hans_SG */,
 			);
 			path = icustoms;
 			sourceTree = "<group>";
@@ -413,9 +425,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				38A38ED52245066B00505D36 /* Authorization.storyboard in Resources */,
+				38F2A939229BD3C8001D90E4 /* ru_RU in Resources */,
 				3848BD722243E4EE0047FBC9 /* LaunchScreen.storyboard in Resources */,
+				38F2A937229BD3B8001D90E4 /* en_US in Resources */,
 				380C3F912264DDD0007C1518 /* GoogleService-Info.plist in Resources */,
 				3848BD6F2243E4EE0047FBC9 /* Assets.xcassets in Resources */,
+				38F2A93B229BD3D0001D90E4 /* zh_Hans_SG in Resources */,
 				3848BD6D2243E4EE0047FBC9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +541,7 @@
 				383128D122563E930057C726 /* OrderFilesViewController.swift in Sources */,
 				38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */,
 				3891F61C224CF3D2006AE04E /* Transaction.swift in Sources */,
+				38F2A935229BD031001D90E4 /* Localization.swift in Sources */,
 				3845ACB0226490A800D402F8 /* NotificationManager.swift in Sources */,
 				3831296A225B69D20057C726 /* CustomDetailViewController.swift in Sources */,
 				3845ACAE2264851400D402F8 /* SettingsViewController.swift in Sources */,

@@ -21,12 +21,15 @@ class ConfirmCodeViewController: UIViewController {
     @IBOutlet weak var confirmButton: Button!
  
     var isFirst: Bool = true
+    var local: Localization!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        local = Localization.current()
         confirmButton.isHidden = true
-        descriptionLabel.text = "Введите код из СМС отправленный на номер:\n\(authorization.phone)"
+        
+        descriptionLabel.text = local.get(.enter_sms_code) + "\n\(authorization.phone)"
         resendLabel.textAlignment = .center
         resentButton()
     }
@@ -40,7 +43,29 @@ class ConfirmCodeViewController: UIViewController {
     @IBAction func confirmButtonDidTap() {
         let accounts = authorization.accounts.filter { !$0.is_blocked }
         
-        let alertController = UIAlertController(title: "Выберите аккаунт для входа", message: nil, preferredStyle: .alert)
+        if let account = accounts.first, accounts.count == 1 {
+            let phone = authorization.phone
+            guard let code = codeField.text else { return }
+            SVProgressHUD.show()
+            API.default.checkSms(phone, code: Int(code) ?? 0, accountId: account.id, success: { [weak self] (response) in
+                SVProgressHUD.dismiss()
+                if let token = response?.token {
+                    let user = User()
+                    user.token = token
+                    Database.default.add(user)
+                    let mainController = Storyboard.Main.initialViewController!
+                    self?.present(mainController, animated: true, completion: nil)
+                } else {
+                    self?.showAlert(self?.local.get(.error), message: self?.local.get(.authorization_failed))
+                }
+            }) { [weak self] (error, statusCode) in
+                SVProgressHUD.dismiss()
+                self?.showAlert(self?.local.get(.error), message: self?.local.get(.authorization_failed))
+            }
+            return
+        }
+        
+        let alertController = UIAlertController(title: local.get(.select_account_login), message: nil, preferredStyle: .alert)
         for account in accounts {
             guard !account.is_blocked else { return }
             let action = UIAlertAction(title: account.company, style: .default) { [weak self] _ in
@@ -55,17 +80,17 @@ class ConfirmCodeViewController: UIViewController {
                         let mainController = Storyboard.Main.initialViewController!
                         self?.present(mainController, animated: true, completion: nil)
                     } else {
-                         self?.showAlert("Ошибка", message: "Невозможно авторизоваться")
+                         self?.showAlert(self?.local.get(.error), message: self?.local.get(.authorization_failed))
                     }
                 }, failure: { [weak self] (error, statusCode) in
                     SVProgressHUD.dismiss()
-                    self?.showAlert("Ошибка", message: "Невозможно авторизоваться")
+                    self?.showAlert(self?.local.get(.error), message: self?.local.get(.authorization_failed))
                 })
             }
             alertController.addAction(action)
         }
         
-        alertController.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: local.get(.cancel), style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -88,7 +113,7 @@ class ConfirmCodeViewController: UIViewController {
         let endTime = startTime + 60
         resendButton.isHidden = true
         resendLabel.isHidden = false
-        self.resendLabel.text = "Повторно запросить код можно через 60 сек."
+        self.resendLabel.text = String(format: local.get(.you_can_request_code_again), 60)
         isCanResend = false
         
         if !isFirst {
@@ -105,7 +130,8 @@ class ConfirmCodeViewController: UIViewController {
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] (timer) in
             let currentTime = Int(Date().timeIntervalSince1970)
             if endTime > currentTime {
-                self.resendLabel.text = "Повторно запросить код можно через \(endTime - currentTime) сек."
+                
+                self.resendLabel.text = String(format: self.local.get(.you_can_request_code_again), endTime - currentTime)
             } else {
                 timer.invalidate()
                 self.isCanResend = true

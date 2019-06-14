@@ -60,7 +60,7 @@ class API: HTTP {
     
     private override init() {
         super.init()
-        printLogs = true
+        printLogs = false
     }
     
     let host: String = "http://lk.intrise.ru/api"
