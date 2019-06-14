@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = Storyboard.Authorization.initialViewController
         }
         
-        Localization.current()
+        //Localization.current()
         
         return true
     }
