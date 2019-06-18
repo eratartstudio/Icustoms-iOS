@@ -346,7 +346,11 @@ class ActiveOrderTableCell: UITableViewCell {
         
         if let percentPaid = order.invoice?.percentPaid, percentPaid > 0 {
             if percentPaid >= 100 {
-                paidLabel.backgroundColor = UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+                paidLabel.backgroundColor = activeColor//UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+                paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
+            } else if percentPaid > 0 {
+                paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
+                paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
             } else {
                 paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
             }
