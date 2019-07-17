@@ -35,8 +35,8 @@
 /* Class = "UINavigationItem"; title = "Помощь"; ObjectID = "5Zf-wQ-asC"; */
 "5Zf-wQ-asC.title" = "Help";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "5bA-bP-L65"; */
-"5bA-bP-L65.text" = "Title";
+/* Class = "UILabel"; text = "Компания"; ObjectID = "5bA-bP-L65"; */
+"5bA-bP-L65.text" = "Company";
 
 /* Class = "UILabel"; text = "Остатки актуальны на"; ObjectID = "5wf-nb-dVc"; */
 "5wf-nb-dVc.text" = "Remains relevant as of";
@@ -308,8 +308,8 @@
 /* Class = "UILabel"; text = "Выпуск ГТД"; ObjectID = "sNb-kL-b2Q"; */
 "sNb-kL-b2Q.text" = "Issuing CCD";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "sQP-eJ-Ud2"; */
-"sQP-eJ-Ud2.text" = "Label";
+/* Class = "UILabel"; text = "ID"; ObjectID = "sQP-eJ-Ud2"; */
+"sQP-eJ-Ud2.text" = "ID";
 
 /* Class = "UINavigationItem"; title = "О приложении"; ObjectID = "tsh-LU-qhx"; */
 "tsh-LU-qhx.title" = "About the app";
@@ -320,8 +320,8 @@
 /* Class = "UILabel"; text = "Открыть счёт"; ObjectID = "ufa-MY-W7v"; */
 "ufa-MY-W7v.text" = "Open an account";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "ujq-cC-bpA"; */
-"ujq-cC-bpA.text" = "Title";
+/* Class = "UILabel"; text = "Телефон"; ObjectID = "ujq-cC-bpA"; */
+"ujq-cC-bpA.text" = "Phone";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "vCt-GP-RHt"; */
 "vCt-GP-RHt.text" = "Label";
@@ -344,8 +344,8 @@
 /* Class = "UINavigationItem"; title = "Остатки в ТО"; ObjectID = "y7s-kF-SnA"; */
 "y7s-kF-SnA.title" = "CA balance";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "yE7-Tj-5WC"; */
-"yE7-Tj-5WC.text" = "Title";
+/* Class = "UILabel"; text = "ФИО"; ObjectID = "yE7-Tj-5WC"; */
+"yE7-Tj-5WC.text" = "Full name";
 
 /* Class = "UILabel"; text = "Завершён"; ObjectID = "yFo-4V-IIJ"; */
 "yFo-4V-IIJ.text" = "Completed";

@@ -39,7 +39,7 @@ class ProfileViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard profile != nil else { return 0 }
+        //guard profile != nil else { return 0 }
         return 4
     }
     
@@ -49,5 +49,4 @@ class ProfileViewController: UITableViewController {
             UIApplication.shared.keyWindow?.rootViewController = Storyboard.Authorization.initialViewController
         }
     }
-    
 }
