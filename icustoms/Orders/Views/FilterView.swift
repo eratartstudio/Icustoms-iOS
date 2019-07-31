@@ -52,7 +52,7 @@ protocol FilterViewDelegate: class {
 }
 
 class FilterView: UIView {
-    
+
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var leftSelectedConstraint: NSLayoutConstraint!
@@ -125,10 +125,10 @@ class FilterView: UIView {
     @objc private func datePickerDidChange(_ picker: UIDatePicker) {
         if picker == fromDatePicker {
             toDatePicker.minimumDate = picker.date
-            dateFromField.text = "c " + picker.date.string(with: "dd.MM.yyyy")
+            dateFromField.text = "c ".localizedSafe + picker.date.string(with: "dd.MM.yyyy")
             filter.dateFrom = picker.date
         } else {
-            dateToField.text = "до " + picker.date.string(with: "dd.MM.yyyy")
+            dateToField.text = "до ".localizedSafe + picker.date.string(with: "dd.MM.yyyy")
             filter.dateTo = picker.date
         }
     }

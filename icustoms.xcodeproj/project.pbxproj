@@ -37,7 +37,6 @@
 		3891F61A224CF036006AE04E /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891F619224CF036006AE04E /* Custom.swift */; };
 		3891F61C224CF3D2006AE04E /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891F61B224CF3D2006AE04E /* Transaction.swift */; };
 		38A38ED3224505C700505D36 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38ED2224505C700505D36 /* Database.swift */; };
-		38A38ED52245066B00505D36 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A38ED42245066B00505D36 /* Authorization.storyboard */; };
 		38A38ED82245067F00505D36 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38ED72245067F00505D36 /* Storyboard.swift */; };
 		38A38EDA224509D500505D36 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38ED9224509D500505D36 /* LoginViewController.swift */; };
 		38A38EE422450D1D00505D36 /* country_flag.h in Headers */ = {isa = PBXBuildFile; fileRef = 38A38EE222450D1D00505D36 /* country_flag.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,13 +45,15 @@
 		38A38EF022450D3200505D36 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38EED22450D2F00505D36 /* Country.swift */; };
 		38A38EF122450D3200505D36 /* countryCodes.json in Resources */ = {isa = PBXBuildFile; fileRef = 38A38EEE22450D2F00505D36 /* countryCodes.json */; };
 		38A38EF422450E4500505D36 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A38EF322450E4500505D36 /* Button.swift */; };
-		38F2A935229BD031001D90E4 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F2A934229BD031001D90E4 /* Localization.swift */; };
-		38F2A937229BD3B8001D90E4 /* en_US in Resources */ = {isa = PBXBuildFile; fileRef = 38F2A936229BD3B8001D90E4 /* en_US */; };
-		38F2A939229BD3C8001D90E4 /* ru_RU in Resources */ = {isa = PBXBuildFile; fileRef = 38F2A938229BD3C8001D90E4 /* ru_RU */; };
-		38F2A93B229BD3D0001D90E4 /* zh_Hans_SG in Resources */ = {isa = PBXBuildFile; fileRef = 38F2A93A229BD3D0001D90E4 /* zh_Hans_SG */; };
 		38FF055C2253A4AE00FF72DF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF055B2253A4AE00FF72DF /* Profile.swift */; };
 		38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF055D2253A7B400FF72DF /* ProfileViewController.swift */; };
 		4E1BAD235E71789A206E829C /* Pods_icustoms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B5E5046286307C044824A /* Pods_icustoms.framework */; };
+		846DD68D22A57A25003E842F /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DD68B22A57A25003E842F /* Authorization.storyboard */; };
+		846DD69222A57A92003E842F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846DD69022A57A92003E842F /* Localizable.strings */; };
+		846DD69422A57B61003E842F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD69322A57B61003E842F /* String.swift */; };
+		84A6D54922A7FF8700FA1829 /* RussianLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6D54822A7FF8700FA1829 /* RussianLanguageCell.swift */; };
+		84A6D54B22A8012900FA1829 /* EnglishLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6D54A22A8012900FA1829 /* EnglishLanguageCell.swift */; };
+		84A6D54D22A8015500FA1829 /* ChineseLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6D54C22A8015500FA1829 /* ChineseLanguageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +114,6 @@
 		3891F619224CF036006AE04E /* Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom.swift; sourceTree = "<group>"; };
 		3891F61B224CF3D2006AE04E /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		38A38ED2224505C700505D36 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		38A38ED42245066B00505D36 /* Authorization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authorization.storyboard; sourceTree = "<group>"; };
 		38A38ED72245067F00505D36 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		38A38ED9224509D500505D36 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		38A38EE022450D1D00505D36 /* country_flag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = country_flag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,14 +123,26 @@
 		38A38EEE22450D2F00505D36 /* countryCodes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countryCodes.json; sourceTree = "<group>"; };
 		38A38EF322450E4500505D36 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		38C6FD0D2265C72300961921 /* icustoms.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = icustoms.entitlements; sourceTree = "<group>"; };
-		38F2A934229BD031001D90E4 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		38F2A936229BD3B8001D90E4 /* en_US */ = {isa = PBXFileReference; lastKnownFileType = text; path = en_US; sourceTree = "<group>"; };
-		38F2A938229BD3C8001D90E4 /* ru_RU */ = {isa = PBXFileReference; lastKnownFileType = text; path = ru_RU; sourceTree = "<group>"; };
-		38F2A93A229BD3D0001D90E4 /* zh_Hans_SG */ = {isa = PBXFileReference; lastKnownFileType = text; path = zh_Hans_SG; sourceTree = "<group>"; };
 		38FF055B2253A4AE00FF72DF /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		38FF055D2253A7B400FF72DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3AF21E9150163A676BC28EBD /* Pods-icustoms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icustoms.debug.xcconfig"; path = "Pods/Target Support Files/Pods-icustoms/Pods-icustoms.debug.xcconfig"; sourceTree = "<group>"; };
 		823B5E5046286307C044824A /* Pods_icustoms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_icustoms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		846DD68C22A57A25003E842F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authorization.storyboard; sourceTree = "<group>"; };
+		846DD68E22A57A2A003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Authorization.strings; sourceTree = "<group>"; };
+		846DD68F22A57A4D003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		846DD69122A57A92003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		846DD69322A57B61003E842F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		8470F44822A585A40024427A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Authorization.strings"; sourceTree = "<group>"; };
+		8470F44922A585A40024427A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		8470F44A22A585A40024427A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		8470F44B22A585A40024427A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		84A6D54222A7F3FB00FA1829 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Authorization.strings; sourceTree = "<group>"; };
+		84A6D54322A7F3FC00FA1829 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		84A6D54422A7F3FC00FA1829 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		84A6D54522A7F3FC00FA1829 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84A6D54822A7FF8700FA1829 /* RussianLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RussianLanguageCell.swift; sourceTree = "<group>"; };
+		84A6D54A22A8012900FA1829 /* EnglishLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishLanguageCell.swift; sourceTree = "<group>"; };
+		84A6D54C22A8015500FA1829 /* ChineseLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseLanguageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,9 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				38C6FD0D2265C72300961921 /* icustoms.entitlements */,
-				3848BD672243E4EE0047FBC9 /* AppDelegate.swift */,
-				38F2A934229BD031001D90E4 /* Localization.swift */,
-				380C3F902264DDD0007C1518 /* GoogleService-Info.plist */,
 				38A38ED62245067000505D36 /* Authorization */,
 				3891F60B224CD4C9006AE04E /* Orders */,
 				3891F60C224CD4D8006AE04E /* Customs */,
@@ -198,10 +207,10 @@
 				3848BD6B2243E4EE0047FBC9 /* Main.storyboard */,
 				3848BD6E2243E4EE0047FBC9 /* Assets.xcassets */,
 				3848BD702243E4EE0047FBC9 /* LaunchScreen.storyboard */,
+				3848BD672243E4EE0047FBC9 /* AppDelegate.swift */,
 				3848BD732243E4EE0047FBC9 /* Info.plist */,
-				38F2A936229BD3B8001D90E4 /* en_US */,
-				38F2A938229BD3C8001D90E4 /* ru_RU */,
-				38F2A93A229BD3D0001D90E4 /* zh_Hans_SG */,
+				380C3F902264DDD0007C1518 /* GoogleService-Info.plist */,
+				846DD69022A57A92003E842F /* Localizable.strings */,
 			);
 			path = icustoms;
 			sourceTree = "<group>";
@@ -253,6 +262,7 @@
 				38FF055D2253A7B400FF72DF /* ProfileViewController.swift */,
 				383128CC225631CF0057C726 /* NotificationsViewController.swift */,
 				3845ACAD2264851400D402F8 /* SettingsViewController.swift */,
+				84A6D54E22A8019C00FA1829 /* LanguageCell */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -265,6 +275,7 @@
 				382C6A0B2248F26B00ACF784 /* Extensions.swift */,
 				38A38ED2224505C700505D36 /* Database.swift */,
 				3845ACAF226490A800D402F8 /* NotificationManager.swift */,
+				846DD69322A57B61003E842F /* String.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -287,7 +298,7 @@
 		38A38ED62245067000505D36 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				38A38ED42245066B00505D36 /* Authorization.storyboard */,
+				846DD68B22A57A25003E842F /* Authorization.storyboard */,
 				38A38ED9224509D500505D36 /* LoginViewController.swift */,
 				382C6A02224513AF00ACF784 /* ConfirmCodeViewController.swift */,
 			);
@@ -312,6 +323,16 @@
 				01E82507E2BA9B11F4894854 /* Pods-icustoms.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		84A6D54E22A8019C00FA1829 /* LanguageCell */ = {
+			isa = PBXGroup;
+			children = (
+				84A6D54A22A8012900FA1829 /* EnglishLanguageCell.swift */,
+				84A6D54C22A8015500FA1829 /* ChineseLanguageCell.swift */,
+				84A6D54822A7FF8700FA1829 /* RussianLanguageCell.swift */,
+			);
+			path = LanguageCell;
 			sourceTree = "<group>";
 		};
 		FB6804EE94E87B6309A068AC /* Frameworks */ = {
@@ -407,6 +428,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				ru,
 			);
 			mainGroup = 3848BD5B2243E4EE0047FBC9;
 			productRefGroup = 3848BD652243E4EE0047FBC9 /* Products */;
@@ -424,13 +447,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38A38ED52245066B00505D36 /* Authorization.storyboard in Resources */,
-				38F2A939229BD3C8001D90E4 /* ru_RU in Resources */,
 				3848BD722243E4EE0047FBC9 /* LaunchScreen.storyboard in Resources */,
-				38F2A937229BD3B8001D90E4 /* en_US in Resources */,
+				846DD69222A57A92003E842F /* Localizable.strings in Resources */,
+				846DD68D22A57A25003E842F /* Authorization.storyboard in Resources */,
 				380C3F912264DDD0007C1518 /* GoogleService-Info.plist in Resources */,
 				3848BD6F2243E4EE0047FBC9 /* Assets.xcassets in Resources */,
-				38F2A93B229BD3D0001D90E4 /* zh_Hans_SG in Resources */,
 				3848BD6D2243E4EE0047FBC9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3831296F225CC08F0057C726 /* OrderFileDetailViewController.swift in Sources */,
+				84A6D54D22A8015500FA1829 /* ChineseLanguageCell.swift in Sources */,
 				3831296C225B7D470057C726 /* FilterView.swift in Sources */,
 				386C4116224EBAC800FDFE15 /* OrderDetailViewController.swift in Sources */,
 				38A38EF422450E4500505D36 /* Button.swift in Sources */,
@@ -541,8 +563,9 @@
 				383128D122563E930057C726 /* OrderFilesViewController.swift in Sources */,
 				38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */,
 				3891F61C224CF3D2006AE04E /* Transaction.swift in Sources */,
-				38F2A935229BD031001D90E4 /* Localization.swift in Sources */,
+				84A6D54B22A8012900FA1829 /* EnglishLanguageCell.swift in Sources */,
 				3845ACB0226490A800D402F8 /* NotificationManager.swift in Sources */,
+				84A6D54922A7FF8700FA1829 /* RussianLanguageCell.swift in Sources */,
 				3831296A225B69D20057C726 /* CustomDetailViewController.swift in Sources */,
 				3845ACAE2264851400D402F8 /* SettingsViewController.swift in Sources */,
 				3891F5FB224B84B1006AE04E /* BalanceDetailViewController.swift in Sources */,
@@ -550,6 +573,7 @@
 				38A38ED3224505C700505D36 /* Database.swift in Sources */,
 				38FF055C2253A4AE00FF72DF /* Profile.swift in Sources */,
 				3891F5F9224B74F0006AE04E /* BalanceViewController.swift in Sources */,
+				846DD69422A57B61003E842F /* String.swift in Sources */,
 				3848BD682243E4EE0047FBC9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +601,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				3848BD6C2243E4EE0047FBC9 /* Base */,
+				846DD68F22A57A4D003E842F /* en */,
+				8470F44922A585A40024427A /* zh-Hans */,
+				84A6D54322A7F3FC00FA1829 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -585,8 +612,31 @@
 			isa = PBXVariantGroup;
 			children = (
 				3848BD712243E4EE0047FBC9 /* Base */,
+				8470F44A22A585A40024427A /* zh-Hans */,
+				84A6D54422A7F3FC00FA1829 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		846DD68B22A57A25003E842F /* Authorization.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				846DD68C22A57A25003E842F /* Base */,
+				846DD68E22A57A2A003E842F /* en */,
+				8470F44822A585A40024427A /* zh-Hans */,
+				84A6D54222A7F3FB00FA1829 /* ru */,
+			);
+			name = Authorization.storyboard;
+			sourceTree = "<group>";
+		};
+		846DD69022A57A92003E842F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				846DD69122A57A92003E842F /* en */,
+				8470F44B22A585A40024427A /* zh-Hans */,
+				84A6D54522A7F3FC00FA1829 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -596,6 +646,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -657,6 +708,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -716,7 +768,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = icustoms/icustoms.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8VZCJV2GJY;
 				INFOPLIST_FILE = icustoms/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -726,7 +778,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icustoms.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "iCUSTOMS Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -740,7 +792,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = icustoms/icustoms.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8VZCJV2GJY;
 				INFOPLIST_FILE = icustoms/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -750,7 +802,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icustoms.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "iCUSTOMS Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

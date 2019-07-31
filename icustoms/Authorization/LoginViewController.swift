@@ -11,7 +11,7 @@ import country_flag
 import PhoneNumberKit
 import SVProgressHUD
 
-class LoginViewController: UIViewController, Localizable {
+class LoginViewController: UIViewController {//, Localizable
     
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var phoneField: PhoneNumberTextField!
@@ -23,21 +23,21 @@ class LoginViewController: UIViewController, Localizable {
     private var codes: [String] = []
     
     var authorization: AuthorizationResponse!
-    var local: Localization!
+    //var local: Localization!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        local = Localization.current()
+        //local = Localization.current()
         navigationController?.navigationBar.shadowImage = UIImage()
         codes = Country.current.codes()
         createPicker()
-        localize(local)
+        //localize(local)
     }
     
-    func localize(_ locale: Localization) {
-        
-    }
+//    func localize(_ locale: Localization) {
+//        
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -69,12 +69,12 @@ class LoginViewController: UIViewController, Localizable {
                 self.authorization = response
                 self.performSegue(withIdentifier: "ShowCodeView", sender: self)
             } else {
-                self.showAlert(self.local.get(.error), message: self.local.get(.authorization_failed))
+                self.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
             }
         }) { (error, statusCode) in
             print(error)
             SVProgressHUD.dismiss()
-            self.showAlert(self.local.get(.error), message: self.local.get(.authorization_failed))
+            self.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
         }
     }
     

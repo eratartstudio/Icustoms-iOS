@@ -71,5 +71,4 @@ struct CustomPayment: Decodable {
         sum = (try? container.decode(String.self, forKey: .sum)) ?? ""
         transferDate = try? container.decode(String.self, forKey: .transferDate)
     }
-    
 }

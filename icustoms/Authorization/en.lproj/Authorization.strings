@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Код подтверждения"; ObjectID = "58k-El-OcG"; */
+"58k-El-OcG.text" = "Сonfirmation code";
+
+/* Class = "UIButton"; normalTitle = "Выслать код"; ObjectID = "APF-6l-fQu"; */
+"APF-6l-fQu.normalTitle" = "Send code";
+
+/* Class = "UINavigationItem"; title = "iCUSTOMS"; ObjectID = "Hp0-fd-uXC"; */
+"Hp0-fd-uXC.title" = "iCUSTOMS";
+
+/* Class = "UIButton"; normalTitle = "Подтвердить"; ObjectID = "Ie8-i0-ZEu"; */
+"Ie8-i0-ZEu.normalTitle" = "Confirm";
+
+/* Class = "UIButton"; normalTitle = "Выслать код повторно"; ObjectID = "KAN-nv-euR"; */
+"KAN-nv-euR.normalTitle" = "Resend code";
+
+/* Class = "UINavigationItem"; title = "iCUSTOMS"; ObjectID = "PXf-b5-RP1"; */
+"PXf-b5-RP1.title" = "iCUSTOMS";
+
+/* Class = "UILabel"; text = "На этот номер придёт СМС код для входа"; ObjectID = "Wab-ZB-1PU"; */
+"Wab-ZB-1PU.text" = "This number will receive an SMS code to enter";
+
+/* Class = "UILabel"; text = "Номер телефона"; ObjectID = "knY-Lg-pFU"; */
+"knY-Lg-pFU.text" = "Phone number";
+
+/* Class = "UILabel"; text = "+7"; ObjectID = "n5X-p7-pRG"; */
+"n5X-p7-pRG.text" = "+7";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rDu-mb-bNg"; */
+"rDu-mb-bNg.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uC6-O6-Jn5"; */
+"uC6-O6-Jn5.text" = "Label";

@@ -19,17 +19,16 @@ class ConfirmCodeViewController: UIViewController {
     @IBOutlet weak var codeField: UITextField!
     @IBOutlet weak var resendLabel: UILabel!
     @IBOutlet weak var confirmButton: Button!
- 
+    
     var isFirst: Bool = true
-    var local: Localization!
+    //var local: Localization!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        local = Localization.current()
+        //local = Localization.current()
         confirmButton.isHidden = true
-        
-        descriptionLabel.text = local.get(.enter_sms_code) + "\n\(authorization.phone)"
+        descriptionLabel.text = "Введите код из СМС отправленный на номер:\n".localizedSafe + "\(authorization.phone)"
         resendLabel.textAlignment = .center
         resentButton()
     }
@@ -56,16 +55,16 @@ class ConfirmCodeViewController: UIViewController {
                     let mainController = Storyboard.Main.initialViewController!
                     self?.present(mainController, animated: true, completion: nil)
                 } else {
-                    self?.showAlert(self?.local.get(.error), message: self?.local.get(.authorization_failed))
+                    self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
                 }
             }) { [weak self] (error, statusCode) in
                 SVProgressHUD.dismiss()
-                self?.showAlert(self?.local.get(.error), message: self?.local.get(.authorization_failed))
+                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
             }
             return
         }
         
-        let alertController = UIAlertController(title: local.get(.select_account_login), message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Выберите аккаунт для входа".localizedSafe, message: nil, preferredStyle: .alert)
         for account in accounts {
             guard !account.is_blocked else { return }
             let action = UIAlertAction(title: account.company, style: .default) { [weak self] _ in
@@ -80,17 +79,17 @@ class ConfirmCodeViewController: UIViewController {
                         let mainController = Storyboard.Main.initialViewController!
                         self?.present(mainController, animated: true, completion: nil)
                     } else {
-                         self?.showAlert(self?.local.get(.error), message: self?.local.get(.authorization_failed))
+                        self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
                     }
-                }, failure: { [weak self] (error, statusCode) in
-                    SVProgressHUD.dismiss()
-                    self?.showAlert(self?.local.get(.error), message: self?.local.get(.authorization_failed))
+                    }, failure: { [weak self] (error, statusCode) in
+                        SVProgressHUD.dismiss()
+                        self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
                 })
             }
             alertController.addAction(action)
         }
         
-        alertController.addAction(UIAlertAction(title: local.get(.cancel), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Отмена".localizedSafe, style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -108,12 +107,42 @@ class ConfirmCodeViewController: UIViewController {
     
     var isCanResend: Bool = false
     
+    var totalTime = 60
+    var countdownTimer: Timer!
+    
+    func startTimer() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTime() {
+        resendLabel.text = "Повторно запросить код можно через ".localizedSafe + "\(timeFormatted(totalTime))" + " сек.".localizedSafe
+        
+        if totalTime != 0 {
+            totalTime -= 1
+        } else {
+            endTimer()
+        }
+    }
+    
+    func endTimer() {
+        countdownTimer.invalidate()
+        self.isCanResend = true
+        self.codeFieldDidChange(self.codeField)
+    }
+    
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds// % 60
+        //let minutes: Int = (totalSeconds / 60) % 60
+        //     let hours: Int = totalSeconds / 3600
+        return String(format: "%02d", seconds)
+    }
+    
     @IBAction func resentButton() {
-        let startTime = Int(Date().timeIntervalSince1970)
-        let endTime = startTime + 60
+        //let startTime = Int(Date().timeIntervalSince1970)
+        //let endTime = startTime + 60
         resendButton.isHidden = true
         resendLabel.isHidden = false
-        self.resendLabel.text = String(format: local.get(.you_can_request_code_again), 60)
+        self.resendLabel.text = "Повторно запросить код можно через 60 сек.".localizedSafe
         isCanResend = false
         
         if !isFirst {
@@ -127,17 +156,18 @@ class ConfirmCodeViewController: UIViewController {
         }
         isFirst = false
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] (timer) in
-            let currentTime = Int(Date().timeIntervalSince1970)
-            if endTime > currentTime {
-                
-                self.resendLabel.text = String(format: self.local.get(.you_can_request_code_again), endTime - currentTime)
-            } else {
-                timer.invalidate()
-                self.isCanResend = true
-                self.codeFieldDidChange(self.codeField)
-            }
-        }
+        startTimer()
+        
+        //        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] (timer) in
+        //            let currentTime = Int(Date().timeIntervalSince1970)
+        //            if endTime > currentTime {
+        //                self.resendLabel.text = "Повторно запросить код можно через ".localizedSafe + "\(endTime - currentTime)" + " сек.".localizedSafe
+        //            } else {
+        //                timer.invalidate()
+        //                self.isCanResend = true
+        //                self.codeFieldDidChange(self.codeField)
+        //            }
+        //        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

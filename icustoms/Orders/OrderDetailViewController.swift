@@ -72,18 +72,22 @@ class OrderDetailViewController: UIViewController {
 //        order.invoice
         if let percentPaid = order.invoice?.percentPaid, percentPaid > 0 {
             if percentPaid >= 100 {
-                paidLabel.backgroundColor = UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+                paidLabel.backgroundColor = activeColor//UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+                paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
+            } else if percentPaid > 0 {
+                paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
+                paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
             } else {
                 paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
             }
-            paidLabel.text = "оплачен \(Int(percentPaid))%"
+            //paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
         } else {
             paidLabel.isHidden = order.isPaid
         }
         
         let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM yyyy"
         dateLabel.text = dateFormatter.string(from: date).uppercased()
         prepareStatus(order.status?.id ?? 0)
@@ -105,20 +109,20 @@ class OrderDetailViewController: UIViewController {
     
     @IBAction func copyNameOrder() {
         UIPasteboard.general.string = order.orderId
-        view.makeToast("Номер заказа скопирован!")
+        view.makeToast("Номер заказа скопирован!".localizedSafe)
     }
     
     @IBAction func openLinkInvoice() {
         guard !order.invoiceNumber.isEmpty else {
-            self.showAlert("Ошибка", message: "Трек не указан")
+            self.showAlert("Ошибка".localizedSafe, message: "Трек не указан".localizedSafe)
             return
         }
         guard let invoiceId = order.invoice?.id else {
-            self.showAlert("Ошибка", message: "Файла не существует")
+            self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
             return
         }
         guard let url = URL(string: API.default.invoiceFileLink(invoiceId)) else {
-            self.showAlert("Ошибка", message: "Файла не существует")
+            self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
             return
         }
         let safariViewController = SFSafariViewController(url: url)
@@ -127,7 +131,7 @@ class OrderDetailViewController: UIViewController {
     
     @IBAction func saveInvoice() {
         guard let invoiceId = order.invoice?.id else {
-            self.showAlert("Ошибка", message: "Файла не существует")
+            self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
             return
         }
         SVProgressHUD.show()
@@ -139,7 +143,7 @@ class OrderDetailViewController: UIViewController {
         }) { [weak self] (error, statusCode) in
             print(error)
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить файл")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файл".localizedSafe)
         }
     }
     
@@ -198,7 +202,7 @@ extension OrderDetailViewController {
             endedCompleted.isHidden = true
             releaseCircleContainerView.isHidden = true
             endedView.backgroundColor = inactiveColor
-            declarationView.backgroundColor = activeColor
+            declarationView.backgroundColor = .white
             
             analyticLabel.textColor = activeColor
             declarationLabel.textColor = activeColor

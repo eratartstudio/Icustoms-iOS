@@ -29,7 +29,7 @@ class RemainsViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить остатки")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить остатки".localizedSafe)
         }
     }
     
@@ -40,10 +40,9 @@ class RemainsViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             self?.refreshControl.endRefreshing()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить остатки")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить остатки".localizedSafe)
         }
     }
-    
 }
 
 extension RemainsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -63,7 +62,6 @@ extension RemainsViewController: UITableViewDataSource, UITableViewDelegate {
         controller.custom = items[indexPath.row]
         push(controller, animated: true)
     }
-    
 }
 
 class RemainTableCell: UITableViewCell {
@@ -81,10 +79,9 @@ class RemainTableCell: UITableViewCell {
     
     private func updateContent() {
         guard let custom = custom else { return }
-        titleLabel.text = custom.custom.name
+        titleLabel.text = custom.custom.name.localizedSafe
         avansLabel.text = String(format: "%.2f", custom.totalAvans) + " Р"
         tollLabel.text = String(format: "%.2f", custom.totalToll) + " Р"
         dateLabel.text = Date.from(string: custom.actualDate, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm")
     }
-    
 }

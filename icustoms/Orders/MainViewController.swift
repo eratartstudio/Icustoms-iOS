@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import Cosmos
 
-class MainViewController: UIViewController, Localizable {
+class MainViewController: UIViewController {//, Localizable 
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topFilterConstraint: NSLayoutConstraint!
@@ -29,13 +29,13 @@ class MainViewController: UIViewController, Localizable {
     
     var refreshControl: UIRefreshControl = UIRefreshControl()
     
-    var locale: Localization!
+    //var locale: Localization!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locale = Localization.current()
-        localize(locale)
+        //locale = Localization.current()
+        //localize(locale)
         
         refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
         tableView.addSubview(refreshControl)
@@ -58,17 +58,17 @@ class MainViewController: UIViewController, Localizable {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
         }
         
         NotificationManager.default.registerPushNotifications()
     }
     
-    func localize(_ locale: Localization) {
-        self.locale = locale
-        createSearchController()
-        update()
-    }
+//    func localize(_ locale: Localization) {
+//        self.locale = locale
+//        createSearchController()
+//        update()
+//    }
     
     @objc func update() {
         if searchController.isActive || filter != nil {
@@ -86,7 +86,7 @@ class MainViewController: UIViewController, Localizable {
                 self?.refreshControl.endRefreshing()
                 }, failure: { [weak self] (error, statusCode) in
                     self?.refreshControl.endRefreshing()
-                    self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
+                    self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
             })
         } else {
             API.default.orders(success: { [weak self] (orders) in
@@ -98,7 +98,7 @@ class MainViewController: UIViewController, Localizable {
                 self?.refreshControl.endRefreshing()
             }) { [weak self] (error, statusCode) in
                 self?.refreshControl.endRefreshing()
-                self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
+                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
             }
         }
     }
@@ -108,8 +108,8 @@ class MainViewController: UIViewController, Localizable {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = locale.get(.search)
-        searchController.searchBar.setValue(locale.get(.cancel), forKey: "_cancelButtonText")
+        searchController.searchBar.placeholder = "Поиск".localizedSafe
+        searchController.searchBar.setValue("Отмена".localizedSafe, forKey: "_cancelButtonText")
         searchController.dimsBackgroundDuringPresentation = false
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -128,7 +128,7 @@ class MainViewController: UIViewController, Localizable {
     
     @objc func showFilterView() {
         topFilterConstraint.constant = 0
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: locale.get(.close), style: .plain, target: self, action: #selector(hideFilterView))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Закрыть".localizedSafe, style: .plain, target: self, action: #selector(hideFilterView))
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
@@ -185,7 +185,7 @@ extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegat
                 self?.filteredOrders = [filtered, closed]
                 self?.tableView.reloadData()
             }, failure: { (error, statusCode) in
-                self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
+                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
             })
         })
         
@@ -223,7 +223,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         view.backgroundColor = .clear
         let label = UILabel(frame: CGRect(x: 10, y: 15, width: UIScreen.main.bounds.width - 20, height: 30))
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = locale.get(.completed_orders)
+        label.text = "Завершенные заказы".localizedSafe
         view.addSubview(label)
         
         return view
@@ -238,13 +238,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         if order.isEnded {
             let cell = tableView.dequeueReusableCell(EndedOrderTableCell.self, for: indexPath)
-            cell.locale = locale
+            //cell.locale = locale
             cell.order = order
             cell.controller = self
             return cell
         }
         let cell = tableView.dequeueReusableCell(ActiveOrderTableCell.self, for: indexPath)
-        cell.locale = locale
+        //cell.locale = locale
         cell.order = order
         return cell
     }
@@ -290,7 +290,7 @@ extension MainViewController: FilterViewDelegate {
             self?.tableView.setContentOffset(.zero, animated: true)
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert(self?.locale.get(.error), message: self?.locale.get(.failed_load_order))
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
         }
     }
     
@@ -330,7 +330,7 @@ class ActiveOrderTableCell: UITableViewCell {
     let activeColor: UIColor = UIColor(red: 111/255, green: 184/255, blue: 98/255, alpha: 1)
     let inactiveColor: UIColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
     
-    var locale: Localization!
+    //var locale: Localization!
     
     var order: Order? {
         didSet {
@@ -342,21 +342,25 @@ class ActiveOrderTableCell: UITableViewCell {
         guard let order = order else { return }
         
         orderIdLabel.text = order.orderId
-        statusLabel.text = order.status?.name
+        statusLabel.text = order.status?.name.localized
         
         if let percentPaid = order.invoice?.percentPaid, percentPaid > 0 {
             if percentPaid >= 100 {
-                paidLabel.backgroundColor = UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+                paidLabel.backgroundColor = activeColor//UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
+                paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
+            } else if percentPaid > 0 {
+                paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
+                paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
             } else {
                 paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
             }
-            paidLabel.text = String(format: locale.get(.paid_percent), Int(percentPaid))
+            //paidLabel.text = String(format: locale.get(.paid_percent), Int(percentPaid))
         } else {
             paidLabel.isHidden = order.isPaid
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM yyyy"
         let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
         dateLabel.text = dateFormatter.string(from: date).uppercased()
@@ -527,7 +531,7 @@ class EndedOrderTableCell: UITableViewCell {
         reviewInputCosmosView.settings.starSize = 30
         reviewInputCosmosView.rating = 0
     }
-    var locale: Localization!
+    //var locale: Localization!
     var order: Order? {
         didSet {
             updateContent()
@@ -539,14 +543,14 @@ class EndedOrderTableCell: UITableViewCell {
         
         orderIdLabel.text = order.orderId
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM yyyy"
         let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
         dateLabel.text = dateFormatter.string(from: date).uppercased()
         
         cosmosView.rating = order.reviewIsExist ? Double(order.review!.score) : 0
         reviewContainerView.backgroundColor = order.reviewIsExist ? reviewCompleteBackgroundColor : .white
-        reviewTitleLabel.text = order.reviewIsExist ? locale.get(.scored) : locale.get(.score_order)
+        reviewTitleLabel.text = order.reviewIsExist ? "Оценка поставлена".localizedSafe : "Оцените заказ".localizedSafe
     }
     
     @IBAction func reviewClicked() {
@@ -554,7 +558,7 @@ class EndedOrderTableCell: UITableViewCell {
         guard !order.reviewIsExist else { return }
         controller?.reviewClicked = true
         
-        let alertController = UIAlertController(title: locale.get(.score_order) + "\n\(order.orderId)", message: locale.get(.review_after_order), preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Оцените заказ\n".localizedSafe + "\(order.orderId)", message: "Пожалуйста оцените работу\nменеджера при выполнении заказа.\nПомогите нам стать лучше!\n\n\n".localizedSafe, preferredStyle: .alert)
         
         reviewInputCosmosView.frame = CGRect(x: 0, y: 130, width: 180, height: 30)
         reviewInputCosmosView.center = CGPoint(x: alertController.view.center.x - 50, y: 145)
@@ -563,10 +567,10 @@ class EndedOrderTableCell: UITableViewCell {
         
         alertController.addTextField { (textField) in
             textField.frame = CGRect(x: 15, y: 170, width: UIScreen.main.bounds.width - 135, height: 30)
-            textField.placeholder = self.locale.get(.submit_feedback)
+            textField.placeholder = "Оставьте отзыв".localizedSafe
         }
         
-        let sendAction = UIAlertAction(title: locale.get(.submit), style: .default) { _ in
+        let sendAction = UIAlertAction(title: "Отправить".localizedSafe, style: .default) { _ in
             SVProgressHUD.show()
             let text = alertController.textFields?.first?.text ?? ""
             let score = Int(self.reviewInputCosmosView.rating)
@@ -578,10 +582,10 @@ class EndedOrderTableCell: UITableViewCell {
                 self.controller?.updateOrder(item, section: 1)
             }, failure: { (error, statusCode) in
                 SVProgressHUD.dismiss()
-                self.controller?.showAlert(self.locale.get(.error), message: self.locale.get(.feedback_submission_failed))
+                self.controller?.showAlert("Ошибка".localizedSafe, message: "Невозможно отправить отзыв".localizedSafe)
             })
         }
-        let cancelAction = UIAlertAction(title: locale.get(.cancel), style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Отмена".localizedSafe, style: .default, handler: nil)
         alertController.addAction(sendAction)
         alertController.addAction(cancelAction)
         controller?.present(alertController, animated: true, completion: nil)

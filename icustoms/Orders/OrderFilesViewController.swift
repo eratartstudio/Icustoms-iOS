@@ -28,7 +28,7 @@ class OrderFilesViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить файлы")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файлы".localizedSafe)
         }
     }
     

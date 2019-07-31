@@ -44,7 +44,7 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
             priceLastLabel.textColor = UIColor(red: 145/255, green: 203/255, blue: 132/255, alpha: 1)
         }
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM yyyy, HH:mm"
         dateLabel.text = dateFormatter.string(from: transaction.dateObject)
         view.layoutIfNeeded()

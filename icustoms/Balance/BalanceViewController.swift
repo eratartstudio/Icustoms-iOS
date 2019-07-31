@@ -55,7 +55,7 @@ class BalanceViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             self?.refreshControl.endRefreshing()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить баланс")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить баланс".localizedSafe)
         }
     }
     
@@ -73,7 +73,7 @@ class BalanceViewController: UIViewController {
             self?.tableView.reloadData()
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить баланс")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить баланс".localizedSafe)
         }
         
         searchField.clearButtonMode = .whileEditing
@@ -119,10 +119,9 @@ class BalanceViewController: UIViewController {
         }) { [weak self] (error, statusCode) in
             print(error)
             SVProgressHUD.dismiss()
-            self?.showAlert("Ошибка", message: "Невозможно загрузить файл")
+            self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файл".localizedSafe)
         }
     }
-    
 }
 
 extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
@@ -142,7 +141,7 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
         
         let date = Date(timeIntervalSince1970: Double(data[section].timestamp))
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru")
+        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
         dateFormatter.dateFormat = "dd MMMM"
         label.text = dateFormatter.string(from: date)
         
@@ -318,10 +317,22 @@ extension BinaryInteger {
 extension TimeInterval {
     
     func month() -> String {
-        let months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+        let months = [
+            "Январь".localizedSafe,
+            "Февраль".localizedSafe,
+            "Март".localizedSafe,
+            "Апрель".localizedSafe,
+            "Май".localizedSafe,
+            "Июнь".localizedSafe,
+            "Июль".localizedSafe,
+            "Август".localizedSafe,
+            "Сентябрь".localizedSafe,
+            "Октябрь".localizedSafe,
+            "Ноябрь".localizedSafe,
+            "Декабрь".localizedSafe
+        ]
         let date = Date(timeIntervalSince1970: self)
         let int = Calendar.current.component(.month, from: date)
         return months[int - 1]
     }
-    
 }
