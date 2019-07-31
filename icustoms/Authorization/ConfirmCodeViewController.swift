@@ -19,7 +19,7 @@ class ConfirmCodeViewController: UIViewController {
     @IBOutlet weak var codeField: UITextField!
     @IBOutlet weak var resendLabel: UILabel!
     @IBOutlet weak var confirmButton: Button!
- 
+    
     var isFirst: Bool = true
     //var local: Localization!
     
@@ -79,11 +79,11 @@ class ConfirmCodeViewController: UIViewController {
                         let mainController = Storyboard.Main.initialViewController!
                         self?.present(mainController, animated: true, completion: nil)
                     } else {
-                         self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
+                        self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
                     }
-                }, failure: { [weak self] (error, statusCode) in
-                    SVProgressHUD.dismiss()
-                    self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
+                    }, failure: { [weak self] (error, statusCode) in
+                        SVProgressHUD.dismiss()
+                        self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
                 })
             }
             alertController.addAction(action)
@@ -107,9 +107,39 @@ class ConfirmCodeViewController: UIViewController {
     
     var isCanResend: Bool = false
     
+    var totalTime = 60
+    var countdownTimer: Timer!
+    
+    func startTimer() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTime() {
+        resendLabel.text = "Повторно запросить код можно через ".localizedSafe + "\(timeFormatted(totalTime))" + " сек.".localizedSafe
+        
+        if totalTime != 0 {
+            totalTime -= 1
+        } else {
+            endTimer()
+        }
+    }
+    
+    func endTimer() {
+        countdownTimer.invalidate()
+        self.isCanResend = true
+        self.codeFieldDidChange(self.codeField)
+    }
+    
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds// % 60
+        //let minutes: Int = (totalSeconds / 60) % 60
+        //     let hours: Int = totalSeconds / 3600
+        return String(format: "%02d", seconds)
+    }
+    
     @IBAction func resentButton() {
-        let startTime = Int(Date().timeIntervalSince1970)
-        let endTime = startTime + 60
+        //let startTime = Int(Date().timeIntervalSince1970)
+        //let endTime = startTime + 60
         resendButton.isHidden = true
         resendLabel.isHidden = false
         self.resendLabel.text = "Повторно запросить код можно через 60 сек.".localizedSafe
@@ -126,16 +156,18 @@ class ConfirmCodeViewController: UIViewController {
         }
         isFirst = false
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] (timer) in
-            let currentTime = Int(Date().timeIntervalSince1970)
-            if endTime > currentTime {
-                self.resendLabel.text = "Повторно запросить код можно через ".localizedSafe + "\(endTime - currentTime)" + " сек.".localizedSafe
-            } else {
-                timer.invalidate()
-                self.isCanResend = true
-                self.codeFieldDidChange(self.codeField)
-            }
-        }
+        startTimer()
+        
+        //        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] (timer) in
+        //            let currentTime = Int(Date().timeIntervalSince1970)
+        //            if endTime > currentTime {
+        //                self.resendLabel.text = "Повторно запросить код можно через ".localizedSafe + "\(endTime - currentTime)" + " сек.".localizedSafe
+        //            } else {
+        //                timer.invalidate()
+        //                self.isCanResend = true
+        //                self.codeFieldDidChange(self.codeField)
+        //            }
+        //        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
