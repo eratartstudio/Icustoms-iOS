@@ -32,10 +32,10 @@ class ProfileViewController: UITableViewController {
     
     func updateContent() {
         guard profile != nil else { return }
-        idLabel.text = "id\(profile.id)"
-        fioLabel.text = profile.lastName + " " + profile.middleName + " " + profile.firstName
-        phoneLabel.text = profile.phone
-        companyLabel.text = profile.company
+        idLabel.text = "id \(profile?.id ?? 0)"
+        fioLabel.text = "\(profile.lastName ?? "")" + " " + "\(profile.middleName ?? "")" + " " + "\(profile.firstName ?? "")"
+        phoneLabel.text = profile.phone ?? ""
+        companyLabel.text = profile.company ?? ""
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

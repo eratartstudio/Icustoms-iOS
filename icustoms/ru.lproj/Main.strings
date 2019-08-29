@@ -324,7 +324,7 @@
 "tsh-LU-qhx.title" = "О приложении";
 
 /* Class = "UIButton"; normalTitle = "Скачать"; ObjectID = "uNZ-NN-o6a"; */
-"uNZ-NN-o6a.normalTitle" = "Скачать";
+"uNZ-NN-o6a.normalTitle" = "Скачать счёт";
 
 /* Class = "UILabel"; text = "Открыть счёт"; ObjectID = "ufa-MY-W7v"; */
 "ufa-MY-W7v.text" = "Открыть счёт";

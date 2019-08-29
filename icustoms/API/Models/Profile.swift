@@ -9,14 +9,14 @@
 import Foundation
 
 struct Profile: Decodable {
-    let id: Int
-    let company: String
-    let prefix: String
-    let firstName: String
-    let lastName: String
-    let middleName: String
-    let phone: String
-    let email: String
+    let id: Int?
+    let company: String?
+    let prefix: String?
+    let firstName: String?
+    let lastName: String?
+    let middleName: String?
+    let phone: String?
+    let email: String?
 }
 
 struct ProfileSettings: Codable {

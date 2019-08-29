@@ -106,6 +106,7 @@ class OrderDetailViewController: UIViewController {
         currencyRateLabel.text = order.currency?.rate
         avansLabel.text = order.prepaid.isEmpty ? "-" : order.prepaid
         tollLabel.text = order.toll.isEmpty ? "-" : order.toll
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,15 +122,7 @@ class OrderDetailViewController: UIViewController {
     }
     
     @IBAction func openLinkInvoice() {
-        guard !order.invoiceNumber.isEmpty else {
-            self.showAlert("Ошибка".localizedSafe, message: "Трек не указан".localizedSafe)
-            return
-        }
-        guard let invoiceId = order.invoice?.id else {
-            self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
-            return
-        }
-        guard let url = URL(string: API.default.invoiceFileLink(invoiceId)) else {
+        guard let url = URL(string: order!.trackingLink) else {
             self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
             return
         }

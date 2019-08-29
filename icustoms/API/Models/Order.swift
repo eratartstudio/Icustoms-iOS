@@ -68,6 +68,7 @@ struct Order: Decodable {
     let invoice: OrderInvoice?
     var review: OrderReview?
     var reviewIsExist: Bool
+    let trackingLink: String
     
     var isEnded: Bool {
         return status?.id == 11
@@ -101,6 +102,7 @@ struct Order: Decodable {
         case isPaid
         case invoice
         case orderReview
+        case trackingLink
     }
 
     
@@ -134,6 +136,7 @@ struct Order: Decodable {
         invoice = try? container.decode(OrderInvoice.self, forKey: .invoice)
         review = try? container.decode(OrderReview.self, forKey: .orderReview)
         reviewIsExist = review != nil
+        trackingLink = (try? container.decode(String.self, forKey: .trackingLink)) ?? ""
     }
 }
 
