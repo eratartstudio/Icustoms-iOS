@@ -53,6 +53,7 @@
 "ДТ Осуществляется досмотр" = "CD Undergoes inspection";
 
 "оплачен" = "paid ";
+"Не оплачен" = "not paid ";
 
 "Условный выпуск" = "Conditional release";
 "Завершен" = "Completed";

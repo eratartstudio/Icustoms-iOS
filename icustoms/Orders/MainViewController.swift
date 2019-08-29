@@ -348,6 +348,7 @@ class ActiveOrderTableCell: UITableViewCell {
             if percentPaid >= 100 {
                 paidLabel.backgroundColor = activeColor//UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
                 paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
+                
             } else if percentPaid > 0 {
                 paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
                 paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
@@ -356,8 +357,15 @@ class ActiveOrderTableCell: UITableViewCell {
             }
             //paidLabel.text = String(format: locale.get(.paid_percent), Int(percentPaid))
         } else {
-            paidLabel.isHidden = order.isPaid
+            if(order.isPaid) {
+                paidLabel.backgroundColor = activeColor
+                paidLabel.text = "оплачен".localizedSafe + "100%"
+            } else {
+                paidLabel.backgroundColor = UIColor(red: 253/255, green: 123/255, blue: 32/255, alpha: 1)
+                paidLabel.text = "Не оплачен".localizedSafe
+            }
         }
+         paidLabel.isHidden = false
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
