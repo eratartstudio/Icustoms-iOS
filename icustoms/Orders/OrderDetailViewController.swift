@@ -105,6 +105,8 @@ class OrderDetailViewController: UIViewController {
         dateLabel.text = dateFormatter.string(from: date).uppercased()
         prepareStatus(order.status?.id ?? 0)
         
+        print(order.statusHistories)
+        
         invoiceNumberLabel.text = order.invoiceNumber.isEmpty ? "-" : order.invoiceNumber
         deliveryNameLabel.text = order.deliveryService
         currencyLabel.text = order.currency?.code
