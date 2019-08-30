@@ -57,6 +57,7 @@ class OrderDetailViewController: UIViewController {
     let inactiveColor: UIColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
     
     var order: Order!
+    var statusHistories: StatusHistories!
     
     override func viewDidLoad() {
         super.viewDidLoad()

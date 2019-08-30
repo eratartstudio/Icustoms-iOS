@@ -162,22 +162,22 @@ struct OrderCurrency: Decodable {
 
 struct StatusHistories: Decodable {
     let status: StatusHistoriesStatus?
-    let createdAt: String?
+    let date: String?
     
     enum CodingKeys: CodingKey {
         case status
-        case createdAt
+        case date
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         status = try? container.decode(StatusHistoriesStatus.self, forKey: .status)
-        createdAt = (try? container.decode(String.self, forKey: .createdAt)) ?? ""
+        date = (try? container.decode(String.self, forKey: .date)) ?? ""
     }
 }
 
 struct StatusHistoriesStatus: Decodable {
-    let id: String?
+    let id: Int?
     let name: String?
 }
 
