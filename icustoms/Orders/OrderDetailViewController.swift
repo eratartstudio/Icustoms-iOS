@@ -44,6 +44,11 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var endedLabel: UILabel!
     
+    @IBOutlet weak var analyticDate: UILabel!
+    @IBOutlet weak var declarationDate: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var endedDate: UILabel!
+    
     @IBOutlet weak var firstProgressView: UIView!
     @IBOutlet weak var secondProgressView: UIView!
     @IBOutlet weak var thirdProgressView: UIView!

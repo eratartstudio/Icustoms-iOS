@@ -152,6 +152,7 @@ struct OrderInvoice: Decodable {
 struct OrderStatus: Decodable {
     let id: Int
     let name: String
+    let createdAt: String
 }
 
 struct OrderCurrency: Decodable {
