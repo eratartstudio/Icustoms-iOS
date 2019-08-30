@@ -69,6 +69,7 @@ struct Order: Decodable {
     var review: OrderReview?
     var reviewIsExist: Bool
     let trackingLink: String
+    let statusHistories: [StatusHistories?]?
     
     var isEnded: Bool {
         return status?.id == 11
@@ -103,6 +104,7 @@ struct Order: Decodable {
         case invoice
         case orderReview
         case trackingLink
+        case statusHistories
     }
 
     
@@ -137,6 +139,7 @@ struct Order: Decodable {
         review = try? container.decode(OrderReview.self, forKey: .orderReview)
         reviewIsExist = review != nil
         trackingLink = (try? container.decode(String.self, forKey: .trackingLink)) ?? ""
+        statusHistories = (try? container.decode([StatusHistories].self, forKey: .statusHistories)) ?? []
     }
 }
 
@@ -155,6 +158,27 @@ struct OrderCurrency: Decodable {
     let code: String?
     let name: String?
     let rate: String?
+}
+
+struct StatusHistories: Decodable {
+    let status: StatusHistoriesStatus?
+    let createdAt: String?
+    
+    enum CodingKeys: CodingKey {
+        case status
+        case createdAt
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        status = try? container.decode(StatusHistoriesStatus.self, forKey: .status)
+        createdAt = (try? container.decode(String.self, forKey: .createdAt)) ?? ""
+    }
+}
+
+struct StatusHistoriesStatus: Decodable {
+    let id: String?
+    let name: String?
 }
 
 struct OrderReview: Decodable {

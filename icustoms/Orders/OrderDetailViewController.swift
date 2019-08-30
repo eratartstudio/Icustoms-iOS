@@ -224,6 +224,7 @@ extension OrderDetailViewController {
             releaseCircleContainerView.isHidden = false
             
             releaseCircleView.value = CGFloat(status - 4) * 25
+            
             endedView.backgroundColor = inactiveColor
             
             analyticLabel.textColor = activeColor
