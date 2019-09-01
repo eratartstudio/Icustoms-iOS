@@ -106,8 +106,60 @@ class OrderDetailViewController: UIViewController {
         dateLabel.text = dateFormatter.string(from: date).uppercased()
         prepareStatus(order.status?.id ?? 0)
         
-        print(order.statusHistories)
         
+        var i = 0
+        let size = order.statusHistories?.count ?? 0
+        
+        analyticDate.isHidden = true
+        declarationDate.isHidden = true
+        releaseDate.isHidden = true
+        endedDate.isHidden = true
+        
+        if(size != 0) {
+            order.statusHistories?.forEach{ history in
+                switch i {
+                    case 0 :
+                        analyticDate.isHidden = false
+                        let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
+                        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+                        analyticDate.text = dateFormatter.string(from: date).uppercased()
+                        i = i + 1
+                    case 1:
+                        declarationDate.isHidden = false
+                        let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
+                        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+                        declarationDate.text = dateFormatter.string(from: date).uppercased()
+                        i = i + 1
+                    case 2:
+                        releaseDate.isHidden = false
+                        let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
+                        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+                        releaseDate.text = dateFormatter.string(from: date).uppercased()
+                        i = i + 1
+                    case 3:
+                        endedDate.isHidden = false
+                        let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
+                        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+                        endedDate.text = dateFormatter.string(from: date).uppercased()
+                        i = i + 1
+                    default:
+                        analyticDate.isHidden = true
+                        declarationDate.isHidden = true
+                        releaseDate.isHidden = true
+                        endedDate.isHidden = true
+                }
+           
+            }
+        }
+    
         invoiceNumberLabel.text = order.invoiceNumber.isEmpty ? "-" : order.invoiceNumber
         deliveryNameLabel.text = order.deliveryService
         currencyLabel.text = order.currency?.code
@@ -159,8 +211,6 @@ class OrderDetailViewController: UIViewController {
 }
 
 extension OrderDetailViewController {
-    
-    
     func prepareStatus(_ status: Int) {
         switch status {
         case 1:
