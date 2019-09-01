@@ -20,6 +20,7 @@ struct File: Decodable {
     let fileSize: Int
     let mimeType: String?
     let createdAt: String?
+    let fileExtension: String?
     
     enum CodingKeys: CodingKey {
         case id
@@ -31,6 +32,7 @@ struct File: Decodable {
         case fileSize
         case mimeType
         case createdAt
+        case fileExtension
     }
     
     init(from decoder: Decoder) throws {
@@ -44,6 +46,7 @@ struct File: Decodable {
         fileSize = (try? container.decode(Int.self, forKey: .fileSize)) ?? 0
         mimeType = try? container.decode(String.self, forKey: .mimeType)
         createdAt = try container.decode(String.self, forKey: .createdAt)
+        fileExtension = try container.decode(String.self, forKey: .fileExtension)
     }
  
 }
