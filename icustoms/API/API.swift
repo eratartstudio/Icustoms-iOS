@@ -13,7 +13,7 @@ import DKExtensions
 struct File: Decodable {
     let id: Int
     let type: FileType
-    let name: String
+    var name: String
     let number: String
     let date: String
     let expired: String?
