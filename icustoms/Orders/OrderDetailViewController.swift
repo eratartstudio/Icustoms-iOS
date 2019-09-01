@@ -49,6 +49,12 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var endedDate: UILabel!
     
+    @IBOutlet weak var analyticCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var declarationCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var releaseCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var endedCenterConstraint: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var firstProgressView: UIView!
     @IBOutlet weak var secondProgressView: UIView!
     @IBOutlet weak var thirdProgressView: UIView!
@@ -156,9 +162,13 @@ class OrderDetailViewController: UIViewController {
                         releaseDate.isHidden = true
                         endedDate.isHidden = true
                 }
-           
             }
         }
+        
+        analyticCenterConstraint.constant = analyticDate.isHidden ? 0 : -8
+        declarationCenterConstraint.constant = declarationDate.isHidden ? 0 : -8
+        releaseCenterConstraint.constant = releaseDate.isHidden ? 0 : -8
+        endedCenterConstraint.constant = endedDate.isHidden ? 0 : -8
     
         invoiceNumberLabel.text = order.invoiceNumber.isEmpty ? "-" : order.invoiceNumber
         deliveryNameLabel.text = order.deliveryService

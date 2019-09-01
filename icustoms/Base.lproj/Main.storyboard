@@ -1527,6 +1527,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="850"/>
                     <connections>
+                        <outlet property="analyticCenterConstraint" destination="3HO-Ye-oY4" id="lhW-4K-NfZ"/>
                         <outlet property="analyticDate" destination="JWl-gk-L9O" id="kWl-ao-twg"/>
                         <outlet property="analyticLabel" destination="347-p5-Jfa" id="buv-Zw-2Y9"/>
                         <outlet property="analyticsCircleContainerView" destination="WHh-ob-Qac" id="Hs9-Nm-cNb"/>
@@ -1536,11 +1537,13 @@
                         <outlet property="currencyLabel" destination="TEx-sE-h7E" id="4zF-la-ESr"/>
                         <outlet property="currencyRateLabel" destination="38w-IH-21w" id="BRe-72-Khh"/>
                         <outlet property="dateLabel" destination="b3m-kv-New" id="hEQ-dx-6FP"/>
+                        <outlet property="declarationCenterConstraint" destination="mQu-7W-lyz" id="WPZ-Yn-z4w"/>
                         <outlet property="declarationCompleted" destination="xXd-tz-z1i" id="EZ7-IA-VWa"/>
                         <outlet property="declarationDate" destination="qZ1-gL-cyb" id="hC5-I8-La4"/>
                         <outlet property="declarationLabel" destination="d8E-X6-a11" id="TSc-1l-sqe"/>
                         <outlet property="declarationView" destination="Efs-Qy-gM5" id="vmD-yL-zJB"/>
                         <outlet property="deliveryNameLabel" destination="rkb-nd-dXL" id="XCN-lr-jzo"/>
+                        <outlet property="endedCenterConstraint" destination="Wwj-46-MVa" id="s8m-Us-ydA"/>
                         <outlet property="endedCompleted" destination="s8M-Gd-zdr" id="jIL-A8-Cif"/>
                         <outlet property="endedDate" destination="7y5-P1-qBX" id="AaY-Yl-ol3"/>
                         <outlet property="endedLabel" destination="aXy-pp-aJb" id="8r5-Dg-UJ4"/>
@@ -1549,6 +1552,7 @@
                         <outlet property="invoiceNumberLabel" destination="h3Y-aC-qJ4" id="yly-UC-X1F"/>
                         <outlet property="orderNumberLabel" destination="bKQ-In-XuW" id="JJI-Kd-nrA"/>
                         <outlet property="paidLabel" destination="S2m-Sy-Z3j" id="kEk-c2-0RO"/>
+                        <outlet property="releaseCenterConstraint" destination="ZhI-Kk-NUX" id="cOe-N0-Emy"/>
                         <outlet property="releaseCircleContainerView" destination="aaW-IR-KTl" id="c2w-V1-rjY"/>
                         <outlet property="releaseCircleView" destination="SZj-Lq-hgz" id="d1d-1m-7xU"/>
                         <outlet property="releaseCompleted" destination="Dha-qJ-M3d" id="uJ9-7v-v0l"/>
