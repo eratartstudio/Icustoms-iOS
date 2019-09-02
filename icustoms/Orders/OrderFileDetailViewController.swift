@@ -32,7 +32,7 @@ class OrderFileDetailViewController: UIViewController {
         sizeLabel.text = printSizeFile(Int64(file.fileSize))
         dateLabel.text = Date.from(string: file.date, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm:ss")
         typeLabel.text = file.mimeType
-        file.name = "\(file.name).\(file.fileExtension ?? "")"
+        print(file)
     }
     
     @IBAction func shareFileAction() {
