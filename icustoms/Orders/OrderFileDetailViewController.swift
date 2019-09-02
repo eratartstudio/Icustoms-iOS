@@ -43,7 +43,8 @@ class OrderFileDetailViewController: UIViewController {
             self.present(activityViewController, animated: true, completion: nil)
         }) { (error, statusCode) in
             SVProgressHUD.dismiss()
-            print("ERROR")
+            self.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файлы".localizedSafe)
+            print("\(error)")
         }
     }
     
