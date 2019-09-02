@@ -32,17 +32,14 @@ class OrderFileDetailViewController: UIViewController {
         sizeLabel.text = printSizeFile(Int64(file.fileSize))
         dateLabel.text = Date.from(string: file.date, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm:ss")
         typeLabel.text = file.mimeType
+        print(file)
     }
     
     @IBAction func shareFileAction() {
         SVProgressHUD.show()
         API.default.downloadFiles(file.id, { data in
             SVProgressHUD.dismiss()
-            let filename = self.file.name + "." + self.file!.fileExtension!
-            let fileToShare: FileHandle? = FileHandle(forWritingAtPath: filename)
-            fileToShare?.write(data)
-            fileToShare?.closeFile()
-            let activityViewController = UIActivityViewController(activityItems: [fileToShare!], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
             self.present(activityViewController, animated: true, completion: nil)
         }) { (error, statusCode) in
             SVProgressHUD.dismiss()
