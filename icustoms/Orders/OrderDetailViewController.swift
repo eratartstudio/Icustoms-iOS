@@ -177,10 +177,28 @@ class OrderDetailViewController: UIViewController {
         deliveryNameLabel.text = order.deliveryService
         currencyLabel.text = order.currency?.code
         currencyRateLabel.text = order.currency?.rate
-        avansLabel.text = order.prepaid.isEmpty ? "-" : order.prepaid
-        tollLabel.text = order.toll.isEmpty ? "-" : order.toll
         
+        switch (Locale.current.languageCode) {
+            case "ru":
+                if(order.currency?.code == "RUB"){
+                    avansLabel.text = order.prepaid.isEmpty ? "-" : order.prepaid
+                    tollLabel.text = order.toll.isEmpty ? "-" : order.toll
+                } else {
+                    if(order.currency?.rate != nil) {
+                        let avans = Float(order.prepaid.isEmpty ? "0" : order.prepaid) ?? 0
+                        let toll = Float(order.toll.isEmpty ? "0" : order.toll) ?? 0
+                        let rate = Float(order.currency!.rate!.isEmpty ? "0" : order.currency!.rate!) ?? 0
+                        
+                        avansLabel.text = avans == 0 ? "-" : String(avans*rate)
+                        tollLabel.text = toll == 0 ? "-" : String(toll*rate)
+                    }
+                }
+            default:
+                avansLabel.text = order.prepaid.isEmpty ? "-" : order.prepaid
+                tollLabel.text = order.toll.isEmpty ? "-" : order.toll
+        }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowFiles" {

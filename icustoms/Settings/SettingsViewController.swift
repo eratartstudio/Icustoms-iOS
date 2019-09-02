@@ -47,7 +47,6 @@ class SettingsViewController: UITableViewController {
     }
     
     @IBAction func switchDidChange() {
-        guard settings != nil else { return }
         let pushSettings = PushNotificationSettings(status: statusNotificationSwitch.isOn, balance: balanceNotificationSwitch.isOn, other: otherNotificationSwitch.isOn)
         settings = ProfileSettings(pushNotification: ProfilePushSettings(pushNotification: pushSettings))
         Database.default.profileSettings = settings
