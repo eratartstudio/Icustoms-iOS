@@ -36,7 +36,7 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var releaseCompleted: UIImageView!
     @IBOutlet weak var endedCompleted: UIImageView!
     
-    @IBOutlet weak var declarationView: UIView!
+    @IBOutlet weak var declarationView: UICircularProgressRing!
     @IBOutlet weak var endedView: UIView!
     
     @IBOutlet weak var analyticLabel: UILabel!
@@ -80,8 +80,8 @@ class OrderDetailViewController: UIViewController {
         
         orderNumberLabel.text = order.orderId
         
-//        paidLabel.isHidden = order.isPaid
-//        order.invoice
+        //        paidLabel.isHidden = order.isPaid
+        //        order.invoice
         if let percentPaid = order.invoice?.percentPaid, percentPaid > 0 {
             if percentPaid >= 100 {
                 paidLabel.backgroundColor = activeColor//UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
@@ -124,43 +124,46 @@ class OrderDetailViewController: UIViewController {
         if(size != 0) {
             order.statusHistories?.forEach{ history in
                 switch i {
-                    case 0 :
-                        analyticDate.isHidden = false
-                        let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
-                        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
-                        analyticDate.text = dateFormatter.string(from: date).uppercased()
-                        i = i + 1
-                    case 1:
-                        declarationDate.isHidden = false
-                        let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
-                        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
-                        declarationDate.text = dateFormatter.string(from: date).uppercased()
-                        i = i + 1
-                    case 2:
-                        releaseDate.isHidden = false
-                        let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
-                        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
-                        releaseDate.text = dateFormatter.string(from: date).uppercased()
-                        i = i + 1
-                    case 3:
-                        endedDate.isHidden = false
-                        let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
-                        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
-                        endedDate.text = dateFormatter.string(from: date).uppercased()
-                        i = i + 1
-                    default:
-                        analyticDate.isHidden = true
-                        declarationDate.isHidden = true
-                        releaseDate.isHidden = true
-                        endedDate.isHidden = true
+                case 0 :
+                    analyticDate.isHidden = false
+                    let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
+                    dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+                    analyticDate.text = dateFormatter.string(from: date)
+                    i = i + 1
+                case 1:
+                    declarationDate.isHidden = false
+                    let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
+                    dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+                    declarationDate.text = dateFormatter.string(from: date)
+                    
+                    declarationDate.isHidden = (declarationView.backgroundColor == inactiveColor) ? true : false
+                    
+                    i = i + 1
+                case 2:
+                    releaseDate.isHidden = false
+                    let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
+                    dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+                    releaseDate.text = dateFormatter.string(from: date)
+                    i = i + 1
+                case 3:
+                    endedDate.isHidden = false
+                    let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
+                    dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+                    endedDate.text = dateFormatter.string(from: date)
+                    i = i + 1
+                default:
+                    analyticDate.isHidden = true
+                    declarationDate.isHidden = true
+                    releaseDate.isHidden = true
+                    endedDate.isHidden = true
                 }
             }
         }
@@ -169,7 +172,7 @@ class OrderDetailViewController: UIViewController {
         declarationCenterConstraint.constant = declarationDate.isHidden ? 0 : -8
         releaseCenterConstraint.constant = releaseDate.isHidden ? 0 : -8
         endedCenterConstraint.constant = endedDate.isHidden ? 0 : -8
-    
+        
         invoiceNumberLabel.text = order.invoiceNumber.isEmpty ? "-" : order.invoiceNumber
         deliveryNameLabel.text = order.deliveryService
         currencyLabel.text = order.currency?.code
@@ -217,7 +220,6 @@ class OrderDetailViewController: UIViewController {
             self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файл".localizedSafe)
         }
     }
-    
 }
 
 extension OrderDetailViewController {
@@ -255,7 +257,7 @@ extension OrderDetailViewController {
             declarationView.backgroundColor = inactiveColor
             
             analyticLabel.textColor = activeColor
-            declarationLabel.textColor = inactiveColor
+            declarationLabel.textColor = declarationView.backgroundColor
             releaseLabel.textColor = inactiveColor
             endedLabel.textColor = inactiveColor
             
@@ -272,15 +274,16 @@ extension OrderDetailViewController {
             releaseCircleContainerView.isHidden = true
             endedView.backgroundColor = inactiveColor
             declarationView.backgroundColor = .white
+            declarationView.outerRingColor = activeColor
             
             analyticLabel.textColor = activeColor
             declarationLabel.textColor = activeColor
             releaseLabel.textColor = inactiveColor
             endedLabel.textColor = inactiveColor
             
-            analyticLabel.text = analyticLabel.text?.uppercased()
+            analyticLabel.text = analyticLabel.text
             declarationLabel.text = declarationLabel.text?.uppercased()
-
+            
             firstProgressView.isHidden = false
             secondProgressView.isHidden = true
             thirdProgressView.isHidden = true
@@ -300,8 +303,8 @@ extension OrderDetailViewController {
             releaseLabel.textColor = activeColor
             endedLabel.textColor = inactiveColor
             
-            analyticLabel.text = analyticLabel.text?.uppercased()
-            declarationLabel.text = declarationLabel.text?.uppercased()
+            analyticLabel.text = analyticLabel.text
+            declarationLabel.text = declarationLabel.text
             releaseLabel.text = releaseLabel.text?.uppercased()
             
             firstProgressView.isHidden = false
@@ -319,9 +322,9 @@ extension OrderDetailViewController {
             releaseLabel.textColor = activeColor
             endedLabel.textColor = activeColor
             
-            analyticLabel.text = analyticLabel.text?.uppercased()
-            declarationLabel.text = declarationLabel.text?.uppercased()
-            releaseLabel.text = releaseLabel.text?.uppercased()
+            analyticLabel.text = analyticLabel.text
+            declarationLabel.text = declarationLabel.text
+            releaseLabel.text = releaseLabel.text
             endedLabel.text = endedLabel.text?.uppercased()
             
             firstProgressView.isHidden = false
@@ -338,10 +341,10 @@ extension OrderDetailViewController {
             releaseLabel.textColor = activeColor
             endedLabel.textColor = activeColor
             
-            analyticLabel.text = analyticLabel.text?.uppercased()
-            declarationLabel.text = declarationLabel.text?.uppercased()
-            releaseLabel.text = releaseLabel.text?.uppercased()
-            endedLabel.text = endedLabel.text?.uppercased()
+            analyticLabel.text = analyticLabel.text
+            declarationLabel.text = declarationLabel.text
+            releaseLabel.text = releaseLabel.text
+            endedLabel.text = endedLabel.text
             
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
@@ -387,5 +390,4 @@ class InvoiceViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
-    
 }
