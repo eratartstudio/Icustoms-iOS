@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "icustoms/Orders/OrderDetailViewController.swift"
+            timestampString = "589200737.456287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "icustoms.InvoiceViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "icustoms"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hero_in_heaven/Desktop/Icustoms-iOS/icustoms/Orders/OrderDetailViewController.swift"
+                  timestampString = "589200737.793733"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "433"
+                  endingLineNumber = "433"
+                  offsetFromSymbolStart = "279">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in icustoms.InvoiceViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "icustoms"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Hero_in_heaven/Desktop/Icustoms-iOS/icustoms/Orders/OrderDetailViewController.swift"
+                  timestampString = "589200737.796964"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "434"
+                  endingLineNumber = "434"
+                  offsetFromSymbolStart = "383">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

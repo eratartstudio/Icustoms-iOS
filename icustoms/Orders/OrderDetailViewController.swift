@@ -176,27 +176,74 @@ class OrderDetailViewController: UIViewController {
         invoiceNumberLabel.text = order.invoiceNumber.isEmpty ? "-" : order.invoiceNumber
         deliveryNameLabel.text = order.deliveryService
         currencyLabel.text = order.currency?.code
-        currencyRateLabel.text = order.currency?.rate
+        if(order.currency?.rate != nil) {
+            currencyRateLabel.text = order.currency!.rate! + " ₽"
+        } else {
+            currencyRateLabel.text = order.currency?.rate
+        }
         
         switch (Locale.current.languageCode) {
             case "ru":
                 if(order.currency?.code == "RUB"){
-                    avansLabel.text = order.prepaid.isEmpty ? "-" : order.prepaid
-                    tollLabel.text = order.toll.isEmpty ? "-" : order.toll
+                   defaultAvansAndToll(symbol: "₽")
                 } else {
                     if(order.currency?.rate != nil) {
                         let avans = Float(order.prepaid.isEmpty ? "0" : order.prepaid) ?? 0
                         let toll = Float(order.toll.isEmpty ? "0" : order.toll) ?? 0
                         let rate = Float(order.currency!.rate!.isEmpty ? "0" : order.currency!.rate!) ?? 0
                         
-                        avansLabel.text = avans == 0 ? "-" : String(avans*rate)
-                        tollLabel.text = toll == 0 ? "-" : String(toll*rate)
+                        if(avans == 0) {
+                            avansLabel.text = "-"
+                        } else{
+                            avansLabel.text = getStringWithSpace(string: String(avans*rate)) + " ₽"
+                        }
+                        
+                        if(toll == 0) {
+                            tollLabel.text = "-"
+                        } else{
+                            tollLabel.text = getStringWithSpace(string: String(toll*rate)) + " ₽"
+                        }
                     }
                 }
             default:
-                avansLabel.text = order.prepaid.isEmpty ? "-" : order.prepaid
-                tollLabel.text = order.toll.isEmpty ? "-" : order.toll
+                defaultAvansAndToll(symbol: "$")
         }
+    }
+    
+    func defaultAvansAndToll(symbol: String) {
+        if(order.prepaid.isEmpty) {
+            avansLabel.text = "-"
+        } else{
+            avansLabel.text = getStringWithSpace(string: order.prepaid) + " \(symbol)"
+        }
+        if(order.toll.isEmpty) {
+            tollLabel.text = "-"
+        } else{
+            tollLabel.text = getStringWithSpace(string: order.toll) + " \(symbol)"
+        }
+    }
+    
+    func getStringWithSpace(string: String) -> String {
+        let num = string.split(separator: ".")
+        
+        let numArray = Array(num[0])
+        var reversedNumArray = [Character]()
+        
+        for arrayIndex in stride(from: numArray.count - 1, through: 0, by: -1) {
+            reversedNumArray.append(numArray[arrayIndex])
+        }
+        let len = num[0].count
+        var newStr = ""
+        for curSymb in 1...len {
+            newStr = String(reversedNumArray[curSymb-1]) + newStr
+            if((curSymb % 3 == 0) && (curSymb != len)) {
+                newStr = " " + newStr
+            }
+        }
+        if(num.count > 1){
+            newStr = newStr + "." + num[1]
+        }
+        return newStr
     }
     
     
