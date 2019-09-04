@@ -334,11 +334,19 @@
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_order" translatesAutoresizingMaskIntoConstraints="NO" id="YUF-FQ-vIu">
+                                                                            <rect key="frame" x="17.5" y="1" width="48" height="48"/>
+                                                                        </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
+                                                                        <constraint firstItem="YUF-FQ-vIu" firstAttribute="centerX" secondItem="KN8-WY-hoM" secondAttribute="centerX" id="7tq-jp-w0c"/>
+                                                                        <constraint firstItem="YUF-FQ-vIu" firstAttribute="top" secondItem="KN8-WY-hoM" secondAttribute="top" constant="-4" id="QPN-lB-kEv"/>
+                                                                        <constraint firstItem="YUF-FQ-vIu" firstAttribute="trailing" secondItem="KN8-WY-hoM" secondAttribute="trailing" constant="4" id="T8V-ye-rtA"/>
                                                                         <constraint firstItem="KN8-WY-hoM" firstAttribute="centerY" secondItem="Hn5-4P-j2Q" secondAttribute="centerY" id="cvM-DP-wv0"/>
                                                                         <constraint firstItem="KN8-WY-hoM" firstAttribute="centerX" secondItem="Hn5-4P-j2Q" secondAttribute="centerX" id="dd9-nc-Qum"/>
+                                                                        <constraint firstItem="YUF-FQ-vIu" firstAttribute="leading" secondItem="KN8-WY-hoM" secondAttribute="leading" constant="-4" id="hf3-Zr-9ZH"/>
+                                                                        <constraint firstItem="YUF-FQ-vIu" firstAttribute="bottom" secondItem="KN8-WY-hoM" secondAttribute="bottom" constant="4" id="pVf-vY-ZPB"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -464,6 +472,7 @@
                                             <outlet property="declarationCompleted" destination="FBv-tD-aSS" id="9Re-hH-kM8"/>
                                             <outlet property="declarationLabel" destination="x96-Uc-abe" id="VH5-vI-Io2"/>
                                             <outlet property="declarationView" destination="ISg-KL-uW8" id="NeD-SL-QQr"/>
+                                            <outlet property="endedCompleted" destination="YUF-FQ-vIu" id="r7B-na-npw"/>
                                             <outlet property="endedLabel" destination="yFo-4V-IIJ" id="34k-iD-khe"/>
                                             <outlet property="endedView" destination="KN8-WY-hoM" id="JQe-Gg-z3D"/>
                                             <outlet property="firstProgressView" destination="WAT-vm-jBx" id="cUk-aO-wOE"/>
@@ -628,7 +637,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1bI-I6-qmL"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmF-d2-QVU" customClass="FilterView" customModule="icustoms" customModuleProvider="target">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmF-d2-QVU" customClass="FilterView" customModule="icustoms" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUu-R2-8yz">

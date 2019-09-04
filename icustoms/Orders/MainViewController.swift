@@ -318,6 +318,7 @@ class ActiveOrderTableCell: UITableViewCell {
     
     @IBOutlet weak var declarationView: UIView!
     @IBOutlet weak var endedView: UIView!
+    @IBOutlet weak var endedCompleted: UIImageView!
     
     @IBOutlet weak var analyticLabel: UILabel!
     @IBOutlet weak var declarationLabel: UILabel!
@@ -383,6 +384,7 @@ class ActiveOrderTableCell: UITableViewCell {
             analyticsCompleted.isHidden = true
             declarationCompleted.isHidden = true
             releaseCompleted.isHidden = true
+            endedCompleted.isHidden = true
             endedView.backgroundColor = inactiveColor
             declarationView.backgroundColor = inactiveColor
             
@@ -406,6 +408,7 @@ class ActiveOrderTableCell: UITableViewCell {
             analyticsCompleted.isHidden = true
             declarationCompleted.isHidden = true
             releaseCompleted.isHidden = true
+            endedCompleted.isHidden = true
             let countReady = order?.countReady ?? 0
             let countGoods = order?.countGoods ?? 0
             analyticsCircleView.value = (CGFloat(countReady)/CGFloat(countGoods)) * 100
@@ -431,6 +434,7 @@ class ActiveOrderTableCell: UITableViewCell {
             declarationCompleted.isHidden = true
             releaseCompleted.isHidden = true
             releaseCircleContainerView.isHidden = true
+            endedCompleted.isHidden = true
             endedView.backgroundColor = inactiveColor
             declarationView.backgroundColor = activeColor
             
@@ -452,6 +456,7 @@ class ActiveOrderTableCell: UITableViewCell {
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
             releaseCompleted.isHidden = true
+            endedCompleted.isHidden = true
             releaseCircleContainerView.isHidden = false
             
             releaseCircleView.value = CGFloat(status - 4) * 25
@@ -475,6 +480,7 @@ class ActiveOrderTableCell: UITableViewCell {
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
             releaseCompleted.isHidden = false
+            endedCompleted.isHidden = true
             endedView.backgroundColor = activeColor
             
             analyticLabel.textColor = activeColor
@@ -496,6 +502,7 @@ class ActiveOrderTableCell: UITableViewCell {
             declarationCompleted.isHidden = false
             releaseCompleted.isHidden = false
             endedView.isHidden = false
+            endedCompleted.isHidden = false
             
             analyticLabel.textColor = activeColor
             declarationLabel.textColor = activeColor
@@ -516,6 +523,7 @@ class ActiveOrderTableCell: UITableViewCell {
             declarationCompleted.isHidden = false
             releaseCompleted.isHidden = false
             endedView.isHidden = false
+            endedCompleted.isHidden = false
             
             analyticLabel.textColor = activeColor
             declarationLabel.textColor = activeColor
