@@ -227,7 +227,7 @@ extension API {
     
     func updateProfileSettings(_ settings: ProfileSettings, success: ((Bool) -> Void)? = nil, failure: Failure? = nil) {
         var params = [String : AnyObject]()
-        let pushSettings = settings.pushNotification.pushNotification
+        let pushSettings = settings.pushNotification
         params["pushNotification"] = ["status": pushSettings.status, "balance": pushSettings.balance, "other": pushSettings.other] as AnyObject
         patch(host.mobile.client.settings.profile, params: params, headers: authorizationHeaders, encoding: .json, success: { (data, statusCode) in
             success?(statusCode >= 200 && statusCode < 300)

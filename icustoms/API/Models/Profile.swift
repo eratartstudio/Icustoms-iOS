@@ -20,7 +20,7 @@ struct Profile: Decodable {
 }
 
 struct ProfileSettings: Codable {
-    let pushNotification: ProfilePushSettings
+    let pushNotification: PushNotificationSettings
 }
 
 struct ProfilePushSettings: Codable {
