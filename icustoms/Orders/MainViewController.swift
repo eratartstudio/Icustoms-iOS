@@ -491,6 +491,46 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = false
             
             declarationCircleWhiteView.isHidden = true
+        case 9:
+            analyticsCompleted.isHidden = false
+            declarationCompleted.isHidden = false
+            releaseCompleted.isHidden = false
+            endedView.isHidden = false
+            
+            analyticLabel.textColor = activeColor
+            declarationLabel.textColor = activeColor
+            releaseLabel.textColor = activeColor
+            endedLabel.textColor = activeColor
+            
+            analyticLabel.text = analyticLabel.text
+            declarationLabel.text = declarationLabel.text
+            releaseLabel.text = releaseLabel.text
+            endedLabel.text = endedLabel.text
+            
+            firstProgressView.isHidden = false
+            secondProgressView.isHidden = false
+            releaseCircleView.isHidden = false
+      
+        case 11:
+            analyticsCompleted.isHidden = false
+            declarationCompleted.isHidden = false
+            releaseCompleted.isHidden = false
+            endedView.isHidden = false
+            
+            analyticLabel.textColor = activeColor
+            declarationLabel.textColor = activeColor
+            releaseLabel.textColor = activeColor
+            endedLabel.textColor = activeColor
+            
+            analyticLabel.text = analyticLabel.text
+            declarationLabel.text = declarationLabel.text
+            releaseLabel.text = releaseLabel.text
+            endedLabel.text = endedLabel.text
+            
+            firstProgressView.isHidden = false
+            secondProgressView.isHidden = false
+            releaseCircleView.isHidden = false
+        
         default:
             break
         }

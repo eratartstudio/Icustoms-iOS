@@ -10,45 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "icustoms/Orders/OrderDetailViewController.swift"
-            timestampString = "589203026.942782"
+            timestampString = "589270141.581126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "icustoms.InvoiceViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "icustoms"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Hero_in_heaven/Desktop/Icustoms-iOS/icustoms/Orders/OrderDetailViewController.swift"
-                  timestampString = "589203027.3174551"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "433"
-                  endingLineNumber = "433"
-                  offsetFromSymbolStart = "279">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in icustoms.InvoiceViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "icustoms"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Hero_in_heaven/Desktop/Icustoms-iOS/icustoms/Orders/OrderDetailViewController.swift"
-                  timestampString = "589203027.320807"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "434"
-                  endingLineNumber = "434"
-                  offsetFromSymbolStart = "383">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

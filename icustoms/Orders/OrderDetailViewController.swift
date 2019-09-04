@@ -121,7 +121,7 @@ class OrderDetailViewController: UIViewController {
         releaseDate.isHidden = true
         endedDate.isHidden = true
         
-        if(size != 0) {
+        if((size >= 1)) {
             order.statusHistories?.forEach{ history in
                 switch i {
                 case 0 :
@@ -160,12 +160,14 @@ class OrderDetailViewController: UIViewController {
                     endedDate.text = dateFormatter.string(from: date)
                     i = i + 1
                 default:
-                    analyticDate.isHidden = true
-                    declarationDate.isHidden = true
-                    releaseDate.isHidden = true
-                    endedDate.isHidden = true
+                  break
                 }
             }
+        } else {
+            analyticDate.isHidden = true
+            declarationDate.isHidden = true
+            releaseDate.isHidden = true
+            endedDate.isHidden = true
         }
         
         analyticCenterConstraint.constant = analyticDate.isHidden ? 0 : -8
@@ -391,6 +393,25 @@ extension OrderDetailViewController {
             declarationLabel.text = declarationLabel.text
             releaseLabel.text = releaseLabel.text
             endedLabel.text = endedLabel.text?.uppercased()
+            
+            firstProgressView.isHidden = false
+            secondProgressView.isHidden = false
+            thirdProgressView.isHidden = false
+        case 9:
+            analyticsCompleted.isHidden = false
+            declarationCompleted.isHidden = false
+            releaseCompleted.isHidden = false
+            endedCompleted.isHidden = false
+            
+            analyticLabel.textColor = activeColor
+            declarationLabel.textColor = activeColor
+            releaseLabel.textColor = activeColor
+            endedLabel.textColor = activeColor
+            
+            analyticLabel.text = analyticLabel.text
+            declarationLabel.text = declarationLabel.text
+            releaseLabel.text = releaseLabel.text
+            endedLabel.text = endedLabel.text
             
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
