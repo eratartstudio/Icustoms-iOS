@@ -151,7 +151,6 @@ class MainViewController: UIViewController {//, Localizable
         print(order)
         tableView.reloadData()
     }
-    
 }
 
 extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
@@ -308,6 +307,7 @@ class ActiveOrderTableCell: UITableViewCell {
     @IBOutlet weak var analyticsCircleView: UICircularProgressRing!
     
     @IBOutlet weak var releaseCircleContainerView: UIView!
+    @IBOutlet weak var releaseView: UIView!
     @IBOutlet weak var releaseCircleView: UICircularProgressRing!
     
     @IBOutlet weak var declarationCircleWhiteView: UIView!
@@ -376,6 +376,21 @@ class ActiveOrderTableCell: UITableViewCell {
         prepareStatus(order.status?.id ?? 0)
     }
     
+    func chekNetarif() {
+        guard let order = order else { return }
+        if order.checkNetarif == true {
+            paidLabel.isHidden = true
+            declarationView.isHidden = true
+            declarationLabel.isHidden = true
+            releaseView.isHidden = true
+            releaseLabel.isHidden = true
+        } else if order.checkNetarif == false {
+            paidLabel.isHidden = false
+            declarationView.isHidden = false
+            releaseView.isHidden = false
+        }
+    }
+    
     func prepareStatus(_ status: Int) {
         switch status {
         case 1:
@@ -402,6 +417,8 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = true
             
             declarationCircleWhiteView.isHidden = true
+            
+            chekNetarif()
         case 2:
             analyticsCircleContainerView.isHidden = false
             releaseCircleContainerView.isHidden = true
@@ -429,6 +446,8 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = true
             
             declarationCircleWhiteView.isHidden = true
+            
+            chekNetarif()
         case 3:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = true
@@ -452,6 +471,8 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = true
             
             declarationCircleWhiteView.isHidden = false
+            
+            chekNetarif()
         case 4, 5, 6, 7:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -476,6 +497,8 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = false
             
             declarationCircleWhiteView.isHidden = true
+            
+            chekNetarif()
         case 8:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -497,6 +520,8 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = false
             
             declarationCircleWhiteView.isHidden = true
+            
+            chekNetarif()
         case 9:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -518,6 +543,7 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = false
             releaseCircleView.isHidden = false
       
+            chekNetarif()
         case 11:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -538,7 +564,8 @@ class ActiveOrderTableCell: UITableViewCell {
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
             releaseCircleView.isHidden = false
-        
+            
+            chekNetarif()
         default:
             break
         }

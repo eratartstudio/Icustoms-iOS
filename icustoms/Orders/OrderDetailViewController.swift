@@ -34,6 +34,7 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var analyticsCompleted: UIImageView!
     @IBOutlet weak var declarationCompleted: UIImageView!
     @IBOutlet weak var releaseCompleted: UIImageView!
+    @IBOutlet weak var releaseView: UIView!
     @IBOutlet weak var endedCompleted: UIImageView!
     
     @IBOutlet weak var declarationView: UICircularProgressRing!
@@ -58,6 +59,11 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var firstProgressView: UIView!
     @IBOutlet weak var secondProgressView: UIView!
     @IBOutlet weak var thirdProgressView: UIView!
+    
+    @IBOutlet weak var infoBackView: UIView!
+    @IBOutlet weak var infoBackViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var saveInvoiceButton: UIButton!
     
     let activeColor: UIColor = UIColor(red: 111/255, green: 184/255, blue: 98/255, alpha: 1)
     let inactiveColor: UIColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
@@ -121,6 +127,9 @@ class OrderDetailViewController: UIViewController {
         releaseDate.isHidden = true
         endedDate.isHidden = true
         
+        print(order.checkNetarif)
+        print(order.status?.id)
+        
         if((size >= 1)) {
             order.statusHistories?.forEach{ history in
                 switch i {
@@ -140,7 +149,7 @@ class OrderDetailViewController: UIViewController {
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     declarationDate.text = dateFormatter.string(from: date)
                     
-                    declarationDate.isHidden = (declarationView.backgroundColor == inactiveColor) ? true : false
+                    declarationDate.isHidden = declarationCompleted.isHidden
                     
                     i = i + 1
                 case 2:
@@ -160,7 +169,7 @@ class OrderDetailViewController: UIViewController {
                     endedDate.text = dateFormatter.string(from: date)
                     i = i + 1
                 default:
-                  break
+                    break
                 }
             }
         } else {
@@ -185,30 +194,30 @@ class OrderDetailViewController: UIViewController {
         }
         
         switch (Locale.current.languageCode) {
-            case "ru":
-                if(order.currency?.code == "RUB"){
-                   defaultAvansAndToll(symbol: "₽")
-                } else {
-                    if(order.currency?.rate != nil) {
-                        let avans = Float(order.prepaid.isEmpty ? "0" : order.prepaid) ?? 0
-                        let toll = Float(order.toll.isEmpty ? "0" : order.toll) ?? 0
-                        let rate = Float(order.currency!.rate!.isEmpty ? "0" : order.currency!.rate!) ?? 0
-                        
-                        if(avans == 0) {
-                            avansLabel.text = "-"
-                        } else{
-                            avansLabel.text = getStringWithSpace(string: String(avans*rate)) + " ₽"
-                        }
-                        
-                        if(toll == 0) {
-                            tollLabel.text = "-"
-                        } else{
-                            tollLabel.text = getStringWithSpace(string: String(toll*rate)) + " ₽"
-                        }
+        case "ru":
+            if(order.currency?.code == "RUB"){
+                defaultAvansAndToll(symbol: "₽")
+            } else {
+                if(order.currency?.rate != nil) {
+                    let avans = Float(order.prepaid.isEmpty ? "0" : order.prepaid) ?? 0
+                    let toll = Float(order.toll.isEmpty ? "0" : order.toll) ?? 0
+                    let rate = Float(order.currency!.rate!.isEmpty ? "0" : order.currency!.rate!) ?? 0
+                    
+                    if(avans == 0) {
+                        avansLabel.text = "-"
+                    } else{
+                        avansLabel.text = getStringWithSpace(string: String(avans*rate)) + " ₽"
+                    }
+                    
+                    if(toll == 0) {
+                        tollLabel.text = "-"
+                    } else{
+                        tollLabel.text = getStringWithSpace(string: String(toll*rate)) + " ₽"
                     }
                 }
-            default:
-                defaultAvansAndToll(symbol: "$")
+            }
+        default:
+            defaultAvansAndToll(symbol: "$")
         }
     }
     
@@ -290,6 +299,27 @@ class OrderDetailViewController: UIViewController {
 }
 
 extension OrderDetailViewController {
+    
+    func chekNetarif() {
+        guard let order = order else { return }
+        if order.checkNetarif == true {
+            paidLabel.isHidden = true
+            
+            declarationView.isHidden = true
+            declarationLabel.isHidden = true
+            declarationDate.isHidden = true
+            
+            releaseView.isHidden = true
+            releaseLabel.isHidden = true
+            releaseDate.isHidden = true
+            
+            infoBackViewHeightConstraint.constant = 0
+            infoBackView.isHidden = true
+            
+            saveInvoiceButton.setTitle("Скачать".localizedSafe, for: .normal)
+        }
+    }
+    
     func prepareStatus(_ status: Int) {
         switch status {
         case 1:
@@ -310,6 +340,8 @@ extension OrderDetailViewController {
             firstProgressView.isHidden = true
             secondProgressView.isHidden = true
             thirdProgressView.isHidden = true
+            
+            chekNetarif()
         case 2:
             analyticsCircleContainerView.isHidden = false
             releaseCircleContainerView.isHidden = true
@@ -333,6 +365,8 @@ extension OrderDetailViewController {
             firstProgressView.isHidden = true
             secondProgressView.isHidden = true
             thirdProgressView.isHidden = true
+            
+            chekNetarif()
         case 3:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = true
@@ -354,6 +388,8 @@ extension OrderDetailViewController {
             firstProgressView.isHidden = false
             secondProgressView.isHidden = true
             thirdProgressView.isHidden = true
+            
+            chekNetarif()
         case 4, 5, 6, 7:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -377,6 +413,8 @@ extension OrderDetailViewController {
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
             thirdProgressView.isHidden = true
+            
+            chekNetarif()
         case 8:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -397,6 +435,8 @@ extension OrderDetailViewController {
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
             thirdProgressView.isHidden = false
+            
+            chekNetarif()
         case 9:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -416,6 +456,8 @@ extension OrderDetailViewController {
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
             thirdProgressView.isHidden = false
+            
+            chekNetarif()
         case 11:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
@@ -435,6 +477,8 @@ extension OrderDetailViewController {
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
             thirdProgressView.isHidden = false
+            
+            chekNetarif()
         default:
             break
         }
