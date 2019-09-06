@@ -151,6 +151,10 @@ class OrderDetailViewController: UIViewController {
                     
                     declarationDate.isHidden = declarationCompleted.isHidden
                     
+                    if order.checkNetarif == true {
+                        declarationDate.isHidden = true
+                    }
+                    
                     i = i + 1
                 case 2:
                     releaseDate.isHidden = false
@@ -159,6 +163,11 @@ class OrderDetailViewController: UIViewController {
                     dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     releaseDate.text = dateFormatter.string(from: date)
+                    
+                    if order.checkNetarif == true {
+                        releaseDate.isHidden = true
+                    }
+                    
                     i = i + 1
                 case 3:
                     endedDate.isHidden = false
@@ -233,30 +242,6 @@ class OrderDetailViewController: UIViewController {
             tollLabel.text = getStringWithSpace(string: order.toll) + " \(symbol)"
         }
     }
-    
-    func getStringWithSpace(string: String) -> String {
-        let num = string.split(separator: ".")
-        
-        let numArray = Array(num[0])
-        var reversedNumArray = [Character]()
-        
-        for arrayIndex in stride(from: numArray.count - 1, through: 0, by: -1) {
-            reversedNumArray.append(numArray[arrayIndex])
-        }
-        let len = num[0].count
-        var newStr = ""
-        for curSymb in 1...len {
-            newStr = String(reversedNumArray[curSymb-1]) + newStr
-            if((curSymb % 3 == 0) && (curSymb != len)) {
-                newStr = " " + newStr
-            }
-        }
-        if(num.count > 1){
-            newStr = newStr + "." + num[1]
-        }
-        return newStr
-    }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowFiles" {
@@ -519,5 +504,45 @@ class InvoiceViewController: UIViewController {
     @IBAction func shareData() {
         let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
+    }
+}
+
+extension String {
+    func maxLength(length: Int) -> String {
+        var str = self
+        let nsString = str as NSString
+        if nsString.length >= length {
+            str = nsString.substring(with:
+                NSRange(
+                    location: 0,
+                    length: nsString.length > length ? length : nsString.length)
+            )
+        }
+        return  str
+    }
+}
+
+extension UIViewController {
+    func getStringWithSpace(string: String) -> String {
+        let num = string.split(separator: ".")
+        
+        let numArray = Array(num[0])
+        var reversedNumArray = [Character]()
+        
+        for arrayIndex in stride(from: numArray.count - 1, through: 0, by: -1) {
+            reversedNumArray.append(numArray[arrayIndex])
+        }
+        let len = num[0].count
+        var newStr = ""
+        for curSymb in 1...len {
+            newStr = String(reversedNumArray[curSymb-1]) + newStr
+            if((curSymb % 3 == 0) && (curSymb != len)) {
+                newStr = " " + newStr
+            }
+        }
+        if(num.count > 1){
+            newStr = newStr + "." + "\(num[1])".maxLength(length: 2)
+        }
+        return newStr
     }
 }
