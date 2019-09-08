@@ -502,7 +502,13 @@ class InvoiceViewController: UIViewController {
     }
     
     @IBAction func shareData() {
-        let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("invoice-\(NSDate().timeIntervalSince1970).pdf")
+        do {
+            try data.write(to: fileURL, options: .atomic)
+        } catch {
+            print(error)
+        }
+        let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
 }

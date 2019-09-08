@@ -32,7 +32,6 @@ class OrderFileDetailViewController: UIViewController {
         sizeLabel.text = printSizeFile(Int64(file.fileSize))
         dateLabel.text = Date.from(string: file.date, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm:ss")
         typeLabel.text = file.mimeType
-        print(file)
     }
     
     @IBAction func shareFileAction() {
@@ -40,7 +39,7 @@ class OrderFileDetailViewController: UIViewController {
         API.default.downloadFiles(file.id, { data in
             SVProgressHUD.dismiss()
             
-            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(self.file.name).\(self.file.fileExtension ?? ".pdf")")
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(self.file.name).\(self.file.fileExtension ?? "pdf")")
             do {
                 try data.write(to: fileURL, options: .atomic)
             } catch {
