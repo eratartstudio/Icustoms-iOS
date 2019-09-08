@@ -81,5 +81,4 @@ class OrderFileDetailViewController: UIViewController {
             return "\(file.fileSize) bytes"
         }
     }
-    
 }
