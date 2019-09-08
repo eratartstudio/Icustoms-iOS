@@ -151,7 +151,6 @@ class MainViewController: UIViewController {//, Localizable
         print(order)
         tableView.reloadData()
     }
-    
 }
 
 extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
@@ -308,6 +307,7 @@ class ActiveOrderTableCell: UITableViewCell {
     @IBOutlet weak var analyticsCircleView: UICircularProgressRing!
     
     @IBOutlet weak var releaseCircleContainerView: UIView!
+    @IBOutlet weak var releaseView: UIView!
     @IBOutlet weak var releaseCircleView: UICircularProgressRing!
     
     @IBOutlet weak var declarationCircleWhiteView: UIView!
@@ -318,6 +318,7 @@ class ActiveOrderTableCell: UITableViewCell {
     
     @IBOutlet weak var declarationView: UIView!
     @IBOutlet weak var endedView: UIView!
+    @IBOutlet weak var endedCompleted: UIImageView!
     
     @IBOutlet weak var analyticLabel: UILabel!
     @IBOutlet weak var declarationLabel: UILabel!
@@ -348,6 +349,7 @@ class ActiveOrderTableCell: UITableViewCell {
             if percentPaid >= 100 {
                 paidLabel.backgroundColor = activeColor//UIColor(red: 0, green: 198/255, blue: 1, alpha: 0)
                 paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
+                
             } else if percentPaid > 0 {
                 paidLabel.backgroundColor = UIColor(red: 1, green: 198/255, blue: 0, alpha: 1)
                 paidLabel.text = "оплачен".localizedSafe + "\(Int(percentPaid))%"
@@ -356,8 +358,15 @@ class ActiveOrderTableCell: UITableViewCell {
             }
             //paidLabel.text = String(format: locale.get(.paid_percent), Int(percentPaid))
         } else {
-            paidLabel.isHidden = order.isPaid
+            if(order.isPaid) {
+                paidLabel.backgroundColor = activeColor
+                paidLabel.text = "оплачен".localizedSafe + "100%"
+            } else {
+                paidLabel.backgroundColor = UIColor(red: 253/255, green: 123/255, blue: 32/255, alpha: 1)
+                paidLabel.text = "Не оплачен".localizedSafe
+            }
         }
+         paidLabel.isHidden = false
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
@@ -365,6 +374,21 @@ class ActiveOrderTableCell: UITableViewCell {
         let date = Date.from(string: order.createdAt, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
         dateLabel.text = dateFormatter.string(from: date).uppercased()
         prepareStatus(order.status?.id ?? 0)
+    }
+    
+    func chekNetarif() {
+        guard let order = order else { return }
+        if order.checkNetarif == true {
+            paidLabel.isHidden = true
+            declarationView.isHidden = true
+            declarationLabel.isHidden = true
+            releaseView.isHidden = true
+            releaseLabel.isHidden = true
+        } else if order.checkNetarif == false {
+            paidLabel.isHidden = false
+            declarationView.isHidden = false
+            releaseView.isHidden = false
+        }
     }
     
     func prepareStatus(_ status: Int) {
@@ -375,6 +399,7 @@ class ActiveOrderTableCell: UITableViewCell {
             analyticsCompleted.isHidden = true
             declarationCompleted.isHidden = true
             releaseCompleted.isHidden = true
+            endedCompleted.isHidden = true
             endedView.backgroundColor = inactiveColor
             declarationView.backgroundColor = inactiveColor
             
@@ -392,12 +417,15 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = true
             
             declarationCircleWhiteView.isHidden = true
+            
+            chekNetarif()
         case 2:
             analyticsCircleContainerView.isHidden = false
             releaseCircleContainerView.isHidden = true
             analyticsCompleted.isHidden = true
             declarationCompleted.isHidden = true
             releaseCompleted.isHidden = true
+            endedCompleted.isHidden = true
             let countReady = order?.countReady ?? 0
             let countGoods = order?.countGoods ?? 0
             analyticsCircleView.value = (CGFloat(countReady)/CGFloat(countGoods)) * 100
@@ -418,11 +446,14 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = true
             
             declarationCircleWhiteView.isHidden = true
+            
+            chekNetarif()
         case 3:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = true
             releaseCompleted.isHidden = true
             releaseCircleContainerView.isHidden = true
+            endedCompleted.isHidden = true
             endedView.backgroundColor = inactiveColor
             declarationView.backgroundColor = activeColor
             
@@ -440,10 +471,13 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = true
             
             declarationCircleWhiteView.isHidden = false
+            
+            chekNetarif()
         case 4, 5, 6, 7:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
             releaseCompleted.isHidden = true
+            endedCompleted.isHidden = true
             releaseCircleContainerView.isHidden = false
             
             releaseCircleView.value = CGFloat(status - 4) * 25
@@ -463,10 +497,13 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = false
             
             declarationCircleWhiteView.isHidden = true
+            
+            chekNetarif()
         case 8:
             analyticsCompleted.isHidden = false
             declarationCompleted.isHidden = false
             releaseCompleted.isHidden = false
+            endedCompleted.isHidden = true
             endedView.backgroundColor = activeColor
             
             analyticLabel.textColor = activeColor
@@ -483,6 +520,52 @@ class ActiveOrderTableCell: UITableViewCell {
             secondProgressView.isHidden = false
             
             declarationCircleWhiteView.isHidden = true
+            
+            chekNetarif()
+        case 9:
+            analyticsCompleted.isHidden = false
+            declarationCompleted.isHidden = false
+            releaseCompleted.isHidden = false
+            endedView.isHidden = false
+            endedCompleted.isHidden = false
+            
+            analyticLabel.textColor = activeColor
+            declarationLabel.textColor = activeColor
+            releaseLabel.textColor = activeColor
+            endedLabel.textColor = activeColor
+            
+            analyticLabel.text = analyticLabel.text
+            declarationLabel.text = declarationLabel.text
+            releaseLabel.text = releaseLabel.text
+            endedLabel.text = endedLabel.text
+            
+            firstProgressView.isHidden = false
+            secondProgressView.isHidden = false
+            releaseCircleView.isHidden = false
+      
+            chekNetarif()
+        case 11:
+            analyticsCompleted.isHidden = false
+            declarationCompleted.isHidden = false
+            releaseCompleted.isHidden = false
+            endedView.isHidden = false
+            endedCompleted.isHidden = false
+            
+            analyticLabel.textColor = activeColor
+            declarationLabel.textColor = activeColor
+            releaseLabel.textColor = activeColor
+            endedLabel.textColor = activeColor
+            
+            analyticLabel.text = analyticLabel.text
+            declarationLabel.text = declarationLabel.text
+            releaseLabel.text = releaseLabel.text
+            endedLabel.text = endedLabel.text
+            
+            firstProgressView.isHidden = false
+            secondProgressView.isHidden = false
+            releaseCircleView.isHidden = false
+            
+            chekNetarif()
         default:
             break
         }

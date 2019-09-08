@@ -315,7 +315,7 @@
 "tsh-LU-qhx.title" = "About the app";
 
 /* Class = "UIButton"; normalTitle = "Скачать"; ObjectID = "uNZ-NN-o6a"; */
-"uNZ-NN-o6a.normalTitle" = "Download";
+"uNZ-NN-o6a.normalTitle" = "Download bill";
 
 /* Class = "UILabel"; text = "Открыть счёт"; ObjectID = "ufa-MY-W7v"; */
 "ufa-MY-W7v.text" = "Open an account";

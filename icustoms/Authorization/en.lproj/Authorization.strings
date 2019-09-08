@@ -31,3 +31,12 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "uC6-O6-Jn5"; */
 "uC6-O6-Jn5.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Не могу войти"; ObjectID = "NW6-E1-efz"; */
+"NW6-E1-efz.normalTitle" = "Can't enter";
+
+/* Class = "UILabel"; text = "СЛУЖБА ПОДДЕРЖКИ"; ObjectID = "SXt-Sb-T5N"; */
+"SXt-Sb-T5N.text" = "SUPPORT";
+
+/* Class = "UINavigationItem"; title = "Помощь"; ObjectID = "jlh-l5-B34"; */
+"jlh-l5-B34.title" = "Help";

@@ -23,34 +23,33 @@ class SettingsViewController: UITableViewController {
         
         settings = Database.default.profileSettings
         
-        if settings == nil {
-            API.default.profileSettings(success: { (settings) in
-                if let settings = settings {
-                    self.settings = settings
-                    Database.default.profileSettings = settings
-                    self.updateSwitches()
-                }
-            }) { (error, statusCode) in
-                print("\(statusCode) - \(error.localizedDescription)")
+        API.default.profileSettings(success: { (settings) in
+            if let settings = settings {
+                self.settings = settings
+                Database.default.profileSettings = settings
+                self.updateSwitches()
             }
-        } else {
-            updateSwitches()
+        }) { (error, statusCode) in
+            print("\(statusCode) - \(error.localizedDescription)")
         }
     }
     
     func updateSwitches() {
         guard settings != nil else { return }
-        let pushSettings = settings.pushNotification.pushNotification
+        let pushSettings = settings.pushNotification
         statusNotificationSwitch.isOn = pushSettings.status
         balanceNotificationSwitch.isOn = pushSettings.balance
         otherNotificationSwitch.isOn = pushSettings.other
     }
     
     @IBAction func switchDidChange() {
-        guard settings != nil else { return }
         let pushSettings = PushNotificationSettings(status: statusNotificationSwitch.isOn, balance: balanceNotificationSwitch.isOn, other: otherNotificationSwitch.isOn)
-        settings = ProfileSettings(pushNotification: ProfilePushSettings(pushNotification: pushSettings))
+        settings = ProfileSettings(pushNotification: pushSettings)
         Database.default.profileSettings = settings
+        API.default.updateProfileSettings(settings, success: { (flag) in
+        }) { (error, statusCode) in
+            print("\(statusCode) - \(error.localizedDescription)")
+        }
     }
     
     func changeAppLanguage(_ language: String) {

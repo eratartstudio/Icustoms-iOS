@@ -38,11 +38,20 @@ class OrderFileDetailViewController: UIViewController {
         SVProgressHUD.show()
         API.default.downloadFiles(file.id, { data in
             SVProgressHUD.dismiss()
-            let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+            
+            let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("\(self.file.name).\(self.file.fileExtension ?? "pdf")")
+            do {
+                try data.write(to: fileURL, options: .atomic)
+            } catch {
+                print(error)
+            }
+            
+            let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
             self.present(activityViewController, animated: true, completion: nil)
         }) { (error, statusCode) in
             SVProgressHUD.dismiss()
-            print("ERROR")
+            self.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файлы".localizedSafe)
+            print("\(error)")
         }
     }
     

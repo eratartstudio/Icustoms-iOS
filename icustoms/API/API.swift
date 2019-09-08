@@ -13,13 +13,14 @@ import DKExtensions
 struct File: Decodable {
     let id: Int
     let type: FileType
-    let name: String
+    var name: String
     let number: String
     let date: String
     let expired: String?
     let fileSize: Int
     let mimeType: String?
     let createdAt: String?
+    let fileExtension: String?
     
     enum CodingKeys: CodingKey {
         case id
@@ -31,6 +32,7 @@ struct File: Decodable {
         case fileSize
         case mimeType
         case createdAt
+        case fileExtension
     }
     
     init(from decoder: Decoder) throws {
@@ -44,6 +46,7 @@ struct File: Decodable {
         fileSize = (try? container.decode(Int.self, forKey: .fileSize)) ?? 0
         mimeType = try? container.decode(String.self, forKey: .mimeType)
         createdAt = try container.decode(String.self, forKey: .createdAt)
+        fileExtension = try container.decode(String.self, forKey: .fileExtension)
     }
  
 }
@@ -224,7 +227,7 @@ extension API {
     
     func updateProfileSettings(_ settings: ProfileSettings, success: ((Bool) -> Void)? = nil, failure: Failure? = nil) {
         var params = [String : AnyObject]()
-        let pushSettings = settings.pushNotification.pushNotification
+        let pushSettings = settings.pushNotification
         params["pushNotification"] = ["status": pushSettings.status, "balance": pushSettings.balance, "other": pushSettings.other] as AnyObject
         patch(host.mobile.client.settings.profile, params: params, headers: authorizationHeaders, encoding: .json, success: { (data, statusCode) in
             success?(statusCode >= 200 && statusCode < 300)

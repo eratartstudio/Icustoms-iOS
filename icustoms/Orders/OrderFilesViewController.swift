@@ -31,7 +31,6 @@ class OrderFilesViewController: UIViewController {
             self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить файлы".localizedSafe)
         }
     }
-    
 }
 
 extension OrderFilesViewController: UITableViewDataSource, UITableViewDelegate {

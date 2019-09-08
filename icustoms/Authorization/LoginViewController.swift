@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {//, Localizable
     @IBOutlet weak var codePrivateField: UITextField!
     @IBOutlet weak var sendButton: Button!
     
+    @IBOutlet weak var cantLogIn: UIButton!
+    
     private var codePicker: UIPickerView!
     
     private var codes: [String] = []
@@ -33,6 +35,8 @@ class LoginViewController: UIViewController {//, Localizable
         codes = Country.current.codes()
         createPicker()
         //localize(local)
+        
+        cantLogIn.underline()
     }
     
 //    func localize(_ locale: Localization) {
@@ -115,4 +119,15 @@ extension LoginViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         codeLabel.text = codes[row]
     }
     
+}
+
+extension UIButton {
+    func underline() {
+        guard let text = self.titleLabel?.text else { return }
+        
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: text.count))
+        
+        self.setAttributedTitle(attributedString, for: .normal)
+    }
 }
