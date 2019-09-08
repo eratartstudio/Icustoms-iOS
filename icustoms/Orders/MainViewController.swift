@@ -343,7 +343,7 @@ class ActiveOrderTableCell: UITableViewCell {
         guard let order = order else { return }
         
         orderIdLabel.text = order.orderId
-        statusLabel.text = order.status?.name.localized
+        statusLabel.text = order.status?.name.localizedSafe
         
         if let percentPaid = order.invoice?.percentPaid, percentPaid > 0 {
             if percentPaid >= 100 {
