@@ -127,9 +127,6 @@ class OrderDetailViewController: UIViewController {
         releaseDate.isHidden = true
         endedDate.isHidden = true
         
-        print(order.checkNetarif)
-        print(order.status?.id)
-        
         if((size >= 1)) {
             order.statusHistories?.forEach{ history in
                 switch i {
@@ -140,6 +137,7 @@ class OrderDetailViewController: UIViewController {
                     dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     analyticDate.text = dateFormatter.string(from: date)
+                    analyticDate.isHidden = analyticsCompleted.isHidden
                     i = i + 1
                 case 1:
                     declarationDate.isHidden = false
@@ -164,6 +162,8 @@ class OrderDetailViewController: UIViewController {
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     releaseDate.text = dateFormatter.string(from: date)
                     
+                    releaseDate.isHidden = releaseCompleted.isHidden
+                    
                     if order.checkNetarif == true {
                         releaseDate.isHidden = true
                     }
@@ -176,6 +176,9 @@ class OrderDetailViewController: UIViewController {
                     dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     endedDate.text = dateFormatter.string(from: date)
+                    
+                    endedDate.isHidden = endedCompleted.isHidden
+                    
                     i = i + 1
                 default:
                     break
