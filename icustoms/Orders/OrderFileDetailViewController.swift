@@ -27,11 +27,11 @@ class OrderFileDetailViewController: UIViewController {
         super.viewDidLoad()
         
         titleLabel.text = "\(currentIndex + 1) из \(filesCount)"
-        nameLabel.text = file.number
+        nameLabel.text = file.type.code
         descriptionLabel.text = file.name
         sizeLabel.text = printSizeFile(Int64(file.fileSize))
         dateLabel.text = Date.from(string: file.date, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm:ss")
-        typeLabel.text = file.mimeType
+        typeLabel.text = file.fileExtension?.uppercased()
     }
     
     @IBAction func shareFileAction() {

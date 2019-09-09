@@ -70,9 +70,8 @@ class FileTableCell: UITableViewCell {
     
     private func updateContent() {
         guard let file = file else { return }
-        nameLabel.text = file.number
-        descriptionLabel.text = file.name
-        typeLabel.text = file.mimeType
+        nameLabel.text = file.name
+        descriptionLabel.text = Date.from(string: file.date, format: "yyyy-MM-dd'T'HH:mm:ssZZZ").string(with: "dd.MM.yyyy HH:mm:ss")
+        typeLabel.text = file.fileExtension?.uppercased()
     }
-    
 }
