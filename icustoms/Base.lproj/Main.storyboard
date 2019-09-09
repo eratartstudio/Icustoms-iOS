@@ -1574,6 +1574,7 @@
                         <outlet property="endedDate" destination="7y5-P1-qBX" id="AaY-Yl-ol3"/>
                         <outlet property="endedLabel" destination="aXy-pp-aJb" id="8r5-Dg-UJ4"/>
                         <outlet property="endedView" destination="FAF-QI-1Es" id="K5f-it-WyI"/>
+                        <outlet property="filesButton" destination="9U0-Jd-w8e" id="90A-n8-30p"/>
                         <outlet property="firstProgressView" destination="ME3-eN-MWy" id="P8F-Ci-Bcc"/>
                         <outlet property="infoBackView" destination="PuI-pe-pAe" id="omL-hv-Zqh"/>
                         <outlet property="infoBackViewHeightConstraint" destination="gSi-yq-wIg" id="L0Z-hR-zRL"/>
@@ -1600,7 +1601,7 @@
         <!--Файлы-->
         <scene sceneID="4lj-7U-NtR">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="9VU-8x-CFE" customClass="OrderFilesViewController" customModule="icustoms" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderFilesViewController" hidesBottomBarWhenPushed="YES" id="9VU-8x-CFE" customClass="OrderFilesViewController" customModule="icustoms" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fdt-D4-sN3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

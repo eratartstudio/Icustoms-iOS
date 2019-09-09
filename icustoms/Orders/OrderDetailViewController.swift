@@ -64,11 +64,14 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var infoBackViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var saveInvoiceButton: UIButton!
+    @IBOutlet weak var filesButton: UIBarButtonItem!
     
     let activeColor: UIColor = UIColor(red: 111/255, green: 184/255, blue: 98/255, alpha: 1)
     let inactiveColor: UIColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+    let orangeColor: UIColor = UIColor(red: 0.99, green: 0.40, blue: 0.00, alpha: 1.0)
     
     var order: Order!
+    var files: [File] = []
     var statusHistories: StatusHistories!
     
     override func viewDidLoad() {
@@ -85,6 +88,8 @@ class OrderDetailViewController: UIViewController {
         releaseCircleView.style = .inside
         
         orderNumberLabel.text = order.orderId
+        
+        saveInvoiceButton.backgroundColor = inactiveColor
         
         //        paidLabel.isHidden = order.isPaid
         //        order.invoice
@@ -233,6 +238,32 @@ class OrderDetailViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if order.invoice == nil {
+            if order.checkNetarif == true {
+                API.default.files(order.id, { [weak self] (files) in
+                    guard let this = self else { return }
+                    if files.isEmpty == true {
+                        this.saveInvoiceButton.isEnabled = false
+                        this.saveInvoiceButton.backgroundColor = this.inactiveColor
+                    } else {
+                        this.saveInvoiceButton.isEnabled = true
+                        this.saveInvoiceButton.backgroundColor = this.orangeColor
+                    }
+                }) { (error, statusCode) in
+                    print(error)
+                }
+            } else {
+                saveInvoiceButton.isEnabled = false
+                saveInvoiceButton.backgroundColor = inactiveColor
+            }
+        } else {
+            saveInvoiceButton.isEnabled = true
+            saveInvoiceButton.backgroundColor = orangeColor
+        }
+    }
+    
     func defaultAvansAndToll(symbol: String) {
         if(order.prepaid.isEmpty) {
             avansLabel.text = "-"
@@ -269,7 +300,11 @@ class OrderDetailViewController: UIViewController {
     
     @IBAction func saveInvoice() {
         guard let invoiceId = order.invoice?.id else {
-            self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
+            if order.checkNetarif == true {
+                UIApplication.shared.sendAction(filesButton.action!, to: filesButton.target, from: self, for: nil)
+            } else {
+                self.showAlert("Ошибка".localizedSafe, message: "Файла не существует".localizedSafe)
+            }
             return
         }
         SVProgressHUD.show()
