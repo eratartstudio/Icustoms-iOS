@@ -84,6 +84,7 @@ class MainViewController: UIViewController {//, Localizable
                 self?.filteredOrders = [filtered, closed]
                 self?.tableView.reloadData()
                 self?.refreshControl.endRefreshing()
+                SVProgressHUD.dismiss()
                 }, failure: { [weak self] (error, statusCode) in
                     self?.refreshControl.endRefreshing()
                     self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
@@ -270,7 +271,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 extension MainViewController: FilterViewDelegate {
     
     func filterView(_ view: FilterView, didSave filter: FilterOrder) {
-        update()
+        //update()
         hideFilterView()
         SVProgressHUD.show()
         API.default.search("", filter: filter, success: { [weak self] (items) in
@@ -288,9 +289,9 @@ extension MainViewController: FilterViewDelegate {
             self?.tableView.reloadData()
             self?.update()
             self?.tableView.setContentOffset(.zero, animated: true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
-                SVProgressHUD.dismiss()
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+//                SVProgressHUD.dismiss()
+//            }
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
             self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
