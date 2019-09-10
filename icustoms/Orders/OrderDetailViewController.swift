@@ -221,13 +221,13 @@ class OrderDetailViewController: UIViewController {
                     let rate = Float(order.currency!.rate!.isEmpty ? "0" : order.currency!.rate!) ?? 0
                     
                     if(avans == 0) {
-                        avansLabel.text = "-"
+                        avansLabel.text = "0" + " ₽"
                     } else{
                         avansLabel.text = getStringWithSpace(string: String(avans*rate)) + " ₽"
                     }
                     
                     if(toll == 0) {
-                        tollLabel.text = "-"
+                        tollLabel.text = "0" + " ₽"
                     } else{
                         tollLabel.text = getStringWithSpace(string: String(toll*rate)) + " ₽"
                     }
@@ -266,12 +266,12 @@ class OrderDetailViewController: UIViewController {
     
     func defaultAvansAndToll(symbol: String) {
         if(order.prepaid.isEmpty) {
-            avansLabel.text = "-"
+            avansLabel.text = "0" + " \(symbol)"
         } else{
             avansLabel.text = getStringWithSpace(string: order.prepaid) + " \(symbol)"
         }
         if(order.toll.isEmpty) {
-            tollLabel.text = "-"
+            tollLabel.text = "0" + " \(symbol)"
         } else{
             tollLabel.text = getStringWithSpace(string: order.toll) + " \(symbol)"
         }
