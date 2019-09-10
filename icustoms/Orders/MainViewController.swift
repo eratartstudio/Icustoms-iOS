@@ -270,10 +270,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 extension MainViewController: FilterViewDelegate {
     
     func filterView(_ view: FilterView, didSave filter: FilterOrder) {
+        update()
         hideFilterView()
         SVProgressHUD.show()
         API.default.search("", filter: filter, success: { [weak self] (items) in
-            SVProgressHUD.dismiss()
             var filtered = items.filter { !$0.isEnded }.sorted { $0.id > $1.id }
             var closed = items.filter { $0.isEnded }.sorted { $0.id > $1.id }
             
@@ -283,16 +283,19 @@ extension MainViewController: FilterViewDelegate {
             }
             
             self?.filteredOrders = [filtered, closed]
-            self?.tableView.reloadData()
+//            self?.tableView.reloadData()
             self?.filter = filter
             self?.tableView.reloadData()
+            self?.update()
             self?.tableView.setContentOffset(.zero, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+                SVProgressHUD.dismiss()
+            }
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
             self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
         }
     }
-    
 }
 
 import UICircularProgressRing

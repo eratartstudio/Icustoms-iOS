@@ -151,7 +151,6 @@ class FilterView: UIView {
     @IBAction private func filterSaveAction() {
         delegate?.filterView(self, didSave: filter)
     }
-    
 }
 
 
