@@ -124,7 +124,7 @@ class OrderDetailViewController: UIViewController {
         prepareStatus(order.status?.id ?? 0)
         
         
-        var i = 1
+        var i = 0
         let size = order.statusHistories?.count ?? 0
         
         analyticDate.isHidden = true
@@ -132,9 +132,13 @@ class OrderDetailViewController: UIViewController {
         releaseDate.isHidden = true
         endedDate.isHidden = true
         
+        print(order.statusHistories)
+        
         if((size >= 2)) {
             order.statusHistories?.forEach{ history in
                 switch i {
+                case 0:
+                    i = i + 1
                 case 1:
                     analyticDate.isHidden = false
                     let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")

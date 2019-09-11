@@ -33,7 +33,7 @@ class ProfileViewController: UITableViewController {
     func updateContent() {
         guard profile != nil else { return }
         idLabel.text = "id \(profile?.id ?? 0)"
-        fioLabel.text = "\(profile.lastName ?? "")" + " " + "\(profile.middleName ?? "")" + " " + "\(profile.firstName ?? "")"
+        fioLabel.text = "\(profile.lastName ?? "")" + " " + "\(profile.firstName ?? "")" + " " + "\(profile.middleName ?? "")"
         phoneLabel.text = profile.phone ?? ""
         companyLabel.text = profile.company ?? ""
     }
