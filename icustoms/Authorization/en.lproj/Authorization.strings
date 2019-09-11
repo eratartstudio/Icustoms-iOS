@@ -33,7 +33,7 @@
 "uC6-O6-Jn5.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Не могу войти"; ObjectID = "NW6-E1-efz"; */
-"NW6-E1-efz.normalTitle" = "Can't enter";
+"NW6-E1-efz.normalTitle" = "Can't logIn";
 
 /* Class = "UILabel"; text = "СЛУЖБА ПОДДЕРЖКИ"; ObjectID = "SXt-Sb-T5N"; */
 "SXt-Sb-T5N.text" = "SUPPORT";
