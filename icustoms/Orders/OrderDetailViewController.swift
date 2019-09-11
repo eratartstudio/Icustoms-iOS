@@ -124,7 +124,7 @@ class OrderDetailViewController: UIViewController {
         prepareStatus(order.status?.id ?? 0)
         
         
-        var i = 0
+        var i = 1
         let size = order.statusHistories?.count ?? 0
         
         analyticDate.isHidden = true
@@ -132,10 +132,10 @@ class OrderDetailViewController: UIViewController {
         releaseDate.isHidden = true
         endedDate.isHidden = true
         
-        if((size >= 1)) {
+        if((size >= 2)) {
             order.statusHistories?.forEach{ history in
                 switch i {
-                case 0:
+                case 1:
                     analyticDate.isHidden = false
                     let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
                     let dateFormatter = DateFormatter()
@@ -144,7 +144,7 @@ class OrderDetailViewController: UIViewController {
                     analyticDate.text = dateFormatter.string(from: date)
                     //analyticDate.isHidden = analyticsCompleted.isHidden
                     i = i + 1
-                case 1:
+                case 2:
                     declarationDate.isHidden = false
                     let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
                     let dateFormatter = DateFormatter()
@@ -159,7 +159,7 @@ class OrderDetailViewController: UIViewController {
                     }
                     
                     i = i + 1
-                case 2:
+                case 3:
                     releaseDate.isHidden = false
                     let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
                     let dateFormatter = DateFormatter()
@@ -174,7 +174,7 @@ class OrderDetailViewController: UIViewController {
                     }
                     
                     i = i + 1
-                case 3:
+                case 4:
                     endedDate.isHidden = false
                     let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
                     let dateFormatter = DateFormatter()
