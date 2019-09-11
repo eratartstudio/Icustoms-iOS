@@ -132,8 +132,6 @@ class OrderDetailViewController: UIViewController {
         releaseDate.isHidden = true
         endedDate.isHidden = true
         
-        print(order.statusHistories)
-        
         if((size >= 2)) {
             order.statusHistories?.forEach{ history in
                 switch i {
