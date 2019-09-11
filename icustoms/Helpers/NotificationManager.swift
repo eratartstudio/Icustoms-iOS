@@ -54,7 +54,7 @@ extension NotificationManager: MessagingDelegate {
             }
         }
         UserDefaults.standard.set(fcmToken, forKey: "device_token")
-        print("token: \(fcmToken)")
+        print("___\(fcmToken)___")
     }
     
 }

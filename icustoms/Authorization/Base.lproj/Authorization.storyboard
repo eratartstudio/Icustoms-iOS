@@ -342,34 +342,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СЛУЖБА ПОДДЕРЖКИ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXt-Sb-T5N">
-                                <rect key="frame" x="94.5" y="271.5" width="186.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="99.5" y="192" width="176.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.62738305329999999" green="0.62749117610000005" blue="0.62736785409999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7 499 677 64 84" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqz-ce-OBJ">
-                                <rect key="frame" x="87" y="301.5" width="201.5" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <color key="textColor" red="0.1997897029" green="0.050931289790000001" blue="0.5981456637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xQ-hb-MuV">
-                                <rect key="frame" x="94.5" y="301" width="186.5" height="30"/>
+                                <rect key="frame" x="86.5" y="215.5" width="202" height="41"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <state key="normal" title="+7 499 677 64 84">
+                                    <color key="titleColor" red="0.1817528903" green="0.058233313260000003" blue="0.57651001209999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="callAction" destination="GoU-Cu-fPi" eventType="touchUpInside" id="M4V-RO-NXJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMIAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQe-RB-PQ2">
+                                <rect key="frame" x="162.5" y="260.5" width="50.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.62738305329999999" green="0.62749117610000005" blue="0.62736785409999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKM-nU-mgN">
+                                <rect key="frame" x="105.5" y="284" width="164" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" title="INFO@ICUSTOMS.RU">
+                                    <color key="titleColor" red="0.1817528903" green="0.058233313260000003" blue="0.57651001209999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailAction:" destination="GoU-Cu-fPi" eventType="touchUpInside" id="XDN-HI-S9X"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SXt-Sb-T5N" firstAttribute="centerY" secondItem="42v-G4-hZp" secondAttribute="centerY" constant="-15" id="9VA-li-4QP"/>
-                            <constraint firstItem="cqz-ce-OBJ" firstAttribute="centerX" secondItem="42v-G4-hZp" secondAttribute="centerX" id="EUK-6o-aSB"/>
-                            <constraint firstItem="5xQ-hb-MuV" firstAttribute="centerY" secondItem="cqz-ce-OBJ" secondAttribute="centerY" id="Ehw-3w-CNx"/>
-                            <constraint firstItem="5xQ-hb-MuV" firstAttribute="width" secondItem="SXt-Sb-T5N" secondAttribute="width" id="KcK-aE-FZL"/>
+                            <constraint firstItem="QKM-nU-mgN" firstAttribute="centerX" secondItem="42v-G4-hZp" secondAttribute="centerX" id="7AJ-b7-GmV"/>
+                            <constraint firstItem="SXt-Sb-T5N" firstAttribute="centerY" secondItem="42v-G4-hZp" secondAttribute="centerY" constant="-100" id="9VA-li-4QP"/>
+                            <constraint firstItem="vQe-RB-PQ2" firstAttribute="top" secondItem="5xQ-hb-MuV" secondAttribute="bottom" constant="4" id="A4B-ef-CwN"/>
+                            <constraint firstItem="5xQ-hb-MuV" firstAttribute="top" secondItem="SXt-Sb-T5N" secondAttribute="bottom" constant="4" id="DjW-Sv-MYI"/>
+                            <constraint firstItem="vQe-RB-PQ2" firstAttribute="centerX" secondItem="42v-G4-hZp" secondAttribute="centerX" id="JvZ-XZ-m1p"/>
+                            <constraint firstItem="5xQ-hb-MuV" firstAttribute="centerX" secondItem="42v-G4-hZp" secondAttribute="centerX" id="OsB-Y8-qDU"/>
                             <constraint firstItem="SXt-Sb-T5N" firstAttribute="centerX" secondItem="42v-G4-hZp" secondAttribute="centerX" id="UWY-Xu-oL1"/>
-                            <constraint firstItem="cqz-ce-OBJ" firstAttribute="top" secondItem="SXt-Sb-T5N" secondAttribute="bottom" id="Xbp-KY-dLI"/>
-                            <constraint firstItem="5xQ-hb-MuV" firstAttribute="centerX" secondItem="SXt-Sb-T5N" secondAttribute="centerX" id="YAH-gY-WEY"/>
-                            <constraint firstItem="5xQ-hb-MuV" firstAttribute="height" secondItem="SXt-Sb-T5N" secondAttribute="height" id="uS1-xM-ihd"/>
+                            <constraint firstItem="QKM-nU-mgN" firstAttribute="top" secondItem="vQe-RB-PQ2" secondAttribute="bottom" constant="4" id="vvx-DJ-3du"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VLu-0u-ARl"/>
                     </view>

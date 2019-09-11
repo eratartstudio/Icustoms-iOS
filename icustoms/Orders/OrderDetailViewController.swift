@@ -135,14 +135,14 @@ class OrderDetailViewController: UIViewController {
         if((size >= 1)) {
             order.statusHistories?.forEach{ history in
                 switch i {
-                case 0 :
+                case 0:
                     analyticDate.isHidden = false
                     let date = Date.from(string: history?.date ?? "", format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     analyticDate.text = dateFormatter.string(from: date)
-                    analyticDate.isHidden = analyticsCompleted.isHidden
+                    //analyticDate.isHidden = analyticsCompleted.isHidden
                     i = i + 1
                 case 1:
                     declarationDate.isHidden = false
@@ -152,7 +152,7 @@ class OrderDetailViewController: UIViewController {
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     declarationDate.text = dateFormatter.string(from: date)
                     
-                    declarationDate.isHidden = declarationCompleted.isHidden
+                    //declarationDate.isHidden = declarationCompleted.isHidden
                     
                     if order.checkNetarif == true {
                         declarationDate.isHidden = true
@@ -167,7 +167,7 @@ class OrderDetailViewController: UIViewController {
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     releaseDate.text = dateFormatter.string(from: date)
                     
-                    releaseDate.isHidden = releaseCompleted.isHidden
+                    //releaseDate.isHidden = releaseCompleted.isHidden
                     
                     if order.checkNetarif == true {
                         releaseDate.isHidden = true
@@ -182,7 +182,7 @@ class OrderDetailViewController: UIViewController {
                     dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
                     endedDate.text = dateFormatter.string(from: date)
                     
-                    endedDate.isHidden = endedCompleted.isHidden
+                    //endedDate.isHidden = endedCompleted.isHidden
                     
                     i = i + 1
                 default:
@@ -201,7 +201,7 @@ class OrderDetailViewController: UIViewController {
         releaseCenterConstraint.constant = releaseDate.isHidden ? 0 : -8
         endedCenterConstraint.constant = endedDate.isHidden ? 0 : -8
         
-        invoiceNumberLabel.text = order.invoiceNumber.isEmpty ? "-" : order.invoiceNumber
+        invoiceNumberLabel.text = order.invoiceNumber.isEmpty ? "0" + " ₽" : order.invoiceNumber
         deliveryNameLabel.text = order.deliveryService
         currencyLabel.text = order.currency?.code
         if(order.currency?.rate != nil) {
