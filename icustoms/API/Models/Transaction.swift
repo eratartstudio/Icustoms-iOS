@@ -58,5 +58,4 @@ struct BalanceTransaction: Decodable {
     var dateObject: Date {
         return Date.from(string: date, format: "yyyy-MM-dd'T'HH:mm:ssZZZ")
     }
-    
 }

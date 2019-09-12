@@ -348,9 +348,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xQ-hb-MuV">
-                                <rect key="frame" x="86.5" y="215.5" width="202" height="41"/>
+                                <rect key="frame" x="86" y="215.5" width="203" height="41"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <state key="normal" title="+7 499 677 64 84">
+                                <state key="normal" title="8-800-551-51-47">
                                     <color key="titleColor" red="0.1817528903" green="0.058233313260000003" blue="0.57651001209999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>

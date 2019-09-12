@@ -33,7 +33,7 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
         
         descriptionLabel.text = transaction.description
         let price = transaction.amount.presentable()
-        priceLastLabel.text = "." + price.last + " P"
+        priceLastLabel.text = "." + price.last + " ₽"
         if transaction.transactionType == .substract {
             priceFirstLabel.text = price.first
             priceFirstLabel.textColor = .black
@@ -45,7 +45,17 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
         }
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
-        dateFormatter.dateFormat = "dd MMMM yyyy, HH:mm"
+        
+        let calendar = NSCalendar.current
+        let hour = calendar.component(.hour, from: transaction.dateObject)
+        let minutes = calendar.component(.minute, from: transaction.dateObject)
+        
+        if "\(hour):\(minutes)" == "0:0" {
+            dateFormatter.dateFormat = "dd MMMM yyyy"
+        } else {
+            dateFormatter.dateFormat = "dd MMMM yyyy, HH:mm"
+        }
+        
         dateLabel.text = dateFormatter.string(from: transaction.dateObject)
         view.layoutIfNeeded()
         topViewScrollConstraint.constant = scrollView.frame.height/2
@@ -83,7 +93,7 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
             dismissController()
         }
     }
-
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismissController()
     }
@@ -100,8 +110,8 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func showInvoice() {
-        dismissController()
+        dismiss(animated: false, completion: nil)
         controller?.showInvoice(transaction.invoiceId)
+        print(transaction.invoiceId)
     }
-    
 }

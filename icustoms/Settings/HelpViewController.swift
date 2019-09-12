@@ -10,11 +10,11 @@ import UIKit
 
 class HelpViewController: UIViewController {
     
-    let phone: String = "+74996776484"
+    let phone: String = "88005515147"
     let email = "info@icustoms.ru"
     
     @IBAction func callAction() {
-        let url = URL(string: "tel://" + phone)!
+        let url = URL(string: "telprompt://\(phone)")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     

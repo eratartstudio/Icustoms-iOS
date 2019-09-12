@@ -183,7 +183,7 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
         guard let count = counts[month] else { return }
         monthLabel.text = month
         let present = count.presentable()
-        countLastLabel.text = "." + present.last + " P"
+        countLastLabel.text = "." + present.last + " ₽"
         if count > 0 {
             countFirstLabel.text = "+" + present.first
         } else {
@@ -267,7 +267,7 @@ class TransactionTableCell: UITableViewCell {
     private func update() {
         guard let transaction = transaction else { return }
         let price = transaction.amount.presentable()
-        priceLastLabel.text = "." + price.last + " P"
+        priceLastLabel.text = "." + price.last + " ₽"
         if transaction.transactionType == .substract {
             priceFirstLabel.text = price.first
             priceFirstLabel.textColor = .black

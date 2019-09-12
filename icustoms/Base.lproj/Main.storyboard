@@ -3253,9 +3253,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOn-lf-IG4">
-                                <rect key="frame" x="86.5" y="191" width="202" height="41"/>
+                                <rect key="frame" x="83" y="191" width="209" height="41"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <state key="normal" title="+7 499 677 64 84">
+                                <state key="normal" title="8-800-551-51-47 ">
                                     <color key="titleColor" red="0.18175289034843445" green="0.058233313262462616" blue="0.57651001214981079" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
