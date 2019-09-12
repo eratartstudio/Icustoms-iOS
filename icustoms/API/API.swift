@@ -19,7 +19,7 @@ struct File: Decodable {
     let expired: String?
     let fileSize: Int
     let mimeType: String?
-    let createdAt: String?
+    //let createdAt: String?
     let fileExtension: String?
     
     enum CodingKeys: CodingKey {
@@ -31,7 +31,7 @@ struct File: Decodable {
         case expired
         case fileSize
         case mimeType
-        case createdAt
+        //case createdAt
         case fileExtension
     }
     
@@ -45,7 +45,7 @@ struct File: Decodable {
         expired = try? container.decode(String.self, forKey: .expired)
         fileSize = (try? container.decode(Int.self, forKey: .fileSize)) ?? 0
         mimeType = try? container.decode(String.self, forKey: .mimeType)
-        createdAt = try container.decode(String.self, forKey: .createdAt)
+        //createdAt = try container.decode(String.self, forKey: .createdAt)
         fileExtension = try container.decode(String.self, forKey: .fileExtension)
     }
  
