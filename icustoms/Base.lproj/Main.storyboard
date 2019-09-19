@@ -2039,13 +2039,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYq-jA-QIB">
-                                <rect key="frame" x="0.0" y="333.5" width="375" height="667.5"/>
+                                <rect key="frame" x="0.0" y="341" width="375" height="652.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RkY-rT-bCf">
-                                        <rect key="frame" x="0.0" y="300" width="375" height="667.5"/>
+                                        <rect key="frame" x="0.0" y="300" width="375" height="652.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6S1-4e-YFY">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7G-lh-lWf">
                                                         <rect key="frame" x="0.0" y="50" width="375" height="1"/>
@@ -2088,7 +2088,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZ1-HC-LkU">
-                                                        <rect key="frame" x="167.5" y="126" width="40" height="40"/>
+                                                        <rect key="frame" x="167.5" y="131" width="40" height="40"/>
                                                         <color key="backgroundColor" red="0.99295240640640259" green="0.40071651339530945" blue="0.00036256594466976821" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="6fz-K7-XcE"/>
@@ -2104,14 +2104,14 @@
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="uZr-QK-oNS">
-                                                        <rect key="frame" x="177.5" y="136" width="20" height="20"/>
+                                                        <rect key="frame" x="177.5" y="141" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="1Fu-IE-htb"/>
                                                             <constraint firstAttribute="width" constant="20" id="KBX-Ea-dOv"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Открыть счёт" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufa-MY-W7v">
-                                                        <rect key="frame" x="142" y="170" width="91.5" height="17"/>
+                                                        <rect key="frame" x="142" y="175" width="91.5" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="Odr-O6-1MM"/>
                                                         </constraints>
@@ -2120,7 +2120,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWp-vE-JR4">
-                                                        <rect key="frame" x="0.0" y="226" width="375" height="1"/>
+                                                        <rect key="frame" x="0.0" y="211" width="375" height="1"/>
                                                         <color key="backgroundColor" red="0.86265379190444946" green="0.86279922723770142" blue="0.8626333475112915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="JF7-1g-xYW"/>
@@ -2140,8 +2140,8 @@
                                                     <constraint firstAttribute="trailing" secondItem="cHc-6X-eV3" secondAttribute="trailing" id="hPO-pr-r2n"/>
                                                     <constraint firstAttribute="trailing" secondItem="O7G-lh-lWf" secondAttribute="trailing" id="kKk-UF-0gx"/>
                                                     <constraint firstItem="UWp-vE-JR4" firstAttribute="leading" secondItem="6S1-4e-YFY" secondAttribute="leading" id="m55-4k-gSJ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ufa-MY-W7v" secondAttribute="bottom" constant="40" id="mpH-CS-Y7K"/>
-                                                    <constraint firstItem="hZ1-HC-LkU" firstAttribute="top" secondItem="9NZ-HF-obl" secondAttribute="bottom" constant="15" id="pzi-8b-noY"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ufa-MY-W7v" secondAttribute="bottom" constant="20" id="mpH-CS-Y7K"/>
+                                                    <constraint firstItem="hZ1-HC-LkU" firstAttribute="top" secondItem="9NZ-HF-obl" secondAttribute="bottom" constant="20" id="pzi-8b-noY"/>
                                                     <constraint firstItem="O7G-lh-lWf" firstAttribute="top" secondItem="6S1-4e-YFY" secondAttribute="top" constant="50" id="r59-qK-qlE"/>
                                                     <constraint firstAttribute="trailing" secondItem="UWp-vE-JR4" secondAttribute="trailing" id="rf8-Vx-P13"/>
                                                     <constraint firstItem="ufa-MY-W7v" firstAttribute="top" secondItem="hZ1-HC-LkU" secondAttribute="bottom" constant="4" id="ruN-Zi-pbp"/>
@@ -2151,7 +2151,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oux-WF-2IN">
-                                                <rect key="frame" x="10" y="247" width="355" height="20.5"/>
+                                                <rect key="frame" x="10" y="232" width="355" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2192,6 +2192,14 @@
                     <connections>
                         <outlet property="dateLabel" destination="cHc-6X-eV3" id="wHR-a4-Lfd"/>
                         <outlet property="descriptionLabel" destination="Oux-WF-2IN" id="e8J-xS-Szm"/>
+                        <outlet property="invoiceButton" destination="hZ1-HC-LkU" id="Xjx-7y-C8k"/>
+                        <outlet property="invoiceButtonBottomConstraint" destination="ruN-Zi-pbp" id="D5X-iQ-tqM"/>
+                        <outlet property="invoiceButtonTopConstraint" destination="6fz-K7-XcE" id="BnE-Nn-DRB"/>
+                        <outlet property="invoiceImage" destination="uZr-QK-oNS" id="1zU-cY-PGk"/>
+                        <outlet property="invoiceLabel" destination="ufa-MY-W7v" id="AT2-gH-ATP"/>
+                        <outlet property="invoiceLabelHeightConstraint" destination="Odr-O6-1MM" id="Dki-qR-rft"/>
+                        <outlet property="invoiceLabelTopConstraint" destination="ruN-Zi-pbp" id="yol-dm-Nh8"/>
+                        <outlet property="invoiceLableBottomConstraint" destination="mpH-CS-Y7K" id="yk3-cS-K7m"/>
                         <outlet property="priceFirstLabel" destination="KnT-Ox-I4Y" id="mEi-Ha-4fj"/>
                         <outlet property="priceLastLabel" destination="n0R-6s-cHD" id="b0L-qa-vWN"/>
                         <outlet property="scrollView" destination="RYq-jA-QIB" id="hCh-wE-fOX"/>

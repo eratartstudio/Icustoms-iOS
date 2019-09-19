@@ -22,6 +22,18 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var priceFirstLabel: UILabel!
     @IBOutlet weak var priceLastLabel: UILabel!
     
+    @IBOutlet weak var invoiceButton: UIButton!
+    @IBOutlet weak var invoiceImage: UIImageView!
+    @IBOutlet weak var invoiceLabel: UILabel!
+    
+    @IBOutlet weak var invoiceLabelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var invoiceLableBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var invoiceLabelTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var invoiceButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var invoiceButtonBottomConstraint: NSLayoutConstraint!
+    
+    
     private (set) var isPresented: Bool = false
     
     var transaction: BalanceTransaction!
@@ -42,6 +54,15 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
             priceFirstLabel.text = "+" + price.first
             priceFirstLabel.textColor = UIColor(red: 107/255, green: 187/255, blue: 92/255, alpha: 1) // 145 203 132
             priceLastLabel.textColor = UIColor(red: 145/255, green: 203/255, blue: 132/255, alpha: 1)
+            
+            invoiceImage.isHidden = true
+            
+            invoiceLabelHeightConstraint.constant = 0
+            invoiceLableBottomConstraint.constant = 0
+            invoiceLabelTopConstraint.constant = 0
+            
+            invoiceButtonTopConstraint.constant = 0
+            invoiceButtonBottomConstraint.constant = 0
         }
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
