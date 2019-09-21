@@ -1,6 +1,0 @@
-framework module DKExtensions {
-  umbrella header "DKExtensions-umbrella.h"
-
-  export *
-  module * { export * }
-}
