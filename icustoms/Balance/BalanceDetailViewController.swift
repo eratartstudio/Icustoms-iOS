@@ -43,6 +43,12 @@ class BalanceDetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         descriptionLabel.text = transaction.description
         let price = transaction.amount.presentable()
         priceLastLabel.text = "." + price.last + " ₽"

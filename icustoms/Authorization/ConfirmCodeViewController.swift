@@ -26,6 +26,12 @@ class ConfirmCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         //local = Localization.current()
         confirmButton.isHidden = true
         descriptionLabel.text = "Введите код из СМС отправленный на номер:\n".localizedSafe + "\(authorization.phone)"
@@ -53,6 +59,7 @@ class ConfirmCodeViewController: UIViewController {
                     user.token = token
                     Database.default.add(user)
                     let mainController = Storyboard.Main.initialViewController!
+                    mainController.modalPresentationStyle = .fullScreen
                     self?.present(mainController, animated: true, completion: nil)
                 } else {
                     self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
@@ -77,6 +84,7 @@ class ConfirmCodeViewController: UIViewController {
                         user.token = token
                         Database.default.add(user)
                         let mainController = Storyboard.Main.initialViewController!
+                        mainController.modalPresentationStyle = .fullScreen
                         self?.present(mainController, animated: true, completion: nil)
                     } else {
                         self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)

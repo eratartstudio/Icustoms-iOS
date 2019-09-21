@@ -77,6 +77,12 @@ class OrderDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         analyticsCircleView.minValue = 0
         analyticsCircleView.maxValue = 100
         analyticsCircleView.innerCapStyle = .butt
@@ -519,6 +525,12 @@ class InvoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
         
         DispatchQueue.global().async {
             let timestamp = Date().timestamp

@@ -19,6 +19,12 @@ class OrderFilesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         tableView.isHidden = true
         SVProgressHUD.show()
         API.default.files(order.id, { [weak self] (files) in

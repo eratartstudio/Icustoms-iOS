@@ -29,6 +29,12 @@ class LoginViewController: UIViewController {//, Localizable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
     
         //local = Localization.current()
         navigationController?.navigationBar.shadowImage = UIImage()

@@ -21,6 +21,12 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         settings = Database.default.profileSettings
         
         API.default.profileSettings(success: { (settings) in

@@ -21,12 +21,19 @@ class ProfileViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         API.default.profile(success: { [weak self] (profile) in
             self?.profile = profile
             self?.tableView.reloadData()
             self?.updateContent()
         }) { [weak self] (error, statusCode) in
-            self?.navigationController?.popViewController(animated: true)
+            //self?.navigationController?.popViewController(animated: true)
+            print("\(statusCode) - \(error.localizedDescription)")
         }
     }
     

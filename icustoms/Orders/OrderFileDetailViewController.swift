@@ -26,6 +26,12 @@ class OrderFileDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         titleLabel.text = "\(currentIndex + 1) из \(filesCount)"
         nameLabel.text = file.type.code
         descriptionLabel.text = file.name

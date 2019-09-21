@@ -34,6 +34,12 @@ class NotificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         tableView.isHidden = true
         
         API.default.emailSettings(success: { [weak self] (response) in

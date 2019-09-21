@@ -21,6 +21,12 @@ class CustomDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+        
         titleLabel.text = custom.custom.name.localizedSafe
         totalAvansLabel.text = getStringWithSpace(string: String(custom.totalAvans)) + " ₽"//String(format: "%.2f", custom.totalAvans) + " ₽"
         totalTollLabel.text = getStringWithSpace(string: String(custom.totalToll)) + " ₽"//String(format: "%.2f", custom.totalToll) + " ₽"

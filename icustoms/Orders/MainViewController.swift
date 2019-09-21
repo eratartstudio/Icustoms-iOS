@@ -11,7 +11,7 @@ import SVProgressHUD
 import Cosmos
 
 class MainViewController: UIViewController {//, Localizable 
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topFilterConstraint: NSLayoutConstraint!
     
@@ -33,6 +33,12 @@ class MainViewController: UIViewController {//, Localizable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
         
         //locale = Localization.current()
         //localize(locale)
@@ -64,11 +70,11 @@ class MainViewController: UIViewController {//, Localizable
         NotificationManager.default.registerPushNotifications()
     }
     
-//    func localize(_ locale: Localization) {
-//        self.locale = locale
-//        createSearchController()
-//        update()
-//    }
+    //    func localize(_ locale: Localization) {
+    //        self.locale = locale
+    //        createSearchController()
+    //        update()
+    //    }
     
     @objc func update() {
         if searchController.isActive || filter != nil {
@@ -110,7 +116,7 @@ class MainViewController: UIViewController {//, Localizable
         searchController.delegate = self
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Поиск".localizedSafe
-        searchController.searchBar.setValue("Отмена".localizedSafe, forKey: "_cancelButtonText")
+        searchController.searchBar.setValue("Отмена".localizedSafe, forKey: "cancelButtonText")
         searchController.dimsBackgroundDuringPresentation = false
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
@@ -120,12 +126,12 @@ class MainViewController: UIViewController {//, Localizable
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
-
+    
     @IBAction func searchStartAction() {
-//        searchController.isActive = true
+        //        searchController.isActive = true
         searchController.searchBar.becomeFirstResponder()
     }
-
+    
     
     @objc func showFilterView() {
         topFilterConstraint.constant = 0
@@ -184,8 +190,8 @@ extension MainViewController: UISearchResultsUpdating, UISearchControllerDelegat
                 
                 self?.filteredOrders = [filtered, closed]
                 self?.tableView.reloadData()
-            }, failure: { (error, statusCode) in
-                self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
+                }, failure: { (error, statusCode) in
+                    self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
             })
         })
         
@@ -284,14 +290,14 @@ extension MainViewController: FilterViewDelegate {
             }
             
             self?.filteredOrders = [filtered, closed]
-//            self?.tableView.reloadData()
+            //            self?.tableView.reloadData()
             self?.filter = filter
             self?.tableView.reloadData()
             self?.update()
             self?.tableView.setContentOffset(.zero, animated: true)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
-//                SVProgressHUD.dismiss()
-//            }
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+            //                SVProgressHUD.dismiss()
+            //            }
         }) { [weak self] (error, statusCode) in
             SVProgressHUD.dismiss()
             self?.showAlert("Ошибка".localizedSafe, message: "Невозможно загрузить заказы".localizedSafe)
@@ -370,7 +376,7 @@ class ActiveOrderTableCell: UITableViewCell {
                 paidLabel.text = "Не оплачен".localizedSafe
             }
         }
-         paidLabel.isHidden = false
+        paidLabel.isHidden = false
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru".localizedSafe)
@@ -546,7 +552,7 @@ class ActiveOrderTableCell: UITableViewCell {
             firstProgressView.isHidden = false
             secondProgressView.isHidden = false
             releaseCircleView.isHidden = false
-      
+            
             chekNetarif()
         case 11:
             analyticsCompleted.isHidden = false

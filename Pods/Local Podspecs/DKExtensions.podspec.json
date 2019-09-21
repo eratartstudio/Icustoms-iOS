@@ -19,7 +19,7 @@
     "ios": "8.0"
   },
   "source_files": "DKExtensions/Classes/**/*",
-  "swift_version": "5.0",
+  "swift_versions": "5.0",
   "frameworks": [
     "CFNetwork",
     "UIKit"
@@ -28,5 +28,6 @@
     "Alamofire": [
 
     ]
-  }
+  },
+  "swift_version": "5.0"
 }
