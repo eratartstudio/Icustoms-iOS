@@ -1,0 +1,102 @@
+/* 
+  Localizable.strings
+  icustoms
+
+  Created by Danik's MacBook on 03/06/2019.
+  Copyright © 2019 Dmitry Kuzin. All rights reserved.
+*/
+
+"Ошибка" = "Error";
+"Невозможно авторизоваться" = "Unable to log in";
+"Введите код из СМС отправленный на номер:\n" = "Enter the SMS code sent to number:\n";
+"Выберите аккаунт для входа" = "Select account for login";
+"Отмена" = "Cancel";
+"Повторно запросить код можно через 60 сек." = "You can request a code again in 60 s.";
+"Повторно запросить код можно через " = "You can request a code again in ";
+" сек." = " s.";
+"Невозможно загрузить заказы" = "Failed to load order";
+"Поиск" = "Search";
+"Закрыть" = "Close";
+"Завершенные заказы" = "Completed orders";
+"Оценка поставлена" = "Scored";
+"Оцените заказ" = "Score the order";
+"Оцените заказ\n" = "Score the order\n";
+"Пожалуйста оцените работу\nменеджера при выполнении заказа.\nПомогите нам стать лучше!\n\n\n" = "Please score the manager's\nwork when completing the order.\nHelp us becoming better!\n\n\n";
+"Оставьте отзыв" = "Submit feedback";
+"Отправить" = "Submit";
+"Невозможно отправить отзыв" = "Feedback submission failed";
+"Номер заказа скопирован!" = "Order number copied!";
+"Файла не существует" = "File does not exist";
+"Невозможно загрузить файл" = "Failed to load file";
+"Невозможно загрузить файлы" = "Failed to load files";
+"Невозможно загрузить остатки" = "Failed to load remain";
+"Остатки актуальны на " = "Remains relevant as of ";
+"Аванс" = "Advance payment";
+"Пошлина" = "Duty";
+"Невозможно загрузить баланс" = "Failed to load balance";
+"Невозможно отобразить данные" = "Failed to display data";
+"Невозможно загрузить данные" = "Failed to load data";
+"Готово" = "Done";
+"Выберите язык" = "Choose language";
+"Для смены языка, необходимо перезапустить приложение" = "For change language, you need to restart app";
+"Перезапустить" = "Reload";
+"Трек не указан" = "Track not specified";
+
+"Все" = "All";
+"Создан" = "Created";
+"В работе (Аналитика)" = "In progress (Analytics)";
+"В работе (Декларирование)" = "In progress (Declaring)";
+"ДТ присвоен номер" = "CD number assigned";
+
+"ДТ На проверке" = "CD Under verification";
+"ДТ Выпуск" = "CD Issue";
+"ДТ Осуществляется досмотр" = "CD Undergoes inspection";
+
+"оплачен" = "paid ";
+"Не оплачен" = "not paid ";
+
+"Условный выпуск" = "Conditional release";
+"Завершен" = "Completed";
+"Выполнен " = "Completed ";
+
+"Скачать" = "Download";
+
+"c " = "from ";
+"до " = "to ";
+" г." = " yr.";
+
+"Январь" = "January";
+"Февраль" = "February";
+"Март" = "March";
+"Апрель" = "April";
+"Май" = "May";
+"Июнь" = "June";
+"Июль" = "July";
+"Август" = "August";
+"Сентябрь" = "September";
+"Октябрь" = "October";
+"Ноябрь" = "November";
+"Декабрь" = "December";
+
+"Версия " = "Version ";
+"\nот " = "\nfrom ";
+"\nСборка " = "\nBuild ";
+
+"Создан заказ" = "Created order";
+"ДТ зарегистрирована" = "CD registered";
+"ДТ на проверке" = "CD under verification";
+"ДТ на досмотре" = "CD under inspection";
+"ДТ на проверке, досмотр завершен" = "CD under check, inspection completed";
+"ДТ выпуск" = "CD issue";
+"ДТ осуществляется досмотр" = "CD undergoes inspection";
+"ДТ досмотр завершен, ДТ на проверке" = "CD inspection completed, CD under verification";
+
+"ru" = "en";
+
+"Пулковская таможня" = "Pulkovo Customs";
+"Санкт-Петербургская таможня" = "St. Petersburg Customs";
+"Московская областная таможня" = "Moscow Regional Customs";
+"Шереметьевская таможня" = "Sheremetyevo Customs";
+"Домодедовская таможня" = "Domodedovo Customs";
+"Внуковская таможня" = "Vnukovo Customs";
+"Единый лицевой счет" = "Single personal account";
