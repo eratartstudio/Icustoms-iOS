@@ -44,5 +44,4 @@ struct NotificationResponse: Decodable {
         seven = (try? container.decode(Bool.self, forKey: .seven)) ?? false
         eight = (try? container.decode(Bool.self, forKey: .eight)) ?? false
     }
-    
 }

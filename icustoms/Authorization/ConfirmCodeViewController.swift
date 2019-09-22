@@ -181,5 +181,4 @@ class ConfirmCodeViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
 }

@@ -17,7 +17,7 @@ struct Transaction {
 class BalanceViewController: UIViewController {
     
     var data: [(timestamp: Int, transactions: [BalanceTransaction])] = []
- 
+    
     var counts: [String: Double] = [:]
     
     var items: [BalanceTransaction] = []
@@ -96,7 +96,7 @@ class BalanceViewController: UIViewController {
         } else {
             data = items.group { $0.timestamp }.map { (timestamp: $0.key, transactions: $0.value) }.sorted { $0.timestamp > $1.timestamp }
         }
-    
+        
         counts = [:]
         for value in data {
             let time = TimeInterval(value.timestamp)
@@ -217,7 +217,7 @@ extension BalanceViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        updateData()
+        //        updateData()
     }
     
     @IBAction func textFieldDidChange(_ textField: UITextField) {
@@ -254,91 +254,5 @@ extension BalanceViewController: UITextFieldDelegate {
             filteredItems = []
         }
         updateData()
-    }
-    
-}
-
-class TransactionTableCell: UITableViewCell {
-    
-    @IBOutlet weak var priceFirstLabel: UILabel!
-    @IBOutlet weak var priceLastLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
-    var transaction: BalanceTransaction? {
-        didSet {
-            update()
-        }
-    }
-    
-    private func update() {
-        guard let transaction = transaction else { return }
-        let price = transaction.amount.presentable()
-        priceLastLabel.text = "." + price.last + " ₽"
-        if transaction.transactionType == .substract {
-            priceFirstLabel.text = price.first
-            priceFirstLabel.textColor = .black
-            priceLastLabel.textColor = .lightGray
-        } else {
-            priceFirstLabel.text = "+" + price.first
-            priceFirstLabel.textColor = UIColor(red: 107/255, green: 187/255, blue: 92/255, alpha: 1) // 145 203 132
-            priceLastLabel.textColor = UIColor(red: 145/255, green: 203/255, blue: 132/255, alpha: 1)
-        }
-        descriptionLabel.text = transaction.description
-    }
-    
-}
-
-extension Double {
-    func presentable() -> (first: String, last: String) {
-        let int = Int(self)
-        var last = ""
-        var s = Int(ceil(100 * (self - Double(int))))
-        if s < 0 {
-            s = -s
-        }
-        if s < 10 {
-            last = "0\(s)"
-        } else {
-            last = "\(s)"
-        }
-        return (first: int.formattedWithSeparator, last: last)
-    }
-}
-
-extension Formatter {
-    static let withSeparator: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.groupingSeparator = " "
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-}
-
-extension BinaryInteger {
-    var formattedWithSeparator: String {
-        return Formatter.withSeparator.string(for: self) ?? ""
-    }
-}
-
-extension TimeInterval {
-    
-    func month() -> String {
-        let months = [
-            "Январь".localizedSafe,
-            "Февраль".localizedSafe,
-            "Март".localizedSafe,
-            "Апрель".localizedSafe,
-            "Май".localizedSafe,
-            "Июнь".localizedSafe,
-            "Июль".localizedSafe,
-            "Август".localizedSafe,
-            "Сентябрь".localizedSafe,
-            "Октябрь".localizedSafe,
-            "Ноябрь".localizedSafe,
-            "Декабрь".localizedSafe
-        ]
-        let date = Date(timeIntervalSince1970: self)
-        let int = Calendar.current.component(.month, from: date)
-        return months[int - 1]
     }
 }

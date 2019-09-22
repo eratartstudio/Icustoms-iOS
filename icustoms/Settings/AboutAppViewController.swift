@@ -40,5 +40,4 @@ class AboutAppViewController: UIViewController {
         
         label.text = "Версия ".localizedSafe + "\(version)" + "\nот ".localizedSafe + "\(dateString)" + "\nСборка ".localizedSafe + "\(build)"
     }
-    
 }

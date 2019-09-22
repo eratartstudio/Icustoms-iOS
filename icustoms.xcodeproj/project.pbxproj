@@ -48,6 +48,14 @@
 		38FF055C2253A4AE00FF72DF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF055B2253A4AE00FF72DF /* Profile.swift */; };
 		38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF055D2253A7B400FF72DF /* ProfileViewController.swift */; };
 		4E1BAD235E71789A206E829C /* Pods_icustoms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823B5E5046286307C044824A /* Pods_icustoms.framework */; };
+		84628E8F23376F33008809AF /* ActiveOrderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628E8E23376F33008809AF /* ActiveOrderTableCell.swift */; };
+		84628E9123376F40008809AF /* EndedOrderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628E9023376F40008809AF /* EndedOrderTableCell.swift */; };
+		84628E94233774A0008809AF /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628E93233774A0008809AF /* InvoiceViewController.swift */; };
+		84628E9623377585008809AF /* FileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628E9523377585008809AF /* FileTableCell.swift */; };
+		84628E98233775D7008809AF /* RemainTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628E97233775D7008809AF /* RemainTableCell.swift */; };
+		84628E9A2337760B008809AF /* CustomPaymentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628E992337760B008809AF /* CustomPaymentTableCell.swift */; };
+		84628E9C23377650008809AF /* TransactionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628E9B23377650008809AF /* TransactionTableCell.swift */; };
+		84628E9E233776DF008809AF /* NotificationItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84628E9D233776DF008809AF /* NotificationItemTableCell.swift */; };
 		846DD68D22A57A25003E842F /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DD68B22A57A25003E842F /* Authorization.storyboard */; };
 		846DD69222A57A92003E842F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 846DD69022A57A92003E842F /* Localizable.strings */; };
 		846DD69422A57B61003E842F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DD69322A57B61003E842F /* String.swift */; };
@@ -127,6 +135,14 @@
 		38FF055D2253A7B400FF72DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3AF21E9150163A676BC28EBD /* Pods-icustoms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icustoms.debug.xcconfig"; path = "Pods/Target Support Files/Pods-icustoms/Pods-icustoms.debug.xcconfig"; sourceTree = "<group>"; };
 		823B5E5046286307C044824A /* Pods_icustoms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_icustoms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84628E8E23376F33008809AF /* ActiveOrderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveOrderTableCell.swift; sourceTree = "<group>"; };
+		84628E9023376F40008809AF /* EndedOrderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndedOrderTableCell.swift; sourceTree = "<group>"; };
+		84628E93233774A0008809AF /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
+		84628E9523377585008809AF /* FileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTableCell.swift; sourceTree = "<group>"; };
+		84628E97233775D7008809AF /* RemainTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainTableCell.swift; sourceTree = "<group>"; };
+		84628E992337760B008809AF /* CustomPaymentTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaymentTableCell.swift; sourceTree = "<group>"; };
+		84628E9B23377650008809AF /* TransactionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableCell.swift; sourceTree = "<group>"; };
+		84628E9D233776DF008809AF /* NotificationItemTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationItemTableCell.swift; sourceTree = "<group>"; };
 		846DD68C22A57A25003E842F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authorization.storyboard; sourceTree = "<group>"; };
 		846DD68E22A57A2A003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Authorization.strings; sourceTree = "<group>"; };
 		846DD68F22A57A4D003E842F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -231,6 +247,9 @@
 				386C4115224EBAC800FDFE15 /* OrderDetailViewController.swift */,
 				383128D022563E930057C726 /* OrderFilesViewController.swift */,
 				3831296E225CC08F0057C726 /* OrderFileDetailViewController.swift */,
+				84628E9523377585008809AF /* FileTableCell.swift */,
+				84628E93233774A0008809AF /* InvoiceViewController.swift */,
+				84628E9223376F46008809AF /* OrderCell */,
 				3831296D225B7D4B0057C726 /* Views */,
 			);
 			path = Orders;
@@ -240,7 +259,9 @@
 			isa = PBXGroup;
 			children = (
 				3871C6FC22492001004D3829 /* RemainsViewController.swift */,
+				84628E97233775D7008809AF /* RemainTableCell.swift */,
 				38312969225B69D20057C726 /* CustomDetailViewController.swift */,
+				84628E992337760B008809AF /* CustomPaymentTableCell.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -249,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				3891F5F8224B74F0006AE04E /* BalanceViewController.swift */,
+				84628E9B23377650008809AF /* TransactionTableCell.swift */,
 				3891F5FA224B84B1006AE04E /* BalanceDetailViewController.swift */,
 			);
 			path = Balance;
@@ -261,6 +283,7 @@
 				3891F5FE224B9520006AE04E /* HelpViewController.swift */,
 				38FF055D2253A7B400FF72DF /* ProfileViewController.swift */,
 				383128CC225631CF0057C726 /* NotificationsViewController.swift */,
+				84628E9D233776DF008809AF /* NotificationItemTableCell.swift */,
 				3845ACAD2264851400D402F8 /* SettingsViewController.swift */,
 				84A6D54E22A8019C00FA1829 /* LanguageCell */,
 			);
@@ -323,6 +346,15 @@
 				01E82507E2BA9B11F4894854 /* Pods-icustoms.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		84628E9223376F46008809AF /* OrderCell */ = {
+			isa = PBXGroup;
+			children = (
+				84628E8E23376F33008809AF /* ActiveOrderTableCell.swift */,
+				84628E9023376F40008809AF /* EndedOrderTableCell.swift */,
+			);
+			path = OrderCell;
 			sourceTree = "<group>";
 		};
 		84A6D54E22A8019C00FA1829 /* LanguageCell */ = {
@@ -515,10 +547,12 @@
 			files = (
 				3831296F225CC08F0057C726 /* OrderFileDetailViewController.swift in Sources */,
 				84A6D54D22A8015500FA1829 /* ChineseLanguageCell.swift in Sources */,
+				84628E9A2337760B008809AF /* CustomPaymentTableCell.swift in Sources */,
 				3831296C225B7D470057C726 /* FilterView.swift in Sources */,
 				386C4116224EBAC800FDFE15 /* OrderDetailViewController.swift in Sources */,
 				38A38EF422450E4500505D36 /* Button.swift in Sources */,
 				3891F5FD224B9305006AE04E /* AboutAppViewController.swift in Sources */,
+				84628E9123376F40008809AF /* EndedOrderTableCell.swift in Sources */,
 				3891F612224CD53F006AE04E /* AuthorizationResponse.swift in Sources */,
 				382C6A0C2248F26B00ACF784 /* Extensions.swift in Sources */,
 				38A38EDA224509D500505D36 /* LoginViewController.swift in Sources */,
@@ -529,6 +563,7 @@
 				3891F614224CD54D006AE04E /* AccountItem.swift in Sources */,
 				3891F5FF224B9520006AE04E /* HelpViewController.swift in Sources */,
 				3871C6FD22492001004D3829 /* RemainsViewController.swift in Sources */,
+				84628E94233774A0008809AF /* InvoiceViewController.swift in Sources */,
 				3891F618224CD586006AE04E /* Order.swift in Sources */,
 				3848BD7A2244CD7F0047FBC9 /* API.swift in Sources */,
 				383128CD225631CF0057C726 /* NotificationsViewController.swift in Sources */,
@@ -537,14 +572,19 @@
 				38FF055E2253A7B400FF72DF /* ProfileViewController.swift in Sources */,
 				3891F61C224CF3D2006AE04E /* Transaction.swift in Sources */,
 				84A6D54B22A8012900FA1829 /* EnglishLanguageCell.swift in Sources */,
+				84628E9C23377650008809AF /* TransactionTableCell.swift in Sources */,
 				3845ACB0226490A800D402F8 /* NotificationManager.swift in Sources */,
+				84628E8F23376F33008809AF /* ActiveOrderTableCell.swift in Sources */,
 				84A6D54922A7FF8700FA1829 /* RussianLanguageCell.swift in Sources */,
 				3831296A225B69D20057C726 /* CustomDetailViewController.swift in Sources */,
+				84628E9623377585008809AF /* FileTableCell.swift in Sources */,
 				3845ACAE2264851400D402F8 /* SettingsViewController.swift in Sources */,
+				84628E9E233776DF008809AF /* NotificationItemTableCell.swift in Sources */,
 				3891F5FB224B84B1006AE04E /* BalanceDetailViewController.swift in Sources */,
 				3891F61A224CF036006AE04E /* Custom.swift in Sources */,
 				38A38ED3224505C700505D36 /* Database.swift in Sources */,
 				38FF055C2253A4AE00FF72DF /* Profile.swift in Sources */,
+				84628E98233775D7008809AF /* RemainTableCell.swift in Sources */,
 				3891F5F9224B74F0006AE04E /* BalanceViewController.swift in Sources */,
 				846DD69422A57B61003E842F /* String.swift in Sources */,
 				3848BD682243E4EE0047FBC9 /* AppDelegate.swift in Sources */,

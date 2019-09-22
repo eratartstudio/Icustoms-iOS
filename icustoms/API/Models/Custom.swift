@@ -32,7 +32,6 @@ struct Custom: Decodable {
         custom = try container.decode(CustomItem.self, forKey: .custom)
         customPayments = try container.decode([CustomPayment].self, forKey: .customPayments)
     }
-    
 }
 
 struct CustomItem: Decodable {

@@ -16,8 +16,6 @@ class NotificationsViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var isSms: Bool = true
-    
     let titles: [String] = [
         "Создан заказ".localizedSafe,
         "ДТ зарегистрирована".localizedSafe,
@@ -28,6 +26,8 @@ class NotificationsViewController: UIViewController {
         "ДТ осуществляется досмотр".localizedSafe,
         "ДТ досмотр завершен, ДТ на проверке".localizedSafe
     ]
+    
+    var isSms: Bool = true
     var sms: [Bool] = []
     var email: [Bool] = []
     
@@ -83,11 +83,9 @@ class NotificationsViewController: UIViewController {
         tableView.isHidden = false
         tableView.reloadData()
     }
-    
 }
 
 extension NotificationsViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isSms ? sms.count : email.count
     }
@@ -100,23 +98,4 @@ extension NotificationsViewController: UITableViewDataSource {
         cell.activeSwitch.isOn = isSms ? sms[indexPath.row] : email[indexPath.row]
         return cell
     }
-    
-}
-
-class NotificationItemTableCell: UITableViewCell {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var activeSwitch: UISwitch!
-    
-    var index: Int = 0
-    weak var controller: NotificationsViewController?
-    
-    @IBAction func switchDidChange() {
-        if controller?.isSms == true {
-            controller?.sms[index] = activeSwitch.isOn
-        } else {
-            controller?.email[index] = activeSwitch.isOn
-        }
-    }
-    
 }

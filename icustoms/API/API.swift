@@ -48,14 +48,12 @@ struct File: Decodable {
         //createdAt = try container.decode(String.self, forKey: .createdAt)
         fileExtension = try container.decode(String.self, forKey: .fileExtension)
     }
- 
 }
 
 struct FileType: Decodable {
     let name: String
     let code: String
 }
-
 
 class API: HTTP {
     
@@ -101,7 +99,6 @@ extension API {
             success(response)
         }, failure: failure)
     }
-    
 }
 
 
@@ -154,7 +151,6 @@ extension API {
             success(response ?? [])
         }, failure: failure)
     }
-    
 }
 
 
@@ -173,7 +169,6 @@ extension API {
             success(response)
         }, failure: failure)
     }
-    
 }
 
 
@@ -186,7 +181,6 @@ extension API {
             success(response ?? [])
         }, failure: failure)
     }
-    
 }
 
 
@@ -205,7 +199,6 @@ extension API {
             success?(statusCode >= 200 && statusCode < 300)
         }, failure: failure)
     }
-    
 }
 
 
@@ -267,7 +260,6 @@ extension API {
             success?(statusCode >= 200 && statusCode < 300)
         }, failure: failure)
     }
-    
 }
 
 
@@ -354,5 +346,4 @@ extension String {
     var review: String {
         return self + "/review"
     }
-    
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class ChineseLanguageCell: UITableViewCell {
-
+    
     let langStr = Locale.current.languageCode
     
     override func awakeFromNib() {
@@ -21,11 +21,9 @@ class ChineseLanguageCell: UITableViewCell {
             isUserInteractionEnabled = false
         }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
 }

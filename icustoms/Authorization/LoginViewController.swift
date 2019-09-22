@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {//, Localizable
         } else {
             // Fallback on earlier versions
         }
-    
+        
         //local = Localization.current()
         navigationController?.navigationBar.shadowImage = UIImage()
         codes = Country.current.codes()
@@ -45,9 +45,9 @@ class LoginViewController: UIViewController {//, Localizable
         cantLogIn.underline()
     }
     
-//    func localize(_ locale: Localization) {
-//        
-//    }
+    //    func localize(_ locale: Localization) {
+    //
+    //    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {//, Localizable
     }
     
     @IBAction func codeDidTap() {
-//        codePrivateField.becomeFirstResponder()
+        //        codePrivateField.becomeFirstResponder()
     }
     
     @IBAction func phoneFieldDidChange(_ textField: UITextField) {
@@ -103,15 +103,12 @@ class LoginViewController: UIViewController {//, Localizable
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
 }
 
 extension LoginViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return codes.count
     }
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -124,7 +121,6 @@ extension LoginViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         codeLabel.text = codes[row]
     }
-    
 }
 
 extension UIButton {
