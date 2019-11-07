@@ -6,7 +6,7 @@
 "0bp-Wp-1wr.text" = "-";
 
 /* Class = "UILabel"; text = "130 755.22 Р"; ObjectID = "12J-35-cBO"; */
-"12J-35-cBO.text" = "130 755.22 Р";
+"12J-35-cBO.text" = "-";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "1G5-To-qMc"; */
 "1G5-To-qMc.text" = "Label";
@@ -27,7 +27,7 @@
 "347-p5-Jfa.text" = "Аналитика";
 
 /* Class = "UILabel"; text = "67.45 Р"; ObjectID = "38w-IH-21w"; */
-"38w-IH-21w.text" = "67.45 Р";
+"38w-IH-21w.text" = "-";
 
 /* Class = "UILabel"; text = "СЛУЖБА ПОДДЕРЖКИ"; ObjectID = "3ZZ-pb-Yhw"; */
 "3ZZ-pb-Yhw.text" = "СЛУЖБА ПОДДЕРЖКИ";
@@ -99,7 +99,7 @@
 "HHw-uM-mbj.text" = "Сумма авансов";
 
 /* Class = "UILabel"; text = "19 515.20 Р"; ObjectID = "I4w-ca-mpo"; */
-"I4w-ca-mpo.text" = "19 515.20 Р";
+"I4w-ca-mpo.text" = "-";
 
 /* Class = "UINavigationItem"; title = "Настройки"; ObjectID = "J0F-YX-koe"; */
 "J0F-YX-koe.title" = "Настройки";
@@ -144,7 +144,7 @@
 "PMF-tD-Pb9.text" = "с -";
 
 /* Class = "UILabel"; text = "19 515.20 Р"; ObjectID = "Qgk-Mj-uL7"; */
-"Qgk-Mj-uL7.text" = "19 515.20 Р";
+"Qgk-Mj-uL7.text" = "-";
 
 /* Class = "UILabel"; text = "Профиль"; ObjectID = "RbT-P9-Zmh"; */
 "RbT-P9-Zmh.text" = "Профиль";
@@ -171,13 +171,13 @@
 "Y9C-Uf-RZy.text" = "Label";
 
 /* Class = "UILabel"; text = "130 755.22 Р"; ObjectID = "YzU-WJ-eH0"; */
-"YzU-WJ-eH0.text" = "130 755.22 Р";
+"YzU-WJ-eH0.text" = "-";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "ZZd-gB-PpM"; */
 "ZZd-gB-PpM.text" = "Label";
 
 /* Class = "UILabel"; text = "0 Р"; ObjectID = "ZjL-6p-YXq"; */
-"ZjL-6p-YXq.text" = "0 Р";
+"ZjL-6p-YXq.text" = "-";
 
 /* Class = "UILabel"; text = "Помощь"; ObjectID = "ZlJ-mK-Ays"; */
 "ZlJ-mK-Ays.text" = "Помощь";
@@ -291,7 +291,7 @@
 "oWf-sd-neR.text" = "Label";
 
 /* Class = "UILabel"; text = "5 985.52 Р"; ObjectID = "oa5-Vq-YHf"; */
-"oa5-Vq-YHf.text" = "5 985.52 Р";
+"oa5-Vq-YHf.text" = "-";
 
 /* Class = "UINavigationItem"; title = "Мои заказы"; ObjectID = "pi2-59-riy"; */
 "pi2-59-riy.title" = "Мои заказы";

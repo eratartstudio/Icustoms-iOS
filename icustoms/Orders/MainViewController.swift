@@ -36,6 +36,9 @@ class MainViewController: UIViewController {//, Localizable
         
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
+            let statusBar = UIView(frame: UIApplication.shared.keyWindow?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero)
+            statusBar.backgroundColor = UIColor(named: "purpleColor")
+             UIApplication.shared.keyWindow?.addSubview(statusBar)
         } else {
             // Fallback on earlier versions
         }
