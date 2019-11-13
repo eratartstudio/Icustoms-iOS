@@ -56,7 +56,7 @@ struct Order: Decodable {
     let invoiceBeforeDO1: String
     let countPlacesDO1: Int
     let weightDO1: String
-    let prepaid: String
+    let prepaid: CGFloat
     let toll: String
     let deliveryService: String
     let status: OrderStatus?
@@ -126,7 +126,7 @@ struct Order: Decodable {
         invoiceBeforeDO1 = (try? container.decode(String.self, forKey: .invoiceBeforeDO1)) ?? ""
         countPlacesDO1 = (try? container.decode(Int.self, forKey: .countPlacesDO1)) ?? 0
         weightDO1 = (try? container.decode(String.self, forKey: .weightDO1)) ?? ""
-        prepaid = (try? container.decode(String.self, forKey: .prepaid)) ?? ""
+        prepaid = (try? container.decode(CGFloat.self, forKey: .prepaid)) ?? 0
         toll = (try? container.decode(String.self, forKey: .toll)) ?? ""
         deliveryService = (try? container.decode(String.self, forKey: .deliveryService)) ?? ""
         status = try? container.decode(OrderStatus.self, forKey: .status)
@@ -157,7 +157,7 @@ struct OrderStatus: Decodable {
 struct OrderCurrency: Decodable {
     let code: String?
     let name: String?
-    let rate: String?
+    let rate: CGFloat?
 }
 
 struct StatusHistories: Decodable {

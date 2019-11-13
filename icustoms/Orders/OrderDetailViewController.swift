@@ -213,12 +213,10 @@ class OrderDetailViewController: UIViewController {
         deliveryNameLabel.text = order.deliveryService
         currencyLabel.text = order.currency?.code
         if(order.currency?.rate != nil) {
-            currencyRateLabel.text = order.currency!.rate! + " ₽"
+            currencyRateLabel.text = "\(order.currency!.rate!)" + " ₽"
         } else {
-            currencyRateLabel.text = order.currency?.rate
+            currencyRateLabel.text = "\(order.currency?.rate)"
         }
-        
-        print("_______________\(order)")
         
         switch (Locale.current.languageCode) {
         case "ru":
@@ -226,9 +224,9 @@ class OrderDetailViewController: UIViewController {
                 defaultAvansAndToll(symbol: "₽")
             } else {
                 if(order.currency?.rate != nil) {
-                    let avans = Float(order.prepaid.isEmpty ? "0" : order.prepaid) ?? 0
+                    let avans = Float(order.prepaid.isZero ? 0 : order.prepaid) ?? 0
                     let toll = Float(order.toll.isEmpty ? "0" : order.toll) ?? 0
-                    let rate = Float(order.currency!.rate!.isEmpty ? "0" : order.currency!.rate!) ?? 0
+                    let rate = Float(order.currency!.rate!.isZero ? 0 : order.currency!.rate!) ?? 0
                     
                     if(avans == 0) {
                         avansLabel.text = "0" + " ₽"
@@ -275,10 +273,10 @@ class OrderDetailViewController: UIViewController {
     }
     
     func defaultAvansAndToll(symbol: String) {
-        if(order.prepaid.isEmpty) {
+        if(order.prepaid.isZero) {
             avansLabel.text = "0" + " \(symbol)"
         } else{
-            avansLabel.text = getStringWithSpace(string: order.prepaid) + " \(symbol)"
+            avansLabel.text = getStringWithSpace(string: "\(order.prepaid)") + " \(symbol)"
         }
         if(order.toll.isEmpty) {
             tollLabel.text = "0" + " \(symbol)"
