@@ -120,6 +120,8 @@ class MainViewController: UIViewController {//, Localizable
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Поиск".localizedSafe
         searchController.searchBar.setValue("Отмена".localizedSafe, forKey: "cancelButtonText")
+        searchController.searchBar.setPlaceholder(textColor: .white)
+        searchController.searchBar.setSearchImage(color: .white)
         searchController.dimsBackgroundDuringPresentation = false
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController

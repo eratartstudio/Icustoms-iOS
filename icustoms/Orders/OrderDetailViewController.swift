@@ -218,6 +218,8 @@ class OrderDetailViewController: UIViewController {
             currencyRateLabel.text = order.currency?.rate
         }
         
+        print("_______________\(order)")
+        
         switch (Locale.current.languageCode) {
         case "ru":
             if(order.currency?.code == "RUB"){
