@@ -47,7 +47,7 @@ struct CustomPayment: Decodable {
     let kbk: String?
     let type: Int
     let orderDate: String?
-    let sum: String
+    let sum: Float
     let transferDate: String?
     
     enum CodingKeys: CodingKey {
@@ -67,7 +67,7 @@ struct CustomPayment: Decodable {
         orderDate = try? container.decode(String.self, forKey: .orderDate)
         kbk = try? container.decode(String.self, forKey: .kbk)
         type = (try? container.decode(Int.self, forKey: .type)) ?? 1
-        sum = (try? container.decode(String.self, forKey: .sum)) ?? ""
+        sum = (try? container.decode(Float.self, forKey: .sum)) ?? 0
         transferDate = try? container.decode(String.self, forKey: .transferDate)
     }
 }
