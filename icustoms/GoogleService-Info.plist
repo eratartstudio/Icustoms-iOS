@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>398973746460-armmh8et01bqe0ancgf1umkmahnlmtp3.apps.googleusercontent.com</string>
+	<string>398973746460-dbeb1t59o78s1ngi9fp5bleljgqeq9bs.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.398973746460-armmh8et01bqe0ancgf1umkmahnlmtp3</string>
+	<string>com.googleusercontent.apps.398973746460-dbeb1t59o78s1ngi9fp5bleljgqeq9bs</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBTOpBKrOQsC63MdDm1tTL3qLn5OnaUzS8</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.icustoms.app</string>
+	<string>app.icustoms.com</string>
 	<key>PROJECT_ID</key>
 	<string>icustoms-56aca</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:398973746460:ios:00d02a1a5b2d7ba6</string>
+	<string>1:398973746460:ios:11e621de80d8dc4da70ed9</string>
 	<key>DATABASE_URL</key>
 	<string>https://icustoms-56aca.firebaseio.com</string>
 </dict>
