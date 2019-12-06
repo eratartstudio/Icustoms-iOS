@@ -61,6 +61,14 @@ class ConfirmCodeViewController: UIViewController {
                     let mainController = Storyboard.Main.initialViewController!
                     mainController.modalPresentationStyle = .fullScreen
                     self?.present(mainController, animated: true, completion: nil)
+                    
+                    if Database.default.currentUser() != nil {
+                        let fcmToken = UserDefaults.standard.string(forKey: "device_token") ?? ""
+                        if(fcmToken != ""){
+                            API.default.setDeviceToken(fcmToken)
+                        }
+                    }
+                    
                 } else {
                     self?.showAlert("Ошибка".localizedSafe, message: "Невозможно авторизоваться".localizedSafe)
                 }
