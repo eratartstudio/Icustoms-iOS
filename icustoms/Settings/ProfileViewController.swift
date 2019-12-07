@@ -52,10 +52,10 @@ class ProfileViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 3 {
-            Database.default.deleteUser()
             if let oldToken = UserDefaults.standard.string(forKey: "device_token") {
                 API.default.deleteDeviceToken(oldToken)
             }
+            Database.default.deleteUser()
             UIApplication.shared.keyWindow?.rootViewController = Storyboard.Authorization.initialViewController
         }
     }
