@@ -91,6 +91,15 @@ class ConfirmCodeViewController: UIViewController {
                         let user = User()
                         user.token = token
                         Database.default.add(user)
+                        
+                        if Database.default.currentUser() != nil {
+                            let fcmToken = UserDefaults.standard.string(forKey: "device_token") ?? ""
+                            if(fcmToken != ""){
+                                API.default.setDeviceToken(fcmToken)
+                            }
+                        }
+                        
+                        
                         let mainController = Storyboard.Main.initialViewController!
                         mainController.modalPresentationStyle = .fullScreen
                         self?.present(mainController, animated: true, completion: nil)
