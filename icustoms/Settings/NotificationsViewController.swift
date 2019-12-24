@@ -40,6 +40,11 @@ class NotificationsViewController: UIViewController {
             // Fallback on earlier versions
         }
         
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .selected)
+        
         tableView.isHidden = true
         
         API.default.emailSettings(success: { [weak self] (response) in
